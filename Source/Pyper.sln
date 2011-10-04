@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinGUI", "WinGUI\WinGUI.csproj", "{10AC3B33-8128-48DB-B153-D06ADBAFCEDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{C91CF0C4-6553-4537-AAC9-E820AE30EEF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinGUI", "LinGUI\LinGUI.csproj", "{FC881570-198B-409B-87F9-0287694CE7C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCL", "PCL\PCL.csproj", "{B7BEDE1A-9EF9-452B-9329-D7CC56A2361B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamplePlugins", "SamplePlugins\SamplePlugins.csproj", "{9D4B4864-5820-47C7-A201-590C7AA5DD31}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10AC3B33-8128-48DB-B153-D06ADBAFCEDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10AC3B33-8128-48DB-B153-D06ADBAFCEDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10AC3B33-8128-48DB-B153-D06ADBAFCEDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10AC3B33-8128-48DB-B153-D06ADBAFCEDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D4B4864-5820-47C7-A201-590C7AA5DD31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D4B4864-5820-47C7-A201-590C7AA5DD31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D4B4864-5820-47C7-A201-590C7AA5DD31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D4B4864-5820-47C7-A201-590C7AA5DD31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7BEDE1A-9EF9-452B-9329-D7CC56A2361B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7BEDE1A-9EF9-452B-9329-D7CC56A2361B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7BEDE1A-9EF9-452B-9329-D7CC56A2361B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7BEDE1A-9EF9-452B-9329-D7CC56A2361B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C91CF0C4-6553-4537-AAC9-E820AE30EEF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C91CF0C4-6553-4537-AAC9-E820AE30EEF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C91CF0C4-6553-4537-AAC9-E820AE30EEF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C91CF0C4-6553-4537-AAC9-E820AE30EEF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC881570-198B-409B-87F9-0287694CE7C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC881570-198B-409B-87F9-0287694CE7C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC881570-198B-409B-87F9-0287694CE7C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC881570-198B-409B-87F9-0287694CE7C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = LinGUI\LinGUI.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.FileWidth = 120
+		$1.TabWidth = 3
+		$1.inheritsSet = VisualStudio
+		$1.inheritsScope = text/plain
+		$0.TextStylePolicy = $2
+		$2.FileWidth = 120
+		$2.TabWidth = 3
+		$2.inheritsSet = VisualStudio
+		$2.inheritsScope = text/plain
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/x-csharp
+		$3.scope = text/x-csharp
+		description = Pyper
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

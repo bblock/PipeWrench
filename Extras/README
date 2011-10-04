@@ -1,0 +1,18 @@
+Pyper is a text processing utility that lets you automate the transformation of text from one form to another using "stackable" text filters.  It's a bit like a text editor except that instead of editing the text directly, you typically create small, (often disposable) "pipe" scripts that, when run, do the editing for you.  Pyper scripts can be developed and executed inside of Pyper's simple GUI or executed at the command prompt or from shell (batch) scripts.  Pyper's ability to integrate into shell scripts is extremely powerful given that often, much of a shell script's logic consists of little more than carrying out text transformations--something that Pyper really excels at doing.  
+
+For examples that illustrate some of Pyper's capabilities, see the Demos directory.
+
+Pyper's home can be found on the web at http://www.fireflysoftware.com
+
+Pyper can run on both Windows and Linux platforms.  To build and install Pyper to your Linux system, do the following:
+
+   ./configure
+   make
+   make install
+
+______
+
+Send any questions or suggestions to <bwb@fireflysoftware.com>.
+
+Pyper is licensed under the LGPL, see COPYING for more details.
+

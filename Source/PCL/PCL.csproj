@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B7BEDE1A-9EF9-452B-9329-D7CC56A2361B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Firefly.Pyper</RootNamespace>
+    <AssemblyName>PCL</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="AddMultPlugin.cs" />
+    <Compile Include="AddValues.cs" />
+    <Compile Include="AppendStr.cs" />
+    <Compile Include="Argument.cs" />
+    <Compile Include="BaseToDec.cs" />
+    <Compile Include="BottomLines.cs" />
+    <Compile Include="Call.cs" />
+    <Compile Include="CenterText.cs" />
+    <Compile Include="ColumnOrder.cs" />
+    <Compile Include="CommandLine.cs" />
+    <Compile Include="CommandSpec.cs" />
+    <Compile Include="CommandSpecs.cs" />
+    <Compile Include="CompileErrors.cs" />
+    <Compile Include="CountChars.cs" />
+    <Compile Include="CountLines.cs" />
+    <Compile Include="CullLines.cs" />
+    <Compile Include="DecToBase.cs" />
+    <Compile Include="DelBlankLines.cs" />
+    <Compile Include="DelChars.cs" />
+    <Compile Include="DelCharsToStr.cs" />
+    <Compile Include="DelDuplLines.cs" />
+    <Compile Include="DelExtraBlankLines.cs" />
+    <Compile Include="DelExtraBlanks.cs" />
+    <Compile Include="DivValues.cs" />
+    <Compile Include="EndIsolate.cs" />
+    <Compile Include="ExclLines.cs" />
+    <Compile Include="ExtractLines.cs" />
+    <Compile Include="Filter.cs" />
+    <Compile Include="FoldLines.cs" />
+    <Compile Include="GroupLines.cs" />
+    <Compile Include="InclExclPlugin.cs" />
+    <Compile Include="InclLines.cs" />
+    <Compile Include="InsLineNo.cs" />
+    <Compile Include="InsStr.cs" />
+    <Compile Include="IsolateLines.cs" />
+    <Compile Include="JoinLines.cs" />
+    <Compile Include="JustCharsLeft.cs" />
+    <Compile Include="JustCharsPlugin.cs" />
+    <Compile Include="JustCharsRight.cs" />
+    <Compile Include="LeftChars.cs" />
+    <Compile Include="LinesByPos.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="LowerCase.cs" />
+    <Compile Include="MultValues.cs" />
+    <Compile Include="OutDuplLines.cs" />
+    <Compile Include="OverlayChars.cs" />
+    <Compile Include="PadLinesLeft.cs" />
+    <Compile Include="PadLinesPlugin.cs" />
+    <Compile Include="PadLinesRight.cs" />
+    <Compile Include="ParseCSV.cs" />
+    <Compile Include="ParseWords.cs" />
+    <Compile Include="Pipe.cs" />
+    <Compile Include="QuoteLines.cs" />
+    <Compile Include="ReorderColumns.cs" />
+    <Compile Include="ReplStr.cs" />
+    <Compile Include="ReverseChars.cs" />
+    <Compile Include="RightChars.cs" />
+    <Compile Include="RotCharsLeft.cs" />
+    <Compile Include="RotCharsPlugin.cs" />
+    <Compile Include="RotCharsRight.cs" />
+    <Compile Include="RotCharsToStr.cs" />
+    <Compile Include="SetDebugOff.cs" />
+    <Compile Include="SetDebugOn.cs" />
+    <Compile Include="SetDebugPlugin.cs" />
+    <Compile Include="ShiftChars.cs" />
+    <Compile Include="SortLines.cs" />
+    <Compile Include="SpliceFile.cs" />
+    <Compile Include="SplitLines.cs" />
+    <Compile Include="StripChars.cs" />
+    <Compile Include="SubDivPlugin.cs" />
+    <Compile Include="SubValues.cs" />
+    <Compile Include="Switch.cs" />
+    <Compile Include="TopLines.cs" />
+    <Compile Include="TotalColumns.cs" />
+    <Compile Include="TrimLines.cs" />
+    <Compile Include="TrimLinesLeft.cs" />
+    <Compile Include="TrimLinesRight.cs" />
+    <Compile Include="UpperCase.cs" />
+    <Compile Include="WrapText.cs" />
+    <Compile Include="Engine.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{C91CF0C4-6553-4537-AAC9-E820AE30EEF0}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
