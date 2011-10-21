@@ -1,5 +1,19 @@
-// Linux (GTK-based) GUI
-
+// 
+// Pyper - automate the transformation of text using "stackable" text filters
+// Copyright (C) 2011  Barry Block 
+// 
+// This program is free software: you can redistribute it and/or modify it under
+// the terms of the GNU General Public License as published by the Free Software
+// Foundation, either version 3 of the License, or (at your option) any later
+// version. 
+// 
+// This program is distributed in the hope that it will be useful, but WITHOUT ANY
+// WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+// PARTICULAR PURPOSE.  See the GNU General Public License for more details. 
+// 
+// You should have received a copy of the GNU General Public License along with
+// this program.  If not, see <http://www.gnu.org/licenses/>. 
+//
 using System;
 using System.IO;
 using System.Collections;
@@ -582,38 +596,6 @@ public partial class MainWindow: Gtk.Window
 
    protected void CopyClipboardToPipe(Clipboard CB, string text)
    {
-//      text = text.Trim();
-//      
-//      // Remove any leading double-quote:
-//
-//      if (text[0] == '\"')
-//      {
-//         text = text.Substring(1, text.Length - 1);
-//      }
-//
-//      // Remove any trailing double-quote:
-//
-//      if (text[text.Length - 1] == '\"')
-//      {
-//         text = text.Substring(0, text.Length - 1);
-//      }
-//
-//      // Replace pipe characters with newlines and trim spaces from each line:
-//      
-////      string results = string.Empty;
-////      string[] lines = text.Split(new char[] { Engine.PipeChar }, StringSplitOptions.None);
-////      
-////      foreach(string line in lines)
-////      {
-////         results += line.Trim() + System.Environment.NewLine;
-////      }
-////      
-////      results = results.Substring(0, results.Length-1);
-////      
-////      PipeTextView.Buffer.Text = results;
-//      
-//      PipeTextView.Buffer.Text = text.Replace("\\n", System.Environment.NewLine);
-      
       PipeTextView.Buffer.Text = Engine.CliPipeToGui(text);
    }
 
@@ -855,8 +837,6 @@ public partial class MainWindow: Gtk.Window
          
          try
          {
-            //string LogoPath = AssyFolder + "/Pyper.png";
-            //ab.Logo = new Gdk.Pixbuf(LogoPath);
             ab.Logo = null;
          }
          
@@ -1280,17 +1260,15 @@ public partial class MainWindow: Gtk.Window
 
    protected virtual void UserGuide_OnActivated (object sender, System.EventArgs e)
    {
-      ProcessStartInfo startInfo = new ProcessStartInfo("../../share/doc/pyper/Manual/index.htm");
+      ProcessStartInfo startInfo = new ProcessStartInfo("Manual.htm");
       startInfo.WorkingDirectory = AssyFolder;
-      //Process proc = Process.Start(startInfo);
       Process.Start(startInfo);
    }
 
    protected virtual void Demos_OnActivated (object sender, System.EventArgs e)
    {
-      ProcessStartInfo startInfo = new ProcessStartInfo("../../share/doc/pyper/Demos");
+      ProcessStartInfo startInfo = new ProcessStartInfo("Demos");
       startInfo.WorkingDirectory = AssyFolder;
-      //Process proc = Process.Start(startInfo);
       Process.Start(startInfo);
    }
 

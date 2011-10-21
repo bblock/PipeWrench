@@ -1,7 +1,19 @@
-// pyper / PCL
-//
-// This is the command line version of Pyper.
-
+// 
+// Pyper - automate the transformation of text using "stackable" text filters
+// Copyright (C) 2011  Barry Block 
+// 
+// This program is free software: you can redistribute it and/or modify it under
+// the terms of the GNU General Public License as published by the Free Software
+// Foundation, either version 3 of the License, or (at your option) any later
+// version. 
+// 
+// This program is distributed in the hope that it will be useful, but WITHOUT ANY
+// WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+// PARTICULAR PURPOSE.  See the GNU General Public License for more details. 
+// 
+// You should have received a copy of the GNU General Public License along with
+// this program.  If not, see <http://www.gnu.org/licenses/>. 
+// 
 using System;
 using System.IO;
 using System.Xml;
@@ -265,9 +277,9 @@ namespace Firefly.Pyper
                string headerRightStr;
                
                if (isLinux)
-                  headerRightStr = "Copyright \u00a9 2010 Firefly Software";
+                  headerRightStr = "Copyright \u00a9 2011 Firefly Software";
                else
-                  headerRightStr = "Copyright (C) 2010 Firefly Software";
+                  headerRightStr = "Copyright (C) 2011 Firefly Software";
                
                string headerStr = headerLeftStr + headerRightStr.PadLeft(consoleCols - 
                headerLeftStr.Length - 1) + "\n\n";
@@ -275,19 +287,26 @@ namespace Firefly.Pyper
                
                // Display the help screen:
                
-               tempStr = cmdLineAppName + " is the command-line compliment of " + appName + 
+               tempStr = cmdLineAppName.ToUpper() + " is the command-line compliment of " + appName + 
                ", the pipe-based text processing GUI that allows you to morph text into other forms " + 
                "by simply combining filters. " + appName + "'s " + pipeEng.CoreFilters + 
                " built-in text translation filters allow you to accomplish all sorts of text editing " + 
                "tasks. You can search and replace text, convert between CSV, comma-delimited, " + 
                "tab-delimited and fixed width data, extract logfile data, manipulate XML, convert " + 
-               "line endings, format source code and more by simply combining filters." + appName + 
+               "line endings, format source code and much more. " + appName + 
                " can be found on the web at www.fireflysoftware.com.";
                
                string wrapToWidthPipe = "WrapText " + consoleCols.ToString();
-               string bodyStr = pipeEng.RunPipe("wrapToWidthPipe", wrapToWidthPipe, "", tempStr, false, false);
+               string bodyStr = pipeEng.RunPipe("wrapToWidthPipe", wrapToWidthPipe, "", tempStr, false, false) + "\n\n";
                
-               Console.Error.Write(headerStr + bodyStr + PadLines(headerStr + bodyStr + footerStr) + footerStr);
+               tempStr = "Notice: This software is provided WITHOUT WARRANTY OF ANY KIND under " +
+               "the Free Software Foundation's GNU General Public License.  For further details, " +
+               "see \"http://www.gnu.org/licenses/\". ";
+               
+               string noticeStr = pipeEng.RunPipe("wrapToWidthPipe", wrapToWidthPipe, "", tempStr, false, false);
+
+               Console.Error.Write(headerStr + bodyStr + noticeStr + PadLines(headerStr + bodyStr + noticeStr +
+               footerStr) + footerStr);
                Console.ReadKey();
                
                bodyStr = "Syntax: " + cmdLineAppName + " <pipe> [<arguments>]\n\n";

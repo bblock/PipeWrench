@@ -1,4 +1,16 @@
+2011-10-17  Barry W. Block  <bwb@fireflysoftware.com>
+
+	* Split pipe engine into separate files by class.
+
+	* Added user manual.
+
+	* Created binary packages for both Windows and Linux.
+
+	* Made minor changes to both GUIs to locate user manual and demos.
+
+	* Fixed sort binary location bug.
+
 2011-10-04  Barry W. Block  <bwb@fireflysoftware.com>
 
-	* pyper: Initial debut of Pyper.
+	* pyper: Initial release of Pyper.
 

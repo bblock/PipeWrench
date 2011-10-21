@@ -1,31 +1,39 @@
 PYPER
 
-Pyper is a text "piping" GUI (plus CLI utility) that lets you automate the transformation of text from one form to another using "stackable" text filters.  The GUI component is a bit like a text editor except that instead of editing the text directly, you create small, (often disposable) "pipe scripts" that, when run, do the editing for you.  This makes it possible for you to edit relatively large amounts of text without introducing errors caused by repetitive typing, etc.  In addition, Pyper makes it easy for you to automate editing tasks.  Not only can you develop, debug and run pipe scripts interactively from Pyper's GUI, but you can also export them for use at the command prompt or from shell scripts. 
-
-For examples that illustrate some of Pyper's capabilities, be on the look-out for upcoming demos that will be included soon in the Pyper repository.  Eventually, these will be accessible from Pyper's "About" menu.
+Pyper is a text "morphing" utility that lets you automate the transformation of text from one form to another using "stackable" text filters.  These filters can be arranged in an unlimited number of combinations inside of Pyper's GUI to form "pipe" scripts, which can then be executed to edit text into whatever form you desire.  Because Pyper's text filters are very "high level" compared to commands used by general purpose programming languages, Pyper scripts tend to be surprisingly small for the amount of work that they do.  This makes Pyper ideal as a tool for resolving day-to-day text editing tasks that often limit one's productivity.  Once a Pyper script is debugged and working, it can easily be exported for use in shell scripts.  This makes Pyper a natural addition to shell script automation projects.  
 
 
 DOCUMENTATION
 
-Pyper's user manual is currently being written.  In the meantime, please see "Pyper Commands.txt".  It covers most of the included filters at this time and should also provide pretty good insight into how pipes are constructed as well.
+Pyper's user manual (Manual.htm) is currently being written.  At this stage, it consists of a summary of the text filters included in Pyper along with examples and should provide pretty good insight into how pipes are constructed as well.  More to come...  The manual is accessible through the GUI's "help" menu.  For some more in-depth examples that illustrate some of Pyper's capabilities, see the demos that are also accessible from the "help" menu.
   
 
 INSTALLING PYPER
 
-Pyper can run on both Windows and Linux platforms; however, at the moment, no install packages are available for installing it.  You will either have to build Pyper from source using an IDE like MonoDevelop or Visual Studio or wait until a binary package is made available for your O/S.  I will try to have generic binary packages available soon for both platforms.
+Pyper is a C# application and it can run on both Windows and Linux platforms.  
 
-Once you have built Pyper, you should be able to execute it from the IDE or by running the executable directly from the resulting "bin" directory.  Please note that the one supplied plug-in filter, "SamplePlugins" (only included as a sample plugin) will not work though as it needs to exist in a subdirectory called "PlugIns" before it can be recognized.
+
+Windows
+
+If running Windows, You can install Pyper from the latest generic binary package (.zip).  Simply extract it to your desktop, move the extracted directory where you want it to permanently reside and place that directory into your path so that both pyper.exe and pcl.exe can be found from anywhere on your system.
+
+You can also compile Pyper using Visual Studio or MonoDevelop.  Once you have built Pyper, you should be able to execute it from the IDE or by running the executable directly from the resulting "bin" directory.  Note that the one supplied plug-in filter, "SamplePlugins"--only included as a sample plugin--will only work if it is found in a subdirectory called "PlugIns".
+
+
+Linux
+
+If you are running Linux, You can install Pyper from the latest generic binary package (.tar.gz).  Simply extract it to your desktop and run the included "install" script as "root" user.  Please read the comments inside the install script for more details.
+
+You can also compile Pyper using MonoDevelop.  Once you have built Pyper, you should be able to execute it from the IDE or by running the executable directly from the resulting "bin" directory (though you'll need to do so like "mono pyper.exe").  Note that the one supplied plug-in filter, "SamplePlugins"--only included as a sample plugin--will only work if it is found in a subdirectory called "PlugIns".
 
 
 KNOWN ISSUES
 
-* The SortLines filter is based on the operating system's sort command which on Linux is expected in the /usr/bin directory (and unfortunately, sort is not typically found there).  This is easily fixed by editing ~/.pyper/EngineConf.xml (which gets created after Pyper's first execution) and changing the value for <SortExec> to the correct location for your system. 
+On some Linux distros, attempting to change fonts in the preferences dialog fails to result in the font being changed.  The work-around for this bug is to change fonts by editing the ~/.pyper/PyperConf.xml file.
 
 ______
 
-Pyper's (future) home will exist on the web at http://www.fireflysoftware.com
+Send any questions or suggestions to "bwb@fireflysoftware.com".
 
-Send any questions or suggestions to <bwb@fireflysoftware.com>.
-
-Pyper is licensed under the LGPL, see COPYING for more details.
+Pyper is licensed under the GPL. See "http://www.gnu.org/licenses" for details.
 
