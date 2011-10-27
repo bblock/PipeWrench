@@ -1,6 +1,6 @@
 PYPER
 
-Pyper is a text "morphing" utility that lets you automate the transformation of text from one form to another using "stackable" text filters.  These filters can be arranged in an unlimited number of combinations inside of Pyper's GUI to form "pipe" scripts, which can then be executed to edit text into whatever form you desire.  Because Pyper's text filters are very "high level" compared to commands used by general purpose programming languages, Pyper scripts tend to be surprisingly small for the amount of work that they do.  This makes Pyper ideal as a tool for resolving day-to-day text editing tasks that often limit one's productivity.  Once a Pyper script is debugged and working, it can easily be exported for use in shell scripts.  This makes Pyper a natural addition to shell script automation projects.  
+Pyper is a text "morphing" utility that lets you automate the transformation of text from one form to another using "stackable" text filters.  These filters can be arranged in an unlimited number of combinations inside of Pyper's GUI to form "pipe" scripts, which can then be executed to edit text into whatever form you desire.  Because Pyper's text filters are very high level compared to commands used in general purpose programming languages, Pyper scripts tend to be surprisingly small for the amount of work that they do.  This, along with the fact that Pyper scripts can be exported for use in shell scripts, makes Pyper a natural addition to shell script automation projects.
 
 
 DOCUMENTATION
@@ -15,14 +15,14 @@ Pyper is a C# application and it can run on both Windows and Linux platforms.
 
 Windows
 
-If running Windows, You can install Pyper from the latest generic binary package (.zip).  Simply extract it to your desktop, move the extracted directory where you want it to permanently reside and place that directory into your path so that both pyper.exe and pcl.exe can be found from anywhere on your system.
+If running Windows, You can install Pyper from the latest generic binary package (.zip).  Simply extract it to your desktop, move the extracted directory where you want it to permanently reside and place that directory into your path so that both pyper.exe and pcl.exe can be found from anywhere on your system.  Note that for Pyper to run, version 2.x of the .NET framework must be installed on your Windows computer.
 
 You can also compile Pyper using Visual Studio or MonoDevelop.  Once you have built Pyper, you should be able to execute it from the IDE or by running the executable directly from the resulting "bin" directory.  Note that the one supplied plug-in filter, "SamplePlugins"--only included as a sample plugin--will only work if it is found in a subdirectory called "PlugIns".
 
 
 Linux
 
-If you are running Linux, You can install Pyper from the latest generic binary package (.tar.gz).  Simply extract it to your desktop and run the included "install" script as "root" user.  Please read the comments inside the install script for more details.
+If you are running Linux, You can install Pyper from the latest generic binary package (.tar.gz).  Simply extract it to your desktop and run the included "install" script.  Please read the comments inside the install script for more details.
 
 You can also compile Pyper using MonoDevelop.  Once you have built Pyper, you should be able to execute it from the IDE or by running the executable directly from the resulting "bin" directory (though you'll need to do so like "mono pyper.exe").  Note that the one supplied plug-in filter, "SamplePlugins"--only included as a sample plugin--will only work if it is found in a subdirectory called "PlugIns".
 
