@@ -1,6 +1,6 @@
 // 
 // Pyper - automate the transformation of text using "stackable" text filters
-// Copyright (C) 2011  Barry Block 
+// Copyright (C) 2013  Barry Block 
 // 
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -17,12 +17,12 @@
 using System;
 using Firefly.Pyper;
 
-namespace SamplePlugins
+namespace SamplePlugin
 {
    /// <summary>
    /// Sample filter (duplicate of InsStr filter).
    /// </summary>
-   public sealed class SamplePlugin1 : FilterPlugin
+   public sealed class SampleFilter : FilterPlugin
    {
       public override void Execute()  
       {
@@ -87,7 +87,7 @@ namespace SamplePlugins
          }
       }
 
-      public SamplePlugin1(IFilter host) : base(host)
+      public SampleFilter(IFilter host) : base(host)
       {
          Template = "n s [n s...]";
       }

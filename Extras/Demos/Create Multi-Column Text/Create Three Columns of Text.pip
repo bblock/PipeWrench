@@ -1,0 +1,13 @@
+; Pipe Name: Create Three Columns of Text.pip
+;
+; Formats the input text as three columns,
+; side-by-side. Run against "Sample.txt"
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+WrapText 20 /b'-/' /j40
+PadLinesRight ' '
+AppendStr '  '
+ColumnOrder 17 3
+JoinLines 3
+StripChars 2

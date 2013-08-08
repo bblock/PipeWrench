@@ -1,0 +1,12 @@
+; Pipe Name: CSV to Fixed Width.pip
+;
+; Converts CSV data to fixed width.
+; Run using CSV.txt. Run against
+; "CSV.txt".
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+ParseCSV
+QuoteLines 1 2 9 9 /u /s10
+PadLinesRight ' ' /s10
+JoinLines 10

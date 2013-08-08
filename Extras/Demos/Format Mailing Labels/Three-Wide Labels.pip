@@ -1,0 +1,15 @@
+; Pipe Name: Three-Wide Labels.pip
+; 
+; This pipe formats a list of name/adress 
+; records so that they can be printed as 
+; mailing labels on stock that's three 
+; labels wide. Run against "Sample Text.txt".
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+AppendStr '\e' 
+SplitLines 26 51
+PadLinesRight ' ' /w25
+ColumnOrder 12 3 
+JoinLines 3 
+

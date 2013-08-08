@@ -43,6 +43,7 @@ public partial class MainWindow
 	private global::Gtk.ToggleAction WrapTextAction;
 	private global::Gtk.Action InsertCursorColAction;
 	private global::Gtk.Action DemosAction;
+	private global::Gtk.Action CommandReferenceAction;
 	private global::Gtk.VBox vbox1;
 	private global::Gtk.MenuBar menubar1;
 	private global::Gtk.Toolbar toolbar1;
@@ -215,6 +216,9 @@ public partial class MainWindow
 		this.DemosAction = new global::Gtk.Action ("DemosAction", global::Mono.Unix.Catalog.GetString ("_Demos"), null, null);
 		this.DemosAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("_Demos");
 		w1.Add (this.DemosAction, null);
+		this.CommandReferenceAction = new global::Gtk.Action ("CommandReferenceAction", global::Mono.Unix.Catalog.GetString ("Command Reference"), null, null);
+		this.CommandReferenceAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Command Reference");
+		w1.Add (this.CommandReferenceAction, null);
 		this.UIManager.InsertActionGroup (w1, 0);
 		this.AddAccelGroup (this.UIManager.AccelGroup);
 		this.Name = "MainWindow";
@@ -226,7 +230,7 @@ public partial class MainWindow
 		this.vbox1.Name = "vbox1";
 		this.vbox1.Spacing = 6;
 		// Container child vbox1.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='NewAction' action='NewAction'/><menuitem name='OpenAction' action='OpenAction'/><menuitem name='SaveAction' action='SaveAction'/><menuitem name='SaveAsAction' action='SaveAsAction'/><separator/><menuitem name='ImportAction' action='ImportAction'/><menuitem name='ExportAction' action='ExportAction'/><separator/><menuitem name='ExitAction' action='ExitAction'/></menu><menu name='EditAction' action='EditAction'><menuitem name='CutAction' action='CutAction'/><menuitem name='CopyAction' action='CopyAction'/><menuitem name='PasteAction' action='PasteAction'/><menuitem name='DeleteAction' action='DeleteAction'/><menuitem name='SelectAllAction' action='SelectAllAction'/><separator/><menuitem name='InsertCursorColAction' action='InsertCursorColAction'/><separator/><menuitem name='PreferencesAction' action='PreferencesAction'/></menu><menu name='PipeAction' action='PipeAction'><menuitem name='RunAction' action='RunAction'/><menuitem name='RunToLineAction' action='RunToLineAction'/></menu><menu name='HelpAction' action='HelpAction'><menuitem name='UserGuideAction' action='UserGuideAction'/><menuitem name='DemosAction' action='DemosAction'/><menuitem name='SupportForumAction' action='SupportForumAction'/><menuitem name='QuickStartTutorialAction' action='QuickStartTutorialAction'/><menuitem name='VisitOurHomepageAction' action='VisitOurHomepageAction'/><separator/><menuitem name='AboutAction' action='AboutAction'/></menu></menubar></ui>");
+		this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='NewAction' action='NewAction'/><menuitem name='OpenAction' action='OpenAction'/><menuitem name='SaveAction' action='SaveAction'/><menuitem name='SaveAsAction' action='SaveAsAction'/><separator/><menuitem name='ImportAction' action='ImportAction'/><menuitem name='ExportAction' action='ExportAction'/><separator/><menuitem name='ExitAction' action='ExitAction'/></menu><menu name='EditAction' action='EditAction'><menuitem name='CutAction' action='CutAction'/><menuitem name='CopyAction' action='CopyAction'/><menuitem name='PasteAction' action='PasteAction'/><menuitem name='DeleteAction' action='DeleteAction'/><menuitem name='SelectAllAction' action='SelectAllAction'/><separator/><menuitem name='InsertCursorColAction' action='InsertCursorColAction'/><separator/><menuitem name='PreferencesAction' action='PreferencesAction'/></menu><menu name='PipeAction' action='PipeAction'><menuitem name='RunAction' action='RunAction'/><menuitem name='RunToLineAction' action='RunToLineAction'/></menu><menu name='HelpAction' action='HelpAction'><menuitem name='UserGuideAction' action='UserGuideAction'/><menuitem name='CommandReferenceAction' action='CommandReferenceAction'/><menuitem name='DemosAction' action='DemosAction'/><separator/><menuitem name='AboutAction' action='AboutAction'/></menu></menubar></ui>");
 		this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
 		this.menubar1.Name = "menubar1";
 		this.vbox1.Add (this.menubar1);
@@ -615,12 +619,10 @@ public partial class MainWindow
 		this.RunAction.Activated += new global::System.EventHandler (this.RunAction_OnActivated);
 		this.RunToLineAction.Activated += new global::System.EventHandler (this.RunToLineAction_OnActivated);
 		this.UserGuideAction.Activated += new global::System.EventHandler (this.UserGuide_OnActivated);
-		this.SupportForumAction.Activated += new global::System.EventHandler (this.SupportForum_OnActivated);
-		this.VisitOurHomepageAction.Activated += new global::System.EventHandler (this.VisitOurHomepage_OnActivated);
 		this.AboutAction.Activated += new global::System.EventHandler (this.About_OnActivated);
-		this.QuickStartTutorialAction.Activated += new global::System.EventHandler (this.QuickStartTutorial_OnActivated);
 		this.InsertCursorColAction.Activated += new global::System.EventHandler (this.InsertCursorCol_OnActivated);
 		this.DemosAction.Activated += new global::System.EventHandler (this.Demos_OnActivated);
+		this.CommandReferenceAction.Activated += new global::System.EventHandler (this.CommandReference_OnActivated);
 		this.PipeTextView.MoveCursor += new global::Gtk.MoveCursorHandler (this.TextView_OnMoveCursor);
 		this.PipeTextView.ButtonReleaseEvent += new global::Gtk.ButtonReleaseEventHandler (this.TextView_OnButtonReleaseEvent);
 		this.PipeTextView.Focused += new global::Gtk.FocusedHandler (this.TextView_OnFocused);

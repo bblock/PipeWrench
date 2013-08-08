@@ -1,0 +1,13 @@
+; Pipe Name: Fixed Width to CSV.pip
+;
+; Converts fixed width data to CSV.
+; Run against "Fixed Width.txt".
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+SplitLines 10 25 26 29 32 33 35 36 46 
+TrimLinesRight
+QuoteLines 1 2 9 9 /s10
+AppendStr ', '
+JoinLines 10
+StripChars 2

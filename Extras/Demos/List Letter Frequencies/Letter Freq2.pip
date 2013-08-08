@@ -1,0 +1,46 @@
+; Pipe Name: Letter Freq2.pip
+;
+; This pipe outputs the frequency that each letter 
+; of the alphabet occurs in the input text after 
+; first being scrubbed of all non-alphabetic chars.
+; See also "Letter Freq1.pip". 
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Count the number of times each letter 
+; occurs in the input text:
+
+LowerCase
+ReplStr '.' '$0\e' /r
+InclLines '[a-z]' 1 1 /r
+SortLines
+FoldLines /z
+
+; Append to each line the total 
+; number of letters and " 100":
+
+AppendStr '<EOL>'
+TotalColumns 3 /d0 /a /w0
+TrimLines
+PadLinesLeft '0' /w6
+JoinLines
+InsStr 1 '~'
+RotCharsToStr '\\d+$' /r
+ReplStr '[a-z]\\s\\d+' '$0 % 100' '^\\d+~' '' '<EOL>$' '' /r /d'~' /b1
+ReplStr '<EOL>' '\e' 
+
+; Do the math:
+
+DivValues 3 10 /i3 /d4
+MultValues 3 24 /i3 /d2
+
+; Clean up and spit polish: 
+
+LeftChars 8
+ShiftChars 10 ' '
+InsStr 1 '  '
+AppendStr '<EOL>'
+JoinLines
+StripChars 5
+InsStr 1 'Letter    % Occurrence<EOL><EOL>'
+ReplStr '<EOL>' '\e'

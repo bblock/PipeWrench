@@ -1,0 +1,74 @@
+; Pipe Name: Letter Freq1.pip
+;
+; This pipe outputs the frequency that each letter 
+; of the alphabet occurs in the input text after 
+; first being scrubbed of all non-alphabetic chars.
+; Run against the default input text. See "Letter 
+; Freq2.pip" for an alternate solution. Run against 
+; the default input text. 
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Prepare the text by converting it to lowercase
+; and then removing all newlines and non-alphabetic
+; characters:
+
+LowerCase
+JoinLines
+ReplStr '\\W' '' '\\d' '' /r
+
+; Calculate and insert the total character count 
+; at the beginning of the line:
+
+CountChars /i1 /l /z
+
+; Isolate the text being processed (the 2nd line):
+
+InsStr 7 '~\e'
+IsolateLines '^\\D' /r
+
+   ; Place each letter on a separate line, sort and fold:
+
+   ReplStr '.' '$0\e' /r
+   DelBlankLines
+   SortLines
+   FoldLines /z
+
+   ; Append an end-of-line marker to each line:
+
+   AppendStr '<EOL>'
+EndIsolate
+
+; Join the lines back onto a single line and 
+; remove the extra added end-of-line marker:
+
+JoinLines
+StripChars 5
+
+; This next line does a LOT. First, it takes the total
+; character count at the beginning of the line and
+; distributes it so that it follows every letter's 
+; count in the line. At the same time, it inserts "100"
+; following each inserted total character count. Then,
+; it removes the original total character count (and 
+; tilde character) that was inserted at the beginning
+; of the line. Finally, it converts the end-of-line
+; markers back to real newlines (\e).
+
+ReplStr '[a-z]\\s\\d+' '$0 % 100' '^\\d+~' '' '<EOL>' '\e' /r /b1 /d'~'
+
+; Do the math:
+
+DivValues 3 10 /i3 /d4
+MultValues 3 24 /i3 /d2
+
+; Clean up and spit polish: 
+
+LeftChars 8
+ShiftChars 10 ' '
+InsStr 1 '  '
+AppendStr '<EOL>'
+JoinLines
+StripChars 5
+InsStr 1 'Letter    % Occurrence<EOL><EOL>'
+ReplStr '<EOL>' '\e'

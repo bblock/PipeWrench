@@ -1,39 +1,138 @@
 PYPER
 
-Pyper is a text "morphing" utility that lets you automate the transformation of text from one form to another using "stackable" text filters.  These filters can be arranged in an unlimited number of combinations inside of Pyper's GUI to form "pipe" scripts, which can then be executed to edit text into whatever form you desire.  Because Pyper's text filters are very high level compared to commands used in general purpose programming languages, Pyper scripts tend to be surprisingly small for the amount of work that they do.  This, along with the fact that Pyper scripts can be exported for use in shell scripts, makes Pyper a natural addition to shell script automation projects.
+Pyper is a high-level text scripting tool that allows you to easily transform text, (i.e. lists, command output, HTML, config files, log files, source code, CSV data, etc.) from one form to another with relative ease.  In a Pyper script, there's no need to create conditional or looping constructs or even to declare variables.  You simply "stack" filters to get the results you want.  And when you're done building your "pipe script" using Pyper's editor, you can export it for use at the command line (or in shell scripts).  Thanks to it's rich set of core filters, Pyper makes it possible to do things you never dreamed could be done with just a pipe.  Pyper can be compiled and run on both Windows and Linux platforms.  It includes a pipe editor GUI as well as a CLI-based tool. 
+
+
+FEATURES
+
+   - Software runs on both Windows and Linux platforms.
+   - Pyper employs a rich set of 60+ text filters.
+   - Pipes can be constructed and debugged using Pyper's desktop GUI application.
+   - Pipes can be executed in Pyper's GUI, at the command line or from shell scripts.
+   - Pipes can be "called" with arguments passed to them.
+   - Editing can be constrained to just a portion of the input text thus enabling a single pipe to perform multiple, distinct edits.
+   - New filters can be developed and added to Pyper by almost anyone.
 
 
 DOCUMENTATION
 
-Pyper's user manual (Manual.htm) is currently being written.  At this stage, it consists of a summary of the text filters included in Pyper along with examples and should provide pretty good insight into how pipes are constructed as well.  More to come...  The manual is accessible through the GUI's "help" menu.  For some more in-depth examples that illustrate some of Pyper's capabilities, see the demos that are also accessible from the "help" menu.
-  
-
-INSTALLING PYPER
-
-Pyper is a C# application and it can run on both Windows and Linux platforms.  
+There currently isn't a "user guide" that explains in detail how to use Pyper; however, for a good introduction, see the section below entitled "A FIVE MINUTE PRIMER".  For help using Pyper's commands, see the included "Command Reference.htm".[1]  For more in-depth examples illustrating Pyper's capabilities, see the included demos.[2]
 
 
-Windows
+BUILDING AND EXECUTING PYPER
 
-If running Windows, You can install Pyper from the latest generic binary package (.zip).  Simply extract it to your desktop, move the extracted directory where you want it to permanently reside and place that directory into your path so that both pyper.exe and pcl.exe can be found from anywhere on your system.  Note that for Pyper to run, version 2.x of the .NET framework must be installed on your Windows computer.
+On Windows
 
-You can also compile Pyper using Visual Studio or MonoDevelop.  Once you have built Pyper, you should be able to execute it from the IDE or by running the executable directly from the resulting "bin" directory.  Note that the one supplied plug-in filter, "SamplePlugins"--only included as a sample plugin--will only work if it is found in a subdirectory called "PlugIns".
-
-
-Linux
-
-If you are running Linux, You can install Pyper from the latest generic binary package (.tar.gz).  Simply extract it to your desktop and run the included "install" script.  Please read the comments inside the install script for more details.
-
-You can also compile Pyper using MonoDevelop.  Once you have built Pyper, you should be able to execute it from the IDE or by running the executable directly from the resulting "bin" directory (though you'll need to do so like "mono pyper.exe").  Note that the one supplied plug-in filter, "SamplePlugins"--only included as a sample plugin--will only work if it is found in a subdirectory called "PlugIns".
+Windows users can compile Pyper using either Visual Studio or the open source alternative, MonoDevelop.  Once compiled, you should be able to execute the GUI application from the IDE or by running its executable (Pyper.exe) directly from the "bin/Debug" or "bin/Release" folders (depending on which build profile was used to compile Pyper).  The CLI application (PCL.exe) can be run from a command (terminal) window.  If you want the ability to run either executable from anywhere on your computer, then simply ensure that the folder containing the Pyper executables is included in your system's PATH variable.  
 
 
-KNOWN ISSUES
+On Linux
 
-On some Linux distros, attempting to change fonts in the preferences dialog fails to result in the font being changed.  The work-around for this bug is to change fonts by editing the ~/.pyper/PyperConf.xml file.
+If you're using Linux, you can compile Pyper using MonoDevelop.  Once compiled, you should be able to execute the GUI application from the Monodevelop IDE or run it inside a terminal by typing "mono Pyper.exe" from either the "bin/Debug" or "bin/Release" folders (depending on which build profile was used to compile Pyper).  The CLI application (PCL.exe) can also be run from a terminal by using mono but to make using it more practical, you'll want to create a shell script ("pcl") to call it as follows:
 
-______
+   #!/bin/sh
+   mono "<Path to the executables folder>/PCL.exe" "$@"
+
+Tip: Don't forget to edit the referenced path to PCL.exe.
+
+This script will enable you to execute pipes from the command line (or from a shell script) without your explicitly having to specify "mono" each time PCL is invoked.  If you want the ability to run PCL from anywhere on your computer, you can place this script in a folder that's accessible via your $PATH variable.  One possibility to consider is the folder, "/usr/local/bin" (although you'll likely need to be the "root" user in order to copy the script to that location).
+
+
+A FIVE MINUTE PRIMER
+
+Tip: If you want, you can compile/run Pyper and carry out each step as we go.
+
+When you run Pyper, you're greeted by a GUI that consists of a list of commands (mostly text filters) along the left side, a text control on the top (for creating/editing pipes) and a tabbed control at the bottom where the input text to be processed and the resulting output text are both located.  The list along the left side serves mostly to help users remember the names of Pyper's various commands, though you can also double-click on any command in the list and it will be entered into the pipe for you.  Over time, this feature becomes less needed however because, as you'll discover, Pyper automatically "completes" command names for you as you type them into the pipe text control while at the same time, the command's syntax is also displayed for your benefit in the status bar.
+
+Again, the pipe text control at the top is where you enter pipe commands.  When you open an existing pipe it loads into the pipe text control and when you are editing a new pipe, you enter its commands here as well.  Pipe commands are entered into the pipe text control, one command per line.  Both blank lines and comments may be entered into a pipe to improve readability and to document the pipe's functionality.  Any line of a pipe whose first non-whitespace character is a semicolon (;) is considered by Pyper to be a comment.
+
+To demonstrate how Pyper can be used to process text from one form to another, let's take the all-too-common situation where someone wants to rename a relatively large number of files on his computer without having to do a lot of typing.  Suppose you downloaded the complete first season of the Andy Griffith Show onto your Linux computer (say, in order to help preserve the life of your beloved DVD collection).  Being as the files will ultimately be contained in a subfolder named "Andy Griffith" and being as you're not a big fan of long file names and redundancy anyway, you decide the files should be named like "Manhunt.avi" rather than "Andy.Griffith-S01E02-Manhunt.avi".  
+
+To start, you generate a list of all of the files in the appropriate folder using the command, "ls -l":
+
+   -rw-r--r-- 1 johnd johnd 181271262 2013-07-30 16:15 Andy.Griffith-S01E01-New Housekeeper.avi
+   -rw-r--r-- 1 johnd johnd 181009578 2013-07-30 15:46 Andy.Griffith-S01E02-Manhunt.avi
+   -rw-r--r-- 1 johnd johnd 181325624 2013-07-30 16:38 Andy.Griffith-S01E03-Guitar Player.avi
+   ...
+
+Being the initial text which the pipe will operate on, you copy this text into the "Input Text" control of Pyper's GUI.  Your goal of course is to transform this list of file names into a list of shell commands that, when executed, will result in the renaming of the files.  Thus, as an example, you'd like the first line to be transformed into something functionally equivalent to the following (in Linux the "mv" command is used to rename a file or folder):
+
+   mv "Andy.Griffith-S01E01-New Housekeeper.avi" "New Housekeeper.avi"
+
+Enclosing of the file names in double quotes is of course needed simply because some of the episode's file names contain blanks.  Now, take a moment to compare that first line's "before" and "after".  Immediately we recognize that much of the text at the head of each of the input lines is irrelevant with regards to the output we wish to obtain.  We're only interested in the text on each line that begins with "Andy".  Everything prior to that can be deleted.  However, rather than explicitly delete this unwanted text, we can simply re-order the text on each line so that this text is removed in the process of reordering.  As seen in the "after" version of the first line, we need to obtain two copies of the file name and simply remove the extraneous text from the second copy.  Again, this is accomplished by reordering the text on each line.  Before we do that, we should first insert whatever additional text is required to produce the desired "mv" command.  To that end, the first Pyper command we'll employ is the InsStr filter which we enter as the first line of the "Pipe" text control in Pyper's GUI:
+
+   InsStr 53 'mv "'
+
+This filter is used to simply insert the string "mv ", followed by a double quote, at the beginning of the file name in each line of text (that is, at column 53).  Clicking the pipe "run" button[3], results in the following:
+
+   -rw-r--r-- 1 johnd johnd 181271262 2013-07-30 16:15 mv "Andy.Griffith-S01E01-New Housekeeper.avi
+   -rw-r--r-- 1 johnd johnd 181009578 2013-07-30 15:46 mv "Andy.Griffith-S01E02-Manhunt.avi
+   -rw-r--r-- 1 johnd johnd 181325624 2013-07-30 16:38 mv "Andy.Griffith-S01E03-Guitar Player.avi
+
+As you can see, the result is that the text, "mv " followed by a double quote is inserted into each line just ahead of the text, "Andy".  Next, we want to append a double quote to the end of each line by adding an AppendStr filter to our pipe:
+
+   AppendStr '"'
+
+Again, clicking the "run" button, the result of these two filters on the input text is now this:
+
+   -rw-r--r-- 1 johnd johnd 181271262 2013-07-30 16:15 mv "Andy.Griffith-S01E01-New Housekeeper.avi"
+   -rw-r--r-- 1 johnd johnd 181009578 2013-07-30 15:46 mv "Andy.Griffith-S01E02-Manhunt.avi"
+   -rw-r--r-- 1 johnd johnd 181325624 2013-07-30 16:38 mv "Andy.Griffith-S01E03-Guitar Player.avi"
+   ...
+
+Ignoring the extraneous text at the beginning of each line, we now have the beginning part of our "mv" command, which includes the file name we're renaming, enclosed in double quotes.  Next, the reordering of each line is performed using the ReorderColumns filter:
+
+   ReorderColumns 53 102 56 102
+
+This filter takes each line of text output by the filter before it (the AppendStr filter) and reorders the text so that only that text between columns 53 and 102 is included followed by the text between columns 56 and 102.  As you might guess from the overlapping of the columns, this effectively duplicates the single file name found on each line of text output by the prior filter.  The result is as follows: 
+
+   mv "Andy.Griffith-S01E01-New Housekeeper.avi"     "Andy.Griffith-S01E01-New Housekeeper.avi"     
+   mv "Andy.Griffith-S01E02-Manhunt.avi"             "Andy.Griffith-S01E02-Manhunt.avi"             
+   mv "Andy.Griffith-S01E03-Guitar Player.avi"       "Andy.Griffith-S01E03-Guitar Player.avi"       
+   ...
+
+At this point, if we tried to run these lines of text as shell commands in a Linux terminal, they would of course generate errors being as the "old" and "new" file names are identical.  We still need to remove the unwanted text from the head of each of the "new" file names.  This we can do using the DelChars filter:
+
+   DelChars 52 21
+
+All this filter does is delete 21 characters beginning with character 52.  Following is the final result:
+
+   mv "Andy.Griffith-S01E01-New Housekeeper.avi"     "New Housekeeper.avi"     
+   mv "Andy.Griffith-S01E02-Manhunt.avi"             "Manhunt.avi"             
+   mv "Andy.Griffith-S01E03-Guitar Player.avi"       "Guitar Player.avi"       
+   ...
+
+This resulting list of shell commands can now be copied/pasted into the Linux terminal and executed in order to effect the renaming of the files.  Whether we have 10 files to rename or 1000, it only takes a 4 filter pipe to create the Linux commands needed to accomplish this automated renaming:
+
+   InsStr 53 'mv "'
+   AppendStr '"'
+   ReorderColumns 53 102 56 102
+   DelChars 52 21  
+
+Now, suppose you wanted to employ this same pipe from inside of a shell script.  With Pyper, this is simply a matter of exporting the pipe to the clipboard and pasting it into a shell script.  By clicking the "export" (up arrow) button on the toolbar and then pasting the resulting text, we get the following single line (which BTW, includes the enclosing double quotes):
+
+   "InsStr 53 'mv #22' | AppendStr '#22' | ReorderColumns 53 102 56 102 | DelChars 52 21"
+
+Here, I've added blanks before and after the "pipe" characters to improve readability.  To use this pipe from inside of a shell script, you only need to send it as a single argument to the CLI application, PCL.  Assuming that the input text we wish to process is currently contained in the file Input.txt, you would do this:
+
+   cat Input.txt | pcl "InsStr 53 'mv #22' | AppendStr '#22' | ReorderColumns 53 102 56 102 | DelChars 52 21"
+
+Notice that the double quotes originally referenced in our GUI pipe, are now represented by the ASCII sequence, "#22" which effectively "escapes" the quotes so that they cannot interfere with the shell's command line processing.  Notice also that only the first pipe character (|) in the command line above is actually interpreted by the shell--the remaining three pipe characters are all a part of PCL's double-quoted argument and thus the shell doesn't interpret them at all.  Pyper's pipes are interpreted internally and because of this, PCL is invoked just once per each pipe processed--regardless of how many filters are in the pipe. 
+
+Tip: One thing I have yet to point out regarding Pyper's GUI that users will find useful to know is that whenever you want to enter a text column as an argument to a filter, you can do this by placing the cursor into the input or output text controls (whichever applies) to see what column a given character is located at.  As helpful as this is, there's a command on the "Edit" menu labeled "Insert Cursor Col" to make this process a bit easier still.  When you're typing a filter command into a pipe that requires a text column be entered, if you'll leave the cursor where the inserted column value should go and then simply click in the applicable input/output text control at the required column, you can then click the "Insert Cursor Col" menu command and the column's integer value will be inserted for you into the pipe's filter command at the last location where the cursor resided in the pipe control.
+
+Happy pyping!
+
 
 Send any questions or suggestions to "bwb@fireflysoftware.com".
 
 Pyper is licensed under the GPL. See "http://www.gnu.org/licenses" for details.
+
+______
+
+[1] In Pyper, "commands" make up a superset which includes the core filter primitives.
+
+[2] Local resources such as the included demos and the "Command Reference.htm" are not automatically accessible from the GUI's "help" menu.  For these to be accessible from the GUI, a shortcut (or "symlink" in Linux) to these must be placed in the same folder where the Pyper executables reside.  Likewise, the single supplied plug-in dll, "SamplePlugin"--included only for its "SampleFilter" filter--will work only if it is located in a subfolder (of the executables folder) called "PlugIns".  
+
+[3] The "run" button is the one just to the right of the "up arrow" button.  When clicked, this button will execute the entire pipe.  The "red" button to it's right (I know, the GUI icons really suck) allows you to run just those pipe commands up to (and including) the line containing the cursor.  It's use can be invaluable because it presents the quickest means of debugging a pipe's logic.  It allows you to easily view the intermediate text results between any two filters.
 

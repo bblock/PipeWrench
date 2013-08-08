@@ -28,7 +28,7 @@ namespace Firefly.Pyper
       /// </summary>
       private void InitializeComponent()
       {
-         this.MainMenuStrip = new System.Windows.Forms.MenuStrip();
+         this.TheMenuStrip = new System.Windows.Forms.MenuStrip();
          this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.newPipeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.openPipeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +53,7 @@ namespace Firefly.Pyper
          this.runToLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.UserGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.CommandReferenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.DemosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem(); 
          this.supportForumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.quickStartTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,7 +110,7 @@ namespace Firefly.Pyper
          this.PipeToolStripSeparator = new System.Windows.Forms.ToolStripSeparator(); 
          this.PipeOpenCalledPipeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem(); 
          
-         this.MainMenuStrip.SuspendLayout();
+         this.TheMenuStrip.SuspendLayout();
          this.MainToolStrip.SuspendLayout();
          this.MainStatusStrip.SuspendLayout();
          this.HorzSplitContainer.Panel1.SuspendLayout();
@@ -126,6 +127,7 @@ namespace Firefly.Pyper
          this.ErrorsTabPage.SuspendLayout();
          this.PipeContextMenuStrip.SuspendLayout(); 
          this.SuspendLayout();
+         
          // 
          // PipeContextMenuStrip 
          // 
@@ -139,6 +141,7 @@ namespace Firefly.Pyper
          this.PipeContextMenuStrip.Name = "PipeContextMenuStrip";
          this.PipeContextMenuStrip.Size = new System.Drawing.Size(160, 48);
          this.PipeContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(PipeContextMenu_Opening);
+         
          // 
          // PipeCutToolStripMenuItem
          // 
@@ -148,6 +151,7 @@ namespace Firefly.Pyper
          this.PipeCutToolStripMenuItem.Click += new System.EventHandler(this.PipeCutToolStripMenuItem_Click);
          this.PipeCutToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.cut;
          this.PipeCutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
+         
          // 
          // PipeCopyToolStripMenuItem
          // 
@@ -157,6 +161,7 @@ namespace Firefly.Pyper
          this.PipeCopyToolStripMenuItem.Click += new System.EventHandler(this.PipeCopyToolStripMenuItem_Click);
          this.PipeCopyToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.copy;
          this.PipeCopyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
+         
          // 
          // PipePasteToolStripMenuItem
          // 
@@ -166,6 +171,7 @@ namespace Firefly.Pyper
          this.PipePasteToolStripMenuItem.Click += new System.EventHandler(this.PipePasteToolStripMenuItem_Click);
          this.PipePasteToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.paste;
          this.PipePasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
+         
          // 
          // PipeDeleteToolStripMenuItem
          // 
@@ -175,12 +181,14 @@ namespace Firefly.Pyper
          this.PipeDeleteToolStripMenuItem.Click += new System.EventHandler(this.PipeDeleteToolStripMenuItem_Click);
          this.PipeDeleteToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.cancel;
          this.PipeDeleteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
+         
          // 
          // PipeToolStripSeparator
          // 
          this.PipeToolStripSeparator.Name = "PipeToolStripSeparator";
          this.PipeToolStripSeparator.Size = new System.Drawing.Size(159, 22);
          this.PipeToolStripSeparator.Text = "-";
+
          // 
          // PipeOpenCalledPipeToolStripMenuItem
          // 
@@ -188,19 +196,21 @@ namespace Firefly.Pyper
          this.PipeOpenCalledPipeToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
          this.PipeOpenCalledPipeToolStripMenuItem.Text = "Open Called Pipe";
          this.PipeOpenCalledPipeToolStripMenuItem.Click += new System.EventHandler(this.PipeOpenCalledPipeToolStripMenuItem_Click);
+
          // 
          // MainMenuStrip
          // 
-         this.MainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+         this.TheMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.pipeToolStripMenuItem,
             this.helpToolStripMenuItem});
-         this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
-         this.MainMenuStrip.Name = "MainMenuStrip";
-         this.MainMenuStrip.Size = new System.Drawing.Size(498, 24);
-         this.MainMenuStrip.TabIndex = 0;
-         this.MainMenuStrip.Text = "menuStrip1";
+         this.TheMenuStrip.Location = new System.Drawing.Point(0, 0);
+         this.TheMenuStrip.Name = "MainMenuStrip";
+         this.TheMenuStrip.Size = new System.Drawing.Size(498, 24);
+         this.TheMenuStrip.TabIndex = 0;
+         this.TheMenuStrip.Text = "menuStrip1";
+         
          // 
          // fileToolStripMenuItem
          // 
@@ -217,6 +227,7 @@ namespace Firefly.Pyper
          this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
          this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
          this.fileToolStripMenuItem.Text = "&File";
+         
          // 
          // newPipeToolStripMenuItem
          // 
@@ -227,6 +238,7 @@ namespace Firefly.Pyper
          this.newPipeToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
          this.newPipeToolStripMenuItem.Text = "&New";
          this.newPipeToolStripMenuItem.Click += new System.EventHandler(this.NewPipeAction);
+         
          // 
          // openPipeToolStripMenuItem
          // 
@@ -237,6 +249,7 @@ namespace Firefly.Pyper
          this.openPipeToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
          this.openPipeToolStripMenuItem.Text = "&Open";
          this.openPipeToolStripMenuItem.Click += new System.EventHandler(this.OpenPipeAction);
+         
          // 
          // savePipeToolStripMenuItem
          // 
@@ -247,6 +260,7 @@ namespace Firefly.Pyper
          this.savePipeToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
          this.savePipeToolStripMenuItem.Text = "&Save";
          this.savePipeToolStripMenuItem.Click += new System.EventHandler(this.SavePipeAction);
+         
          // 
          // savePipeAsToolStripMenuItem
          // 
@@ -256,11 +270,13 @@ namespace Firefly.Pyper
          this.savePipeAsToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
          this.savePipeAsToolStripMenuItem.Text = "Save &As";
          this.savePipeAsToolStripMenuItem.Click += new System.EventHandler(this.SavePipeAsAction);
+         
          // 
          // toolStripSeparator1
          // 
          this.toolStripSeparator1.Name = "toolStripSeparator1";
          this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
+         
          // 
          // importPipeToolStripMenuItem
          // 
@@ -271,6 +287,7 @@ namespace Firefly.Pyper
          this.importPipeToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
          this.importPipeToolStripMenuItem.Text = "&Import";
          this.importPipeToolStripMenuItem.Click += new System.EventHandler(this.ImportAction);
+         
          // 
          // exportToolStripMenuItem
          // 
@@ -281,11 +298,13 @@ namespace Firefly.Pyper
          this.exportToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
          this.exportToolStripMenuItem.Text = "&Export";
          this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportAction);
+         
          // 
          // toolStripSeparator2
          // 
          this.toolStripSeparator2.Name = "toolStripSeparator2";
          this.toolStripSeparator2.Size = new System.Drawing.Size(152, 6);
+         
          // 
          // exitToolStripMenuItem
          // 
@@ -295,6 +314,7 @@ namespace Firefly.Pyper
          this.exitToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
          this.exitToolStripMenuItem.Text = "E&xit";
          this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitAction);
+         
          // 
          // editToolStripMenuItem
          // 
@@ -310,6 +330,7 @@ namespace Firefly.Pyper
          this.editToolStripMenuItem.Name = "editToolStripMenuItem";
          this.editToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
          this.editToolStripMenuItem.Text = "&Edit";
+         
          // 
          // cutToolStripMenuItem
          // 
@@ -320,6 +341,7 @@ namespace Firefly.Pyper
          this.cutToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
          this.cutToolStripMenuItem.Text = "Cu&t";
          this.cutToolStripMenuItem.Click += new System.EventHandler(this.CutTextAction);
+         
          // 
          // copyToolStripMenuItem
          // 
@@ -330,6 +352,7 @@ namespace Firefly.Pyper
          this.copyToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
          this.copyToolStripMenuItem.Text = "&Copy";
          this.copyToolStripMenuItem.Click += new System.EventHandler(this.CopyTextAction);
+         
          // 
          // pasteToolStripMenuItem
          // 
@@ -340,6 +363,7 @@ namespace Firefly.Pyper
          this.pasteToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
          this.pasteToolStripMenuItem.Text = "&Paste";
          this.pasteToolStripMenuItem.Click += new System.EventHandler(this.PasteTextAction);
+         
          // 
          // deleteToolStripMenuItem
          // 
@@ -349,6 +373,7 @@ namespace Firefly.Pyper
          this.deleteToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
          this.deleteToolStripMenuItem.Text = "&Delete";
          this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteTextAction);
+         
          // 
          // selectAllToolStripMenuItem
          // 
@@ -356,11 +381,13 @@ namespace Firefly.Pyper
          this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
          this.selectAllToolStripMenuItem.Text = "Select &All";
          this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.SelectAllTextAction);
+         
          // 
          // toolStripSeparator4
          // 
          this.toolStripSeparator4.Name = "toolStripSeparator4";
          this.toolStripSeparator4.Size = new System.Drawing.Size(203, 6);
+         
          // 
          // insertCursorColToolStripMenuItem
          // 
@@ -369,6 +396,7 @@ namespace Firefly.Pyper
          this.insertCursorColToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
          this.insertCursorColToolStripMenuItem.Text = "&Insert Cursor Col";
          this.insertCursorColToolStripMenuItem.Click += new System.EventHandler(this.InsertCursorColAction);
+         
          // 
          // preferencesToolStripMenuItem
          // 
@@ -378,6 +406,7 @@ namespace Firefly.Pyper
          this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
          this.preferencesToolStripMenuItem.Text = "&Preferences";
          this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.PreferencesAction);
+         
          // 
          // pipeToolStripMenuItem
          // 
@@ -387,6 +416,7 @@ namespace Firefly.Pyper
          this.pipeToolStripMenuItem.Name = "pipeToolStripMenuItem";
          this.pipeToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
          this.pipeToolStripMenuItem.Text = "&Pipe";
+         
          // 
          // runToolStripMenuItem
          // 
@@ -397,6 +427,7 @@ namespace Firefly.Pyper
          this.runToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
          this.runToolStripMenuItem.Text = "&Run";
          this.runToolStripMenuItem.Click += new System.EventHandler(this.RunAction);
+         
          // 
          // runToLineToolStripMenuItem
          // 
@@ -407,20 +438,19 @@ namespace Firefly.Pyper
          this.runToLineToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
          this.runToLineToolStripMenuItem.Text = "Run &To Line";
          this.runToLineToolStripMenuItem.Click += new System.EventHandler(this.RunToLineAction);
+         
          // 
          // helpToolStripMenuItem 
          // 
          this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.UserGuideToolStripMenuItem,
-            this.DemosToolStripMenuItem, 
-            this.supportForumToolStripMenuItem,
-            this.quickStartTutorialToolStripMenuItem,
-            this.visitHomepageToolStripMenuItem,
-            this.toolStripSeparator5,
-            this.aboutToolStripMenuItem});
+         this.UserGuideToolStripMenuItem, this.CommandReferenceToolStripMenuItem, this.DemosToolStripMenuItem, 
+         this.supportForumToolStripMenuItem, this.quickStartTutorialToolStripMenuItem, this.visitHomepageToolStripMenuItem, 
+         this.toolStripSeparator5,
+         this.aboutToolStripMenuItem});
          this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
          this.helpToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
          this.helpToolStripMenuItem.Text = "&Help";
+         
          // 
          // UserGuideToolStripMenuItem
          // 
@@ -432,6 +462,16 @@ namespace Firefly.Pyper
          this.UserGuideToolStripMenuItem.Click += new System.EventHandler(this.UserGuideAction);
             
          // 
+         // CommandReferenceToolStripMenuItem
+         // 
+         this.CommandReferenceToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.support;
+         this.CommandReferenceToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
+         this.CommandReferenceToolStripMenuItem.Name = "CommandReferenceToolStripMenuItem";
+         this.CommandReferenceToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+         this.CommandReferenceToolStripMenuItem.Text = "&Command Reference"; //CommandReferenceAction
+         this.CommandReferenceToolStripMenuItem.Click += new System.EventHandler(this.CommandReferenceAction);
+            
+         // 
          // DemosToolStripMenuItem
          // 
          this.DemosToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
@@ -440,36 +480,39 @@ namespace Firefly.Pyper
          this.DemosToolStripMenuItem.Text = "&Demos"; //DemosAction
          this.DemosToolStripMenuItem.Click += new System.EventHandler(this.DemosAction);
             
-         // 
-         // supportForumToolStripMenuItem
-         // 
-         this.supportForumToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.type;
-         this.supportForumToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
-         this.supportForumToolStripMenuItem.Name = "supportForumToolStripMenuItem";
-         this.supportForumToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-         this.supportForumToolStripMenuItem.Text = "Support &Forum";
-         this.supportForumToolStripMenuItem.Click += new System.EventHandler(this.SupportForumAction);
-         // 
-         // quickStartTutorialToolStripMenuItem
-         // 
-         this.quickStartTutorialToolStripMenuItem.Name = "quickStartTutorialToolStripMenuItem";
-         this.quickStartTutorialToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-         this.quickStartTutorialToolStripMenuItem.Text = "&Quick Start Tutorial";
-         this.quickStartTutorialToolStripMenuItem.Click += new System.EventHandler(this.QuickStartAction);
-         // 
-         // visitHomepageToolStripMenuItem
-         // 
-         this.visitHomepageToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.home;
-         this.visitHomepageToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
-         this.visitHomepageToolStripMenuItem.Name = "visitHomepageToolStripMenuItem";
-         this.visitHomepageToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
-         this.visitHomepageToolStripMenuItem.Text = "&Visit Our Homepage";
-         this.visitHomepageToolStripMenuItem.Click += new System.EventHandler(this.VisitHomepageAction);
+// SAVED FOR FUTURE USE
+//         // 
+//         // supportForumToolStripMenuItem
+//         // 
+//         this.supportForumToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.type;
+//         this.supportForumToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
+//         this.supportForumToolStripMenuItem.Name = "supportForumToolStripMenuItem";
+//         this.supportForumToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+//         this.supportForumToolStripMenuItem.Text = "Support &Forum";
+//         this.supportForumToolStripMenuItem.Click += new System.EventHandler(this.SupportForumAction);
+//         // 
+//         // quickStartTutorialToolStripMenuItem
+//         // 
+//         this.quickStartTutorialToolStripMenuItem.Name = "quickStartTutorialToolStripMenuItem";
+//         this.quickStartTutorialToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+//         this.quickStartTutorialToolStripMenuItem.Text = "&Quick Start Tutorial";
+//         this.quickStartTutorialToolStripMenuItem.Click += new System.EventHandler(this.QuickStartAction);
+//         // 
+//         // visitHomepageToolStripMenuItem
+//         // 
+//         this.visitHomepageToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.home;
+//         this.visitHomepageToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
+//         this.visitHomepageToolStripMenuItem.Name = "visitHomepageToolStripMenuItem";
+//         this.visitHomepageToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+//         this.visitHomepageToolStripMenuItem.Text = "&Visit Our Homepage";
+//         this.visitHomepageToolStripMenuItem.Click += new System.EventHandler(this.VisitHomepageAction);
+
          // 
          // toolStripSeparator5
          // 
          this.toolStripSeparator5.Name = "toolStripSeparator5";
          this.toolStripSeparator5.Size = new System.Drawing.Size(174, 6);
+         
          // 
          // aboutToolStripMenuItem
          // 
@@ -479,6 +522,7 @@ namespace Firefly.Pyper
          this.aboutToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
          this.aboutToolStripMenuItem.Text = "&About";
          this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutAction);
+         
          // 
          // MainToolStrip
          // 
@@ -499,6 +543,7 @@ namespace Firefly.Pyper
          this.MainToolStrip.Size = new System.Drawing.Size(498, 39);
          this.MainToolStrip.TabIndex = 1;
          this.MainToolStrip.Text = "toolStrip1";
+         
          // 
          // NewPipeToolStripButton
          // 
@@ -511,6 +556,7 @@ namespace Firefly.Pyper
          this.NewPipeToolStripButton.Text = "toolStripButton1";
          this.NewPipeToolStripButton.ToolTipText = "Creates a new pipe.";
          this.NewPipeToolStripButton.Click += new System.EventHandler(this.NewPipeAction);
+         
          // 
          // OpenPipeToolStripButton
          // 
@@ -523,6 +569,7 @@ namespace Firefly.Pyper
          this.OpenPipeToolStripButton.Text = "toolStripButton2";
          this.OpenPipeToolStripButton.ToolTipText = "Opens an existing pipe.";
          this.OpenPipeToolStripButton.Click += new System.EventHandler(this.OpenPipeAction);
+         
          // 
          // savePipeToolStripButton
          // 
@@ -535,6 +582,7 @@ namespace Firefly.Pyper
          this.savePipeToolStripButton.Text = "toolStripButton3";
          this.savePipeToolStripButton.ToolTipText = "Saves the pipe\'s contents.";
          this.savePipeToolStripButton.Click += new System.EventHandler(this.SavePipeAction);
+         
          // 
          // SavePipeAsToolStripButton
          // 
@@ -547,11 +595,13 @@ namespace Firefly.Pyper
          this.SavePipeAsToolStripButton.Text = "toolStripButton4";
          this.SavePipeAsToolStripButton.ToolTipText = "Saves the pipe\'s contents to another file.";
          this.SavePipeAsToolStripButton.Click += new System.EventHandler(this.SavePipeAsAction);
+         
          // 
          // toolStripSeparator6
          // 
          this.toolStripSeparator6.Name = "toolStripSeparator6";
          this.toolStripSeparator6.Size = new System.Drawing.Size(6, 39);
+         
          // 
          // ImportPipeToolStripButton
          // 
@@ -564,6 +614,7 @@ namespace Firefly.Pyper
          this.ImportPipeToolStripButton.Text = "toolStripButton5";
          this.ImportPipeToolStripButton.ToolTipText = "Imports PCL formatted pipe from the clipboard.";
          this.ImportPipeToolStripButton.Click += new System.EventHandler(this.ImportAction);
+         
          // 
          // ExportPipeToolStripButton
          // 
@@ -576,11 +627,13 @@ namespace Firefly.Pyper
          this.ExportPipeToolStripButton.Text = "toolStripButton6";
          this.ExportPipeToolStripButton.ToolTipText = "Exports PCL formatted pipe to the clipboard.";
          this.ExportPipeToolStripButton.Click += new System.EventHandler(this.ExportAction);
+         
          // 
          // toolStripSeparator7
          // 
          this.toolStripSeparator7.Name = "toolStripSeparator7";
          this.toolStripSeparator7.Size = new System.Drawing.Size(6, 39);
+         
          // 
          // runToolStripButton
          // 
@@ -593,6 +646,7 @@ namespace Firefly.Pyper
          this.runToolStripButton.Text = "toolStripButton7";
          this.runToolStripButton.ToolTipText = "Runs the pipe.";
          this.runToolStripButton.Click += new System.EventHandler(this.RunAction);
+         
          // 
          // runToLineToolStripButton
          // 
@@ -605,28 +659,31 @@ namespace Firefly.Pyper
          this.runToLineToolStripButton.Text = "toolStripButton8";
          this.runToLineToolStripButton.ToolTipText = "Runs the pipe to the line containing the cursor.";
          this.runToLineToolStripButton.Click += new System.EventHandler(this.RunToLineAction);
+         
          // 
          // MainStatusStrip
          // 
          this.MainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mainStatusStripCursorPosLabel,
-            this.mainStatusStripHintLabel});
+         this.mainStatusStripCursorPosLabel, this.mainStatusStripHintLabel});
          this.MainStatusStrip.Location = new System.Drawing.Point(0, 403);
          this.MainStatusStrip.Name = "MainStatusStrip";
          this.MainStatusStrip.Size = new System.Drawing.Size(498, 22);
          this.MainStatusStrip.TabIndex = 2;
          this.MainStatusStrip.Text = "statusStrip1";
+         
          // 
          // mainStatusStripCursorPosLabel
          // 
          this.mainStatusStripCursorPosLabel.Name = "mainStatusStripCursorPosLabel";
          this.mainStatusStripCursorPosLabel.Size = new System.Drawing.Size(34, 17);
          this.mainStatusStripCursorPosLabel.Text = "(0, 0)";
+         
          // 
          // mainStatusStripHintLabel
          // 
          this.mainStatusStripHintLabel.Name = "mainStatusStripHintLabel";
          this.mainStatusStripHintLabel.Size = new System.Drawing.Size(0, 17);
+         
          // 
          // HorzSplitContainer
          // 
@@ -634,10 +691,12 @@ namespace Firefly.Pyper
          this.HorzSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
          this.HorzSplitContainer.Location = new System.Drawing.Point(0, 63);
          this.HorzSplitContainer.Name = "HorzSplitContainer";
+         
          // 
          // HorzSplitContainer.Panel1
          // 
          this.HorzSplitContainer.Panel1.Controls.Add(this.CommandsGroupBox);
+         
          // 
          // HorzSplitContainer.Panel2
          // 
@@ -646,6 +705,7 @@ namespace Firefly.Pyper
          this.HorzSplitContainer.SplitterDistance = 145;
          this.HorzSplitContainer.TabIndex = 3;
          this.HorzSplitContainer.TabStop = false;
+         
          // 
          // CommandsGroupBox
          // 
@@ -657,6 +717,7 @@ namespace Firefly.Pyper
          this.CommandsGroupBox.TabIndex = 0;
          this.CommandsGroupBox.TabStop = false;
          this.CommandsGroupBox.Text = "Commands";
+         
          //
          // filterList
          //
@@ -674,10 +735,12 @@ namespace Firefly.Pyper
          this.VertSplitContainer.Location = new System.Drawing.Point(0, 0);
          this.VertSplitContainer.Name = "VertSplitContainer";
          this.VertSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+         
          // 
          // VertSplitContainer.Panel1
          // 
          this.VertSplitContainer.Panel1.Controls.Add(this.PipeGroupBox);
+         
          // 
          // VertSplitContainer.Panel2
          // 
@@ -686,6 +749,7 @@ namespace Firefly.Pyper
          this.VertSplitContainer.SplitterDistance = 154;
          this.VertSplitContainer.TabIndex = 0;
          this.VertSplitContainer.TabStop = false;
+         
          // 
          // PipeGroupBox
          // 
@@ -699,12 +763,13 @@ namespace Firefly.Pyper
          this.PipeGroupBox.TabIndex = 0;
          this.PipeGroupBox.TabStop = false;
          this.PipeGroupBox.Text = "Pipe";
+         
          // 
          // PipeTextBox
          // 
-         this.PipeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                     | System.Windows.Forms.AnchorStyles.Left)
-                     | System.Windows.Forms.AnchorStyles.Right)));
+         this.PipeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | 
+         System.Windows.Forms.AnchorStyles.Bottom) |  System.Windows.Forms.AnchorStyles.Left) | 
+         System.Windows.Forms.AnchorStyles.Right)));
          this.PipeTextBox.Location = new System.Drawing.Point(9, 16);
          this.PipeTextBox.Multiline = true;
          this.PipeTextBox.Name = "PipeTextBox";
@@ -719,6 +784,7 @@ namespace Firefly.Pyper
          this.PipeTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PipeTextBox_MouseDown);
          this.PipeTextBox.ContextMenuStrip = this.PipeContextMenuStrip; 
          this.toolTip.SetToolTip(this.PipeTextBox, "Enter pipe commands here"); 
+         
          // 
          // ArgsLabel
          // 
@@ -729,6 +795,7 @@ namespace Firefly.Pyper
          this.ArgsLabel.Size = new System.Drawing.Size(31, 13);
          this.ArgsLabel.TabIndex = 0;
          this.ArgsLabel.Text = "Arguments"; 
+         
          // 
          // ArgsTextBox
          // 
@@ -739,6 +806,7 @@ namespace Firefly.Pyper
          this.ArgsTextBox.Size = new System.Drawing.Size(277, 20);
          this.ArgsTextBox.TabIndex = 1;
          this.toolTip.SetToolTip(this.ArgsTextBox, "Enter any pipe arguments here"); 
+         
          // 
          // TextGroupBox
          // 
@@ -750,6 +818,7 @@ namespace Firefly.Pyper
          this.TextGroupBox.TabIndex = 0;
          this.TextGroupBox.TabStop = false;
          this.TextGroupBox.Text = "Text";
+         
          // 
          // TextTabControl
          // 
@@ -764,6 +833,7 @@ namespace Firefly.Pyper
          this.TextTabControl.SelectedIndex = 0;
          this.TextTabControl.Size = new System.Drawing.Size(343, 163);
          this.TextTabControl.TabIndex = 0;
+         
          // 
          // InputTabPage
          // 
@@ -780,6 +850,7 @@ namespace Firefly.Pyper
          this.InputTabPage.Size = new System.Drawing.Size(335, 137);
          this.InputTabPage.TabIndex = 0;
          this.InputTabPage.Text = "Input";
+         
          // 
          // InputTextBox
          // 
@@ -799,6 +870,7 @@ namespace Firefly.Pyper
          this.InputTextBox.Click += new System.EventHandler(this.IOTextBox_OnClick);
          this.InputTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.IOTextBox_OnKeyUp);
          this.toolTip.SetToolTip(this.InputTextBox, "Copy the text to process here");
+         
          // 
          // InputFileBrowseButton 
          // 
@@ -811,6 +883,7 @@ namespace Firefly.Pyper
          this.InputFileBrowseButton.UseVisualStyleBackColor = true;
          this.InputFileBrowseButton.Click += new System.EventHandler(this.InputFileBrowseButton_Click);
          this.toolTip.SetToolTip(this.InputFileBrowseButton, "Browse for input text file"); 
+         
          // 
          // InputFileClearButton 
          // 
@@ -823,6 +896,7 @@ namespace Firefly.Pyper
          this.InputFileClearButton.UseVisualStyleBackColor = true;
          this.InputFileClearButton.Click += new System.EventHandler(this.InputFileClearButton_Click);
          this.toolTip.SetToolTip(this.InputFileClearButton, "Clear input text file"); 
+         
          // 
          // InputFileTextBox
          // 
@@ -835,6 +909,7 @@ namespace Firefly.Pyper
          this.InputFileTextBox.ReadOnly = true;
          this.InputFileTextBox.TextChanged += new System.EventHandler(this.InputFileTextBox_TextChanged);
          this.toolTip.SetToolTip(this.InputFileTextBox, "Use browse button to select input text file");
+         
          // 
          // label1
          // 
@@ -845,6 +920,7 @@ namespace Firefly.Pyper
          this.label1.Size = new System.Drawing.Size(26, 13);
          this.label1.TabIndex = 9;
          this.label1.Text = "File"; 
+         
          // 
          // InputTextBypassedLabel
          // 
@@ -860,6 +936,7 @@ namespace Firefly.Pyper
          this.InputTextBypassedLabel.Text = "Inputting from file listed below";
          this.InputTextBypassedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
          this.InputTextBypassedLabel.Visible = false;
+         
          // 
          // OutputTabPage
          // 
@@ -876,6 +953,7 @@ namespace Firefly.Pyper
          this.OutputTabPage.Size = new System.Drawing.Size(335, 137);
          this.OutputTabPage.TabIndex = 1;
          this.OutputTabPage.Text = "Output";
+         
          // 
          // OutputTextBox
          // 
@@ -893,7 +971,8 @@ namespace Firefly.Pyper
          this.OutputTextBox.TextChanged += new System.EventHandler(this.IOTextBox_OnChanged);
          this.OutputTextBox.Click += new System.EventHandler(this.IOTextBox_OnClick);
          this.OutputTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.IOTextBox_OnKeyUp);
-         this.toolTip.SetToolTip(this.OutputTextBox, "Edited text is output here"); 
+         this.toolTip.SetToolTip(this.OutputTextBox, "Edited text is output here");
+          
          // 
          // OutputFileBrowseButton
          // 
@@ -906,6 +985,7 @@ namespace Firefly.Pyper
          this.OutputFileBrowseButton.UseVisualStyleBackColor = true;
          this.OutputFileBrowseButton.Click += new System.EventHandler(this.OutputFileBrowseButton_Click);
          this.toolTip.SetToolTip(this.OutputFileBrowseButton, "Browse for output text file");
+         
          // 
          // OutputFileClearButton 
          // 
@@ -918,6 +998,7 @@ namespace Firefly.Pyper
          this.OutputFileClearButton.UseVisualStyleBackColor = true;
          this.OutputFileClearButton.Click += new System.EventHandler(this.OutputFileClearButton_Click);
          this.toolTip.SetToolTip(this.OutputFileClearButton, "Clear input text file"); 
+         
          // 
          // OutputFileTextBox
          // 
@@ -930,6 +1011,7 @@ namespace Firefly.Pyper
          this.OutputFileTextBox.ReadOnly = true; 
          this.OutputFileTextBox.TextChanged += new System.EventHandler(this.OutputFileTextBox_TextChanged);
          this.toolTip.SetToolTip(this.OutputFileTextBox, "Use browse button to select output text file"); 
+         
          // 
          // label2
          // 
@@ -940,6 +1022,7 @@ namespace Firefly.Pyper
          this.label2.Size = new System.Drawing.Size(26, 13);
          this.label2.TabIndex = 4;
          this.label2.Text = "File"; 
+         
          // 
          // OutputTextBypassedLabel
          // 
@@ -955,6 +1038,7 @@ namespace Firefly.Pyper
          this.OutputTextBypassedLabel.Text = "Outputting to file listed below";
          this.OutputTextBypassedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
          this.OutputTextBypassedLabel.Visible = false;
+         
          // 
          // ErrorsTabPage
          // 
@@ -966,6 +1050,7 @@ namespace Firefly.Pyper
          this.ErrorsTabPage.Size = new System.Drawing.Size(335, 137);
          this.ErrorsTabPage.TabIndex = 2;
          this.ErrorsTabPage.Text = "Errors";
+         
          // 
          // ErrorsTextBox
          // 
@@ -980,6 +1065,7 @@ namespace Firefly.Pyper
          this.ErrorsTextBox.WordWrap = true;
          this.ErrorsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
          this.toolTip.SetToolTip(this.ErrorsTextBox, "Errors are reported here"); 
+         
          // 
          // MainForm
          // 
@@ -989,13 +1075,13 @@ namespace Firefly.Pyper
          this.Controls.Add(this.HorzSplitContainer);
          this.Controls.Add(this.MainStatusStrip);
          this.Controls.Add(this.MainToolStrip);
-         this.Controls.Add(this.MainMenuStrip);
+         this.Controls.Add(this.TheMenuStrip);
          this.MinimumSize = new System.Drawing.Size(400, 400);
          this.Name = "MainForm";
          this.Text = "Pyper"; 
          this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-         this.MainMenuStrip.ResumeLayout(false);
-         this.MainMenuStrip.PerformLayout();
+         this.TheMenuStrip.ResumeLayout(false);
+         this.TheMenuStrip.PerformLayout();
          this.MainToolStrip.ResumeLayout(false);
          this.MainToolStrip.PerformLayout();
          this.MainStatusStrip.ResumeLayout(false);
@@ -1023,7 +1109,7 @@ namespace Firefly.Pyper
 
       #endregion
 
-      private System.Windows.Forms.MenuStrip MainMenuStrip;
+      private System.Windows.Forms.MenuStrip TheMenuStrip;
       private System.Windows.Forms.ToolStrip MainToolStrip;
       private System.Windows.Forms.StatusStrip MainStatusStrip;
       private System.Windows.Forms.SplitContainer HorzSplitContainer;
@@ -1067,6 +1153,7 @@ namespace Firefly.Pyper
       private System.Windows.Forms.ToolStripMenuItem runToLineToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem UserGuideToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem CommandReferenceToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem DemosToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem supportForumToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem quickStartTutorialToolStripMenuItem;

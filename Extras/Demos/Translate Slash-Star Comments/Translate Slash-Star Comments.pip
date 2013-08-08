@@ -1,0 +1,34 @@
+; Pipe Name: Translate Slash-Star Comments.pip
+;
+; This pipe translates all "slash-star" comments
+; (/* ... */) found in the input C# source code to 
+; the "slash-slash" variety, (// ...). Run against 
+; "Sample.cs". 
+; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Join all lines onto a single line:
+
+AppendStr '<EOL>'
+JoinLines
+StripChars 5
+
+; Force each "slash-star" comment onto a separate line:
+
+ReplStr '\\s*/\\*' '\e$0' '\\*/' '$0\e' /r
+
+; Isolate and convert the "slash-star" lines:
+
+InsLineNo /w6 /z
+GroupLines '/*'
+IsolateLines '/*'
+   ReplStr '(<EOL>\\s+)(\\S)' '$1// $2' /r
+   ReplStr '/* ' '// ' '/**' '// *' '*/' ''
+EndIsolate
+
+; Restore the text back to its original form:
+
+SortLines
+DelChars 1 6
+JoinLines
+ReplStr '<EOL>' '\e'

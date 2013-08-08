@@ -1,6 +1,6 @@
 // 
 // Pyper - automate the transformation of text using "stackable" text filters
-// Copyright (C) 2011  Barry Block 
+// Copyright (C) 2013  Barry Block 
 // 
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -831,7 +831,7 @@ public partial class MainWindow: Gtk.Window
       try
       {
          ab.ProgramName = AppName;
-         ab.Copyright = "Copyright \u00a9 2010 Firefly Software";
+         ab.Copyright = "Copyright \u00a9 2013 Firefly Software";
          ab.Version = string.Empty;
          ab.Comments = "Version: " + Version;
          
@@ -1260,7 +1260,26 @@ public partial class MainWindow: Gtk.Window
 
    protected virtual void UserGuide_OnActivated (object sender, System.EventArgs e)
    {
-      ProcessStartInfo startInfo = new ProcessStartInfo("Manual.htm");
+      MessageDialog MesgDlg;
+      
+      try
+      {
+         MesgDlg = new MessageDialog (this, DialogFlags.DestroyWithParent, 
+         MessageType.Info, ButtonsType.Ok, "User guide is not yet available.  Please see " +
+         "README file for an introduction to using " + AppName + " and Command Reference.htm for " +
+         "specific information regarding " + AppName + " commands.");
+         MesgDlg.Run();
+      }
+        
+      finally
+      {
+         MesgDlg.Destroy();
+      }
+   }
+
+   protected virtual void CommandReference_OnActivated (object sender, System.EventArgs e)
+   {
+      ProcessStartInfo startInfo = new ProcessStartInfo("Command Reference.htm");
       startInfo.WorkingDirectory = AssyFolder;
       Process.Start(startInfo);
    }
@@ -1272,20 +1291,21 @@ public partial class MainWindow: Gtk.Window
       Process.Start(startInfo);
    }
 
-   protected virtual void SupportForum_OnActivated (object sender, System.EventArgs e)
-   {
-      System.Diagnostics.Process.Start("http://www.fireflysoftware.com/forum/");
-   }
-
-   protected virtual void QuickStartTutorial_OnActivated (object sender, System.EventArgs e)
-   {
-      System.Diagnostics.Process.Start("http://www.fireflysoftware.com/pyper/tutorials/quickstart.htm");
-   }
-
-   protected virtual void VisitOurHomepage_OnActivated (object sender, System.EventArgs e)
-   {
-      System.Diagnostics.Process.Start("http://www.fireflysoftware.com");
-   }
+// SAVED FOR FUTURE USE
+//   protected virtual void SupportForum_OnActivated (object sender, System.EventArgs e)
+//   {
+//      System.Diagnostics.Process.Start("http://somewebsite.com/forum/");
+//   }
+//
+//   protected virtual void QuickStartTutorial_OnActivated (object sender, System.EventArgs e)
+//   {
+//      System.Diagnostics.Process.Start("http://somewebsite.com/pyper/quickstart.htm");
+//   }
+//
+//   protected virtual void VisitOurHomepage_OnActivated (object sender, System.EventArgs e)
+//   {
+//      System.Diagnostics.Process.Start("http://somewebsite.com");
+//   }
 
    /// <summary>
    /// Displays an open file dialog to capture the name 

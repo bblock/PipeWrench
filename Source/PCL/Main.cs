@@ -1,6 +1,6 @@
 // 
 // Pyper - automate the transformation of text using "stackable" text filters
-// Copyright (C) 2011  Barry Block 
+// Copyright (C) 2013  Barry Block 
 // 
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -84,7 +84,7 @@ namespace Firefly.Pyper
          
          while (lineIndex < lines.Length)
          {
-            string bodyStr = "Registered filters (* denotes add-in):\n\n";
+            string bodyStr = "Registered commands (* denotes add-in):\n\n";
             int bodyLines = 2;
             
             while ((lineIndex < lines.Length) && (bodyLines < consoleRows - 
@@ -277,9 +277,9 @@ namespace Firefly.Pyper
                string headerRightStr;
                
                if (isLinux)
-                  headerRightStr = "Copyright \u00a9 2011 Firefly Software";
+                  headerRightStr = "Copyright \u00a9 2013 Firefly Software";
                else
-                  headerRightStr = "Copyright (C) 2011 Firefly Software";
+                  headerRightStr = "Copyright (C) 2013 Firefly Software";
                
                string headerStr = headerLeftStr + headerRightStr.PadLeft(consoleCols - 
                headerLeftStr.Length - 1) + "\n\n";
@@ -287,15 +287,13 @@ namespace Firefly.Pyper
                
                // Display the help screen:
                
-               tempStr = cmdLineAppName.ToUpper() + " is the command-line compliment of " + appName + 
-               ", the pipe-based text processing GUI that allows you to morph text into other forms " + 
-               "by simply combining filters. " + appName + "'s " + pipeEng.CoreFilters + 
-               " built-in text translation filters allow you to accomplish all sorts of text editing " + 
-               "tasks. You can search and replace text, convert between CSV, comma-delimited, " + 
-               "tab-delimited and fixed width data, extract logfile data, manipulate XML, convert " + 
-               "line endings, format source code and much more. " + appName + 
-               " can be found on the web at www.fireflysoftware.com.";
-               
+               tempStr = cmdLineAppName.ToUpper() + " is the command-line component of " + appName + ", " +
+               "the high-level text scripting tool that allows you to easily transform text, (i.e. lists, " +
+               "command output, HTML, config files, log files, source code, CSV data, etc.) from one form " +
+               "to another with relative ease.  In a " + appName + " script, there's no need to create conditional " +
+               "or looping constructs or even to declare variables.  You simply \"stack\" filters to get " +
+               "the results you want.";
+                              
                string wrapToWidthPipe = "WrapText " + consoleCols.ToString();
                string bodyStr = pipeEng.RunPipe("wrapToWidthPipe", wrapToWidthPipe, "", tempStr, false, false) + "\n\n";
                
@@ -314,11 +312,12 @@ namespace Firefly.Pyper
                
                string wrapToWidthIndentedPipe = "WrapText " + (consoleCols-3).ToString() + "|InsStr 1 '   '";
                bodyStr += pipeEng.RunPipe("wrapToWidthIndentedPipe", wrapToWidthIndentedPipe, "", 
-               "<pipe> is a command line argument containing one or more Pyper commands separated " +
-               "by \"" + Engine.PipeDelim + "\".", false, true) + "\n\n";
+               "<pipe> is a double-quoted string containing one or more " + appName + " commands separated " +
+               "by \"" + Engine.PipeDelim + "\".", false, true) + "\n";
                
                bodyStr += pipeEng.RunPipe("wrapToWidthIndentedPipe", wrapToWidthIndentedPipe, "", 
-               "<arguments> is a command line argument containing one or more pipe arguments.", false, true) + "\n\n";
+               "<arguments> is a double-quoted string containing one or more pipe arguments.",
+               false, true) + "\n\n";
                
                bodyStr += pipeEng.RunPipe("wrapToWidthPipe", wrapToWidthPipe, "", appName.ToLower() + 
                "'s I/O can be redirected. Following are some examples:", false, true) + "\n\n";

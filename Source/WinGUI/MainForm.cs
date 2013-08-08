@@ -1,6 +1,6 @@
 // 
 // Pyper - automate the transformation of text using "stackable" text filters
-// Copyright (C) 2011  Barry Block 
+// Copyright (C) 2013  Barry Block 
 // 
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -1284,7 +1284,15 @@ namespace Firefly.Pyper
       
       private void UserGuideAction(object sender, EventArgs e)
       {
-         System.Diagnostics.Process.Start("Manual.htm");
+         MessageBox.Show("User guide is not yet available.  Please see README file\n" +
+         "for an introduction to using " + AppName + "\nand Command Reference.htm" +
+         "for specific information regarding " + AppName + " commands.", "Warning!", 
+         MessageBoxButtons.OK, MessageBoxIcon.Information);
+      }
+      
+      private void CommandReferenceAction(object sender, EventArgs e)
+      {
+         System.Diagnostics.Process.Start("Command Reference.htm");
       }
       
       private void DemosAction(object sender, EventArgs e)
@@ -1292,20 +1300,21 @@ namespace Firefly.Pyper
          System.Diagnostics.Process.Start("Demos");
       }
 
-      private void SupportForumAction(object sender, EventArgs e)
-      {
-         System.Diagnostics.Process.Start("http://www.fireflysoftware.com/forum/");
-      }
-      
-      private void QuickStartAction(object sender, EventArgs e)
-      {
-         System.Diagnostics.Process.Start("http://www.fireflysoftware.com/pyper/tutorials/quickstart.htm");
-      }
-      
-      private void VisitHomepageAction(object sender, EventArgs e)
-      {
-         System.Diagnostics.Process.Start("http://www.fireflysoftware.com");
-      }
+// SAVED FOR FUTURE USE
+//      private void SupportForumAction(object sender, EventArgs e)
+//      {
+//         System.Diagnostics.Process.Start("http://somewebsite.com/forum/");
+//      }
+//      
+//      private void QuickStartAction(object sender, EventArgs e)
+//      {
+//         System.Diagnostics.Process.Start("http://somewebsite.com/pyper/quickstart.htm");
+//      }
+//      
+//      private void VisitHomepageAction(object sender, EventArgs e)
+//      {
+//         System.Diagnostics.Process.Start("http://somewebsite.com");
+//      }
    }
 }
 

@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9D4B4864-5820-47C7-A201-590C7AA5DD31}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>SamplePlugins</AssemblyName>
-    <RootNamespace>SamplePlugins</RootNamespace>
+    <AssemblyName>SamplePlugin</AssemblyName>
+    <RootNamespace>SamplePlugin</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,7 +32,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SamplePlugins.cs" />
+    <Compile Include="SamplePlugin.cs" />
     <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

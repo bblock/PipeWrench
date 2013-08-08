@@ -4,12 +4,12 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("SamplePlugins")]
-[assembly: AssemblyDescription("Pyper sample plugins")]
+[assembly: AssemblyTitle("SamplePlugin")]
+[assembly: AssemblyDescription("Pyper sample plugin")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Firefly Software")]
 [assembly: AssemblyProduct("Pyper")]
-[assembly: AssemblyCopyright("Copyright © Firefly Software 2010-2011")]
+[assembly: AssemblyCopyright("Copyright © Firefly Software 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

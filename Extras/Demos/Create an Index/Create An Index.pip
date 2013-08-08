@@ -1,0 +1,79 @@
+; Pipe Name: Create An Index.pip
+;
+; This pipe creates a word index from a text document. For it to work,
+; each page of text must end with a page number string, "Page n" where 
+; "n" is a whole number. Run against "Sample Text.txt". 
+; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Translate possessive forms and remove any 
+; remaining apostrophes:
+
+ReplStr '''s\\s' ' ' '''' '' /r
+
+; Translate "Page N" form to "PageN":
+
+ReplStr '(^\\s*Page)\\s(\\d+$)' '$1$2' /r
+
+; Force each word onto a separate line and remove  
+; all words that don't begin with A-Z:
+
+ParseWords /d' ,;".?-:()[]/\\$%&*''`—–'
+InclLines '[A-Za-z]' 1 1 /r
+
+; Force each page of words onto a separage line:
+
+AppendStr ' '
+JoinLines
+ReplStr 'Page\\d+' '$0\e' /r
+TrimLines
+DelBlankLines
+
+; Rotate the page number to the head of each line
+; and remove "Page":
+
+InsStr 1 ':'
+RotCharsToStr 'Page\\d+' /r
+DelChars 1 4
+
+; Pad the page number to a width of four characters:
+
+ReplStr ':' '\e:'
+PadLinesLeft '0' /w4
+JoinLines 2
+
+; Distribute the page number across each line
+; to every word on that line:
+
+ReplStr ' ' ':% ' /b1 /d':'
+
+; Remove the page number and ":" at the head of each line:
+
+DelChars 1 5
+
+; Parse out each <word>:<page> pair on to a separate
+; line, sort and remove duplicates:
+
+ParseWords
+LowerCase
+SortLines
+DelDuplLines /i
+
+; Pad each word with blanks to the length of the 
+; longest word and then append a blank to each 
+; resulting line:
+
+ReplStr ':' '\e:'
+PadLinesRight ' ' /s2
+JoinLines 2
+AppendStr ' '
+
+; Fold all lines containing the same word onto
+; a single line along with their page numbers:
+
+FoldLines /d':' /i /j1 
+
+; Remove extraneous page numbers and any leading
+; zeros:
+
+ReplStr ':0+' ':' '\\s\\w+\\s*:' ', ' /r 

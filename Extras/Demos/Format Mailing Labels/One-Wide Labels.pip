@@ -1,0 +1,11 @@
+; Pipe Name: One-Wide Labels.pip
+; 
+; This pipe formats a list of name/adress 
+; records so that they can be printed as 
+; mailing labels on stock that's one label
+; wide. Run against "Sample Text.txt".
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+AppendStr '\e' 
+SplitLines 26 51

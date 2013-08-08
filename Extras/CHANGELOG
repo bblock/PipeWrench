@@ -1,3 +1,19 @@
+2013-08-07  Barry W. Block  <bwb@fireflysoftware.com>
+
+	* Renamed "Manual.htm" to "Command Reference.htm".
+
+    * Renamed "SamplePlugins" project to "SamplePlugin".
+
+    * Renamed the "SamplePlugin1" filter to "SampleFilter".
+
+    * Added new "Command Reference" item to Help menu and changed "User Guide" item to provide informational dialog if clicked.
+
+    * Made minor edits to PCL's help screen.
+
+    * Updated all copyright notices.
+
+    * Added demos.
+
 2011-10-27  Barry W. Block  <bwb@fireflysoftware.com>
 
 	* Split pipe engine into separate files by class.

@@ -1,0 +1,13 @@
+; Pipe Name: Create Two Columns of Text.pip
+; 
+; Formats the input text as two columns,
+; side-by-side. Run against "Sample.txt"
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+WrapText 30 /b'-/' /j40
+PadLinesRight ' '
+AppendStr '  '
+ColumnOrder 17 2
+JoinLines 2
+StripChars 2

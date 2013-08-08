@@ -169,14 +169,12 @@
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Support _Forum</property>
         <property name="ShortLabel" translatable="yes">Support _Forum</property>
-        <signal name="Activated" handler="SupportForum_OnActivated" />
       </action>
       <action id="VisitOurHomepageAction">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Visit Our Homepage</property>
         <property name="ShortLabel" translatable="yes">Visit Our Homepage</property>
         <property name="StockId">gtk-home</property>
-        <signal name="Activated" handler="VisitOurHomepage_OnActivated" />
       </action>
       <action id="AboutAction">
         <property name="Type">Action</property>
@@ -190,7 +188,6 @@
         <property name="Label" translatable="yes">Quick Start Tutorial</property>
         <property name="ShortLabel" translatable="yes">Quick Start Tutorial</property>
         <property name="Tooltip" translatable="yes">Display quick start tutorial</property>
-        <signal name="Activated" handler="QuickStartTutorial_OnActivated" />
       </action>
       <action id="FontAction">
         <property name="Type">Action</property>
@@ -274,6 +271,12 @@
         <property name="ShortLabel" translatable="yes">_Demos</property>
         <signal name="Activated" handler="Demos_OnActivated" />
       </action>
+      <action id="CommandReferenceAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Command Reference</property>
+        <property name="ShortLabel" translatable="yes">Command Reference</property>
+        <signal name="Activated" handler="CommandReference_OnActivated" />
+      </action>
     </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">Pyper</property>
@@ -316,10 +319,8 @@
               </node>
               <node type="Menu" action="HelpAction">
                 <node type="Menuitem" action="UserGuideAction" />
+                <node type="Menuitem" action="CommandReferenceAction" />
                 <node type="Menuitem" action="DemosAction" />
-                <node type="Menuitem" action="SupportForumAction" />
-                <node type="Menuitem" action="QuickStartTutorialAction" />
-                <node type="Menuitem" action="VisitOurHomepageAction" />
                 <node type="Separator" />
                 <node type="Menuitem" action="AboutAction" />
               </node>

@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Firefly Software")]
 [assembly: AssemblyProduct("Pyper")]
-[assembly: AssemblyCopyright("Copyright © Firefly Software 2010-2011")]
+[assembly: AssemblyCopyright("Copyright © Firefly Software 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -1,0 +1,43 @@
+; Name: Create Base Conv Chart.pip
+; 
+; This pipe creates a formatted, 4-column base 
+; conversion chart that you can use to convert 
+; the decimal values 0-255 to their base-2, 8 
+; and 16 equivalents. Run it against a single 
+; asterisk (*) as input text.
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Replace the input asterisk with 256 asterisks
+; and remove the last one, leaving 255 total:
+
+ReplStr '*' '****************' '*' '****************'
+StripChars 1
+
+; Replace the 255 asterisks with newlines (this
+; actually results in 256 blank lines given that
+; there was already one line to begin with at 
+; this point):
+
+ReplStr '*' '\e'
+
+; Insert a line number at the head of each line:
+
+InsLineNo /w3 /z /l0
+
+; Convert the line number to base 2, 8 and 16 and
+; then append these values to each line:
+
+DecToBase 2 /i5 /w8 /z
+DecToBase 8 /i14 /w4 /z
+DecToBase 16 /i19 /w2 /z
+
+; Pad the lines to 23 characters and re-order them
+; in preparation for forming the text into 4 columns:
+
+PadLinesRight ' ' /w23
+ColumnOrder 64 4
+
+; Join the lines, four per line: 
+
+JoinLines 4
