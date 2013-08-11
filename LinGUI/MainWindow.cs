@@ -1265,9 +1265,9 @@ public partial class MainWindow: Gtk.Window
       try
       {
          MesgDlg = new MessageDialog (this, DialogFlags.DestroyWithParent, 
-         MessageType.Info, ButtonsType.Ok, "User guide is not yet available.  Please see " +
-         "README file for an introduction to using " + AppName + " and Command Reference.htm for " +
-         "specific information regarding " + AppName + " commands.");
+         MessageType.Info, ButtonsType.Ok, "Sorry, but the user guide is not yet available.  Please " +
+         "see the README file for an introduction to using " + AppName + " and the command reference " +
+         "for specific information regarding " + AppName + " commands.");
          MesgDlg.Run();
       }
         
@@ -1279,7 +1279,7 @@ public partial class MainWindow: Gtk.Window
 
    protected virtual void CommandReference_OnActivated (object sender, System.EventArgs e)
    {
-      ProcessStartInfo startInfo = new ProcessStartInfo("Command Reference.htm");
+      ProcessStartInfo startInfo = new ProcessStartInfo("cmdref.htm");
       startInfo.WorkingDirectory = AssyFolder;
       Process.Start(startInfo);
    }

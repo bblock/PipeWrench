@@ -1284,15 +1284,15 @@ namespace Firefly.Pyper
       
       private void UserGuideAction(object sender, EventArgs e)
       {
-         MessageBox.Show("User guide is not yet available.  Please see README file\n" +
-         "for an introduction to using " + AppName + "\nand Command Reference.htm" +
-         "for specific information regarding " + AppName + " commands.", "Warning!", 
+         MessageBox.Show("Sorry, but the user guide is not yet available.  Please see the README\n" +
+         "file for an introduction to using " + AppName + "and the command reference\n" +
+         "for specific information regarding " + AppName + " commands.", "Notice", 
          MessageBoxButtons.OK, MessageBoxIcon.Information);
       }
       
       private void CommandReferenceAction(object sender, EventArgs e)
       {
-         System.Diagnostics.Process.Start("Command Reference.htm");
+         System.Diagnostics.Process.Start("cmdref.htm");
       }
       
       private void DemosAction(object sender, EventArgs e)
