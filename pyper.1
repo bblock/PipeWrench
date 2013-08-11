@@ -1,0 +1,33 @@
+.TH PYPER 1 "Aug 2013"
+.\" Please adjust this date whenever revising the manpage.
+.SH NAME
+Pyper \- easily transform text into other forms using stackable filters
+.SH SYNOPSIS
+.B pyper 
+.SH DESCRIPTION
+.B Pyper
+is a high-level text scripting tool that allows you to easily
+transform text, (i.e. lists, command output, HTML, config files, log
+files, source code, CSV data, etc.) from one form to another with
+relative ease.  In a Pyper script, there's no need to create
+conditional or looping constructs or even to declare variables.  You
+simply "stack" filters to get the results you want.  And when you're
+done building your "pipe script" using Pyper's editor, you can export
+it for use at the command line.
+
+.PP
+For a quick tutorial on its use see the README packaged with Pyper.
+For details regarding Pyper's commands, see cmdref.htm.
+.SH NOTES
+.B Pyper
+is limited to working with just the amount of text that it can hold 
+in memory at one time and it isn't intended for use in applications 
+that require handling of more text than will fit in memory.  If you 
+require such capability you might want to consider other available
+solutions. 
+.SH SEE ALSO
+.BR pcl (1)
+.BR awk (1)
+.BR sed (1)
+.SH AUTHOR
+Barry Block

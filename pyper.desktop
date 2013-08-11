@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Comment=transform text using stackable filters
+Comment[en_US]=transform text using stackable filters
+Exec=pyper
+Icon=pyper
+StartupNotify=true
+Terminal=false
+Name=Pyper
+Name[en_US]=Pyper
+Categories=GNOME;GTK;Utility;TextEditor;

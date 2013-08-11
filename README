@@ -14,6 +14,11 @@ FEATURES
    - New filters can be developed and added to Pyper by almost anyone.
 
 
+LIMITATIONS
+
+Pyper is limited to working with just the amount of text that it can hold in memory at one time and it isn't intended for use in applications that require handling of more text than will fit in memory.  If you require such capability you might want to consider other available solutions.
+
+
 DOCUMENTATION
 
 There currently isn't a "user guide" that explains in detail how to use Pyper; however, for a good introduction, see the section below entitled "A FIVE MINUTE PRIMER".  For help using Pyper's commands, see the included "Command Reference.htm".[1]  For more in-depth examples illustrating Pyper's capabilities, see the included demos.[2]
