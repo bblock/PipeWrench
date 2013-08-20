@@ -33,12 +33,12 @@ Windows users can compile Pyper using either Visual Studio or the open source al
 
 On Linux
 
-If you're using Linux, you can compile Pyper using MonoDevelop.  Once compiled, you should be able to execute the GUI application from the Monodevelop IDE or run it inside a terminal by typing "mono Pyper.exe" from either the "bin/Debug" or "bin/Release" folders (depending on which build profile was used to compile Pyper).  The CLI application (PCL.exe) can also be run from a terminal by using mono but to make using it more practical, you'll want to create a shell script ("pcl") to call it as follows:
+If you're using Linux, you can compile Pyper using MonoDevelop.  As an alternative, you can compile Pyper from the command line just using xbuild.  Once compiled, you should be able to execute the GUI application either from the Monodevelop IDE or run it from inside a terminal by typing "mono Pyper.exe" from either the "bin/Debug" or "bin/Release" folders (depending on which build profile was used to compile Pyper).  The CLI application (PCL.exe) can also be run from a terminal by using mono but to make using it more practical, you'll want to create a shell script ("pcl") to call it as follows:
 
    #!/bin/sh
-   mono "<Path to the executables folder>/PCL.exe" "$@"
+   mono "<binaries path>/PCL.exe" "$@"
 
-Tip: Don't forget to edit the referenced path to PCL.exe.
+Tip: Be sure to replace "<binaries path>" with the actual path.
 
 This script will enable you to execute pipes from the command line (or from a shell script) without your explicitly having to specify "mono" each time PCL is invoked.  If you want the ability to run PCL from anywhere on your computer, you can place this script in a folder that's accessible via your $PATH variable.  One possibility to consider is the folder, "/usr/local/bin" (although you'll likely need to be the "root" user in order to copy the script to that location).
 
@@ -107,7 +107,7 @@ All this filter does is delete 21 characters beginning with character 52.  Follo
    mv "Andy.Griffith-S01E03-Guitar Player.avi"       "Guitar Player.avi"       
    ...
 
-This resulting list of shell commands can now be copied/pasted into the Linux terminal and executed in order to effect the renaming of the files.  Whether we have 10 files to rename or 1000, it only takes a 4 filter pipe to create the Linux commands needed to accomplish this automated renaming:
+This resulting list of shell commands can now be copied/pasted into the Linux terminal and executed in order to effect the renaming of the files.  Whether we have 10 files to rename or 1000, it only takes a 4 filter pipe to create the Linux commands needed to accomplish this automated renaming: [4]
 
    InsStr 53 'mv "'
    AppendStr '"'
@@ -140,4 +140,6 @@ ______
 [2] Local resources such as the included demos and the "Command Reference.htm" are not automatically accessible from the GUI's "help" menu.  For these to be accessible from the GUI, a shortcut (or "symlink" in Linux) to these must be placed in the same folder where the Pyper executables reside.  Likewise, the single supplied plug-in dll, "SamplePlugin"--included only for its "SampleFilter" filter--will work only if it is located in a subfolder (of the executables folder) called "PlugIns".  
 
 [3] The "run" button is the one just to the right of the "up arrow" button.  When clicked, this button will execute the entire pipe.  The "red" button to it's right (I know, the GUI icons really suck) allows you to run just those pipe commands up to (and including) the line containing the cursor.  It's use can be invaluable because it presents the quickest means of debugging a pipe's logic.  It allows you to easily view the intermediate text results between any two filters.
+
+[4] Or, even just a single filter pipe if you employ a regular expression.
 
