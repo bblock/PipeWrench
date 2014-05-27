@@ -179,7 +179,7 @@ namespace Firefly.Pyper
          CmdSpecs.AddCoreSpec("Firefly.Pyper.DelBlankLines", "gtk-execute", "", "", "removes blank lines from output", AssyPath);
          CmdSpecs.AddCoreSpec("Firefly.Pyper.DelChars", "gtk-execute", "n n [n n...]", "<char pos> <no of chars> [<char pos> <no of chars>...]", "deletes characters from each line at specified character positions", AssyPath);
          CmdSpecs.AddCoreSpec("Firefly.Pyper.DelCharsToStr", "gtk-execute", "s /I /Nn /R", "<string> /I /N<count> /R", "deletes characters until string is encountered", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.DelDuplLines", "gtk-execute", "[n n] /A /Ds /I", "[<char pos> <char pos>] /A /D<delimiter> /I", "acts on sorted lists removing all duplicate lines", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.Pyper.DelDuplLines", "gtk-execute", "[n n] /A /Ds /F /I", "[<char pos> <char pos>] /A /D<delimiter> /F /I", "acts on sorted lists removing all duplicate lines", AssyPath);
          CmdSpecs.AddCoreSpec("Firefly.Pyper.DelExtraBlankLines", "gtk-execute", "", "", "removes extraneous blank lines", AssyPath);
          CmdSpecs.AddCoreSpec("Firefly.Pyper.DelExtraBlanks", "gtk-execute", "", "", "removes extraneous blanks from each line", AssyPath);
          CmdSpecs.AddCoreSpec("Firefly.Pyper.DivValues", "gtk-execute", "n n /In /Wn /Dn /S", "<char pos> <char pos> /I<ins char pos> /W<width> /D<decimals> /S", "performs division with two numbers in the input text", AssyPath);
