@@ -1260,7 +1260,7 @@ public partial class MainWindow: Gtk.Window
 
    protected virtual void UserGuide_OnActivated (object sender, System.EventArgs e)
    {
-      MessageDialog MesgDlg;
+      MessageDialog MesgDlg = null;
       
       try
       {
