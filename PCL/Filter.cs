@@ -1,6 +1,6 @@
 // 
-// Pyper - automate the transformation of text using "stackable" text filters
-// Copyright (C) 2013  Barry Block 
+// PipeWrench - automate the transformation of text using "stackable" text filters
+// Copyright (c) 2014  Barry Block 
 // 
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -19,7 +19,7 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Firefly.Pyper
+namespace Firefly.PipeWrench
 {
    /// <summary>
    /// Implements a filter.
@@ -91,7 +91,7 @@ namespace Firefly.Pyper
             {
                // The type isn't a plugin.
 
-               throw new PyperEngineException("Type isn't a plugin.\nAssembly: " +
+               throw new PipeWrenchEngineException("Type isn't a plugin.\nAssembly: " +
                AssyPath + "\nType: " + TypeName); ///
             }
          }
@@ -99,7 +99,7 @@ namespace Firefly.Pyper
          {
             // Unable to retrieve plugin type.
 
-            throw new PyperEngineException("Plugin type not found.\nAssembly: " +
+            throw new PipeWrenchEngineException("Plugin type not found.\nAssembly: " +
             AssyPath + "\nType: " + TypeName); ///
          }
       }

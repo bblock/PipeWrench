@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Shared")]
-[assembly: AssemblyDescription("Pyper shared objects")]
+[assembly: AssemblyDescription("PipeWrench shared objects")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Firefly Software")]
-[assembly: AssemblyProduct("Pyper")]
+[assembly: AssemblyProduct("PipeWrench")]
 [assembly: AssemblyCopyright("Copyright © Firefly Software 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -35,4 +35,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 //[assembly: AssemblyDelaySign(false)]
-//[assembly: AssemblyKeyFile("/home/liveuser/Desktop/pyper/Keys.snk")]
+//[assembly: AssemblyKeyFile("/home/liveuser/Desktop/PipeWrench/Keys.snk")]

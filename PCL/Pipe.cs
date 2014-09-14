@@ -1,6 +1,6 @@
 // 
-// Pyper - automate the transformation of text using "stackable" text filters
-// Copyright (C) 2013  Barry Block 
+// PipeWrench - automate the transformation of text using "stackable" text filters
+// Copyright (c) 2014  Barry Block 
 // 
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -18,7 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Firefly.Pyper
+namespace Firefly.PipeWrench
 {
    /// <summary>
    /// Implements a pipe that can be executed to process text.
@@ -96,7 +96,7 @@ namespace Firefly.Pyper
          }
          else
          {
-            throw new PyperEngineException("Engine parameter cannot be null");
+            throw new PipeWrenchEngineException("Engine parameter cannot be null");
          }
       }
 
@@ -171,7 +171,7 @@ namespace Firefly.Pyper
          {
             // The argument index is out of range.
 
-            throw new PyperCompileException("Placeholder index is out of range.");
+            throw new PipeWrenchCompileException("Placeholder index is out of range.");
          }
 
          return tempStr;
@@ -205,7 +205,7 @@ namespace Firefly.Pyper
                TempStr = GetArg(i, inString);
             }
 
-            catch (PyperCompileException ex)
+            catch (PipeWrenchCompileException ex)
             {
                ex.Data.Add("CmdLine", CmdLine);
                ex.Data.Add("CharPos", CharPos);
@@ -352,7 +352,7 @@ namespace Firefly.Pyper
                               TempStr = GetArg(FirstIndex, inString);
                            }
 
-                           catch (PyperCompileException ex)
+                           catch (PipeWrenchCompileException ex)
                            {
                               ex.Data.Add("CmdLine", CmdLineText);
                               ex.Data.Add("CharPos", CharPos);
@@ -658,7 +658,7 @@ namespace Firefly.Pyper
                               TempStr = GetArg(FirstIndex, inString);
                            }
 
-                           catch (PyperCompileException ex)
+                           catch (PipeWrenchCompileException ex)
                            {
                               ex.Data.Add("CmdLine", CmdLineText);
                               ex.Data.Add("CharPos", CharPos);
@@ -784,7 +784,7 @@ namespace Firefly.Pyper
                         ScriptLine = ReplacePlaceholders(ScriptLine);
                      }
 
-                     catch (PyperCompileException ex)
+                     catch (PipeWrenchCompileException ex)
                      {
                         ex.Data.Add("Source", this.Name);
                         ex.Data.Add("LineNo", LineNo);
@@ -818,7 +818,7 @@ namespace Firefly.Pyper
                         TheFilter.Compile(ScriptLine, CmdLinePtr);
                      }
 
-                     catch (PyperCompileException ex)
+                     catch (PipeWrenchCompileException ex)
                      {
                         ex.Data.Add("Source", this.Name);
                         ex.Data.Add("LineNo", LineNo);
@@ -833,7 +833,7 @@ namespace Firefly.Pyper
                   {
                      // The filter is not registered.
 
-                     PyperCompileException ex = new PyperCompileException("Filter " +
+                     PipeWrenchCompileException ex = new PipeWrenchCompileException("Filter " +
                      FilterName + " is unknown.");
                      ex.Data.Add("CmdLine", ScriptLine);
                      ex.Data.Add("CharPos", CmdLinePtr);
@@ -845,7 +845,7 @@ namespace Firefly.Pyper
             }
          }
 
-         catch (PyperCompileException ex)
+         catch (PipeWrenchCompileException ex)
          {
             ex.Data.Add("Source", ParentSource);
             ex.Data.Add("LineNo", ParentLineNo);
@@ -981,7 +981,7 @@ namespace Firefly.Pyper
          }
          else
          {
-            throw new PyperEngineException("Could not open input text file."); ///
+            throw new PipeWrenchEngineException("Could not open input text file."); ///
          }
 
          LogWrite("Pipe.Execute: END");

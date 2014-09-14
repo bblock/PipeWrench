@@ -1,6 +1,6 @@
 // 
-// Pyper - automate the transformation of text using "stackable" text filters
-// Copyright (C) 2013  Barry Block 
+// PipeWrench - automate the transformation of text using "stackable" text filters
+// Copyright (c) 2014  Barry Block 
 // 
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -18,7 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace Firefly.Pyper
+namespace Firefly.PipeWrench
 {
    static class Program
    {

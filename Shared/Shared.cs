@@ -1,6 +1,6 @@
 // 
-// Pyper - automate the transformation of text using "stackable" text filters
-// Copyright (C) 2013  Barry Block 
+// PipeWrench - automate the transformation of text using "stackable" text filters
+// Copyright (c) 2014  Barry Block 
 // 
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -21,7 +21,7 @@ using System.Text;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace Firefly.Pyper
+namespace Firefly.PipeWrench
 {
    public interface ILogger
    {
@@ -106,27 +106,27 @@ namespace Firefly.Pyper
    }
    
    /// <summary>
-   /// Implements a base Pyper exception.
+   /// Implements a base PipeWrench exception.
    /// </summary>
    [Serializable]
-   public class PyperException : ApplicationException
+   public class PipeWrenchException : ApplicationException
    {
-      public PyperException()
-         : base("A Pyper error occurred.")
+      public PipeWrenchException()
+         : base("A PipeWrench error occurred.")
       {
       }
 
-      public PyperException(string message)
+      public PipeWrenchException(string message)
          : base(message)
       {
       }
 
-      public PyperException(string message, Exception innerText)
+      public PipeWrenchException(string message, Exception innerText)
          : base(message, innerText)
       {
       }
       
-      protected PyperException(
+      protected PipeWrenchException(
       System.Runtime.Serialization.SerializationInfo info,
       System.Runtime.Serialization.StreamingContext context)
          : base(info, context)
@@ -135,29 +135,29 @@ namespace Firefly.Pyper
    }
    
    /// <summary>
-   /// Implements a Pyper engine exception.  These originate
-   /// from inside of the Pyper engine but are not caused by 
+   /// Implements a PipeWrench engine exception.  These originate
+   /// from inside of the PipeWrench engine but are not caused by 
    /// any fault of the user.
    /// </summary>
    [Serializable]
-   public class PyperEngineException : PyperException
+   public class PipeWrenchEngineException : PipeWrenchException
    {
-      public PyperEngineException()
-         : base("A Pyper engine error occurred.")
+      public PipeWrenchEngineException()
+         : base("A PipeWrench engine error occurred.")
       {
       }
 
-      public PyperEngineException(string message)
+      public PipeWrenchEngineException(string message)
          : base(message)
       {
       }
 
-      public PyperEngineException(string message, Exception innerText)
+      public PipeWrenchEngineException(string message, Exception innerText)
          : base(message, innerText)
       {
       }
       
-      protected PyperEngineException(
+      protected PipeWrenchEngineException(
       System.Runtime.Serialization.SerializationInfo info,
       System.Runtime.Serialization.StreamingContext context)
          : base(info, context)
@@ -166,29 +166,29 @@ namespace Firefly.Pyper
    }
    
    /// <summary>
-   /// Implements a Pyper user exception.  This is the base
+   /// Implements a PipeWrench user exception.  This is the base
    /// class for all exceptions that result from end-user error
    /// and it should not be referenced directly.
    /// </summary>
    [Serializable]
-   public class PyperUserException : PyperException
+   public class PipeWrenchUserException : PipeWrenchException
    {
-      public PyperUserException()
-         : base("A Pyper user error occurred.")
+      public PipeWrenchUserException()
+         : base("A PipeWrench user error occurred.")
       {
       }
 
-      public PyperUserException(string message)
+      public PipeWrenchUserException(string message)
          : base(message)
       {
       }
 
-      public PyperUserException(string message, Exception innerText)
+      public PipeWrenchUserException(string message, Exception innerText)
          : base(message, innerText)
       {
       }
       
-      protected PyperUserException(
+      protected PipeWrenchUserException(
       System.Runtime.Serialization.SerializationInfo info,
       System.Runtime.Serialization.StreamingContext context)
          : base(info, context)
@@ -197,28 +197,28 @@ namespace Firefly.Pyper
    }
    
    /// <summary>
-   /// Implements a Pyper compile-time exception.  These exceptions originate
-   /// from inside of the Pyper engine but are the result of parsing errors.
+   /// Implements a PipeWrench compile-time exception.  These exceptions originate
+   /// from inside of the PipeWrench engine but are the result of parsing errors.
    /// </summary>
    [Serializable]
-   public class PyperCompileException : PyperUserException
+   public class PipeWrenchCompileException : PipeWrenchUserException
    {
-      public PyperCompileException()
-         : base("A Pyper compile error occurred.")
+      public PipeWrenchCompileException()
+         : base("A PipeWrench compile error occurred.")
       {
       }
 
-      public PyperCompileException(string message)
+      public PipeWrenchCompileException(string message)
          : base(message)
       {
       }
 
-      public PyperCompileException(string message, Exception innerText)
+      public PipeWrenchCompileException(string message, Exception innerText)
          : base(message, innerText)
       {
       }
       
-      protected PyperCompileException(
+      protected PipeWrenchCompileException(
       System.Runtime.Serialization.SerializationInfo info,
       System.Runtime.Serialization.StreamingContext context)
          : base(info, context)
@@ -227,29 +227,29 @@ namespace Firefly.Pyper
    }
    
    /// <summary>
-   /// Implements a Pyper conversion exception.  These exceptions originate
-   /// from inside of the Pyper engine but are the result of an improperly
+   /// Implements a PipeWrench conversion exception.  These exceptions originate
+   /// from inside of the PipeWrench engine but are the result of an improperly
    /// formed pipe (with regards to importing or exporting).
    /// </summary>
    [Serializable]
-   public class PyperConvException : PyperUserException
+   public class PipeWrenchConvException : PipeWrenchUserException
    {
-      public PyperConvException()
-         : base("A Pyper conversion error occurred.")
+      public PipeWrenchConvException()
+         : base("A PipeWrench conversion error occurred.")
       {
       }
 
-      public PyperConvException(string message)
+      public PipeWrenchConvException(string message)
          : base(message)
       {
       }
 
-      public PyperConvException(string message, Exception innerText)
+      public PipeWrenchConvException(string message, Exception innerText)
          : base(message, innerText)
       {
       }
       
-      protected PyperConvException(
+      protected PipeWrenchConvException(
       System.Runtime.Serialization.SerializationInfo info,
       System.Runtime.Serialization.StreamingContext context)
          : base(info, context)
@@ -258,28 +258,28 @@ namespace Firefly.Pyper
    }
    
    /// <summary>
-   /// Implements a Pyper template exception. These exceptions are caused
+   /// Implements a PipeWrench template exception. These exceptions are caused
    /// by improperly formed templates.
    /// </summary>
    [Serializable]
-   public class PyperTemplateException : PyperUserException 
+   public class PipeWrenchTemplateException : PipeWrenchUserException 
    {
-      public PyperTemplateException()
-         : base("A Pyper template error occurred.")
+      public PipeWrenchTemplateException()
+         : base("A PipeWrench template error occurred.")
       {
       }
 
-      public PyperTemplateException(string message)
+      public PipeWrenchTemplateException(string message)
          : base(message)
       {
       }
 
-      public PyperTemplateException(string message, Exception innerText)
+      public PipeWrenchTemplateException(string message, Exception innerText)
          : base(message, innerText)
       {
       }
       
-      protected PyperTemplateException(
+      protected PipeWrenchTemplateException(
       System.Runtime.Serialization.SerializationInfo info,
       System.Runtime.Serialization.StreamingContext context)
          : base(info, context)
@@ -288,29 +288,29 @@ namespace Firefly.Pyper
    }
    
    /// <summary>
-   /// Implements a Pyper run-time exception.  These exceptions originate
-   /// from inside of the Pyper engine but are the result of bad data or 
+   /// Implements a PipeWrench run-time exception.  These exceptions originate
+   /// from inside of the PipeWrench engine but are the result of bad data or 
    /// arguments.
    /// </summary>
    [Serializable]
-   public class PyperExecException : PyperUserException
+   public class PipeWrenchExecException : PipeWrenchUserException
    {
-      public PyperExecException()
-         : base("A Pyper execution error occurred.")
+      public PipeWrenchExecException()
+         : base("A PipeWrench execution error occurred.")
       {
       }
 
-      public PyperExecException(string message)
+      public PipeWrenchExecException(string message)
          : base(message)
       {
       }
 
-      public PyperExecException(string message, Exception innerText)
+      public PipeWrenchExecException(string message, Exception innerText)
          : base(message, innerText)
       {
       }
       
-      protected PyperExecException(
+      protected PipeWrenchExecException(
       System.Runtime.Serialization.SerializationInfo info,
       System.Runtime.Serialization.StreamingContext context)
          : base(info, context)
@@ -319,28 +319,28 @@ namespace Firefly.Pyper
    }
    
    /// <summary>
-   /// Implements a Pyper server exception.  These originate
-   /// from inside of the Pyper server.
+   /// Implements a PipeWrench server exception.  These originate
+   /// from inside of the PipeWrench server.
    /// </summary>
    [Serializable]
-   public class PyperServerException : PyperException
+   public class PipeWrenchServerException : PipeWrenchException
    {
-      public PyperServerException()
-         : base("A Pyper server error occurred.")
+      public PipeWrenchServerException()
+         : base("A PipeWrench server error occurred.")
       {
       }
 
-      public PyperServerException(string message)
+      public PipeWrenchServerException(string message)
          : base(message)
       {
       }
 
-      public PyperServerException(string message, Exception innerText)
+      public PipeWrenchServerException(string message, Exception innerText)
          : base(message, innerText)
       {
       }
       
-      protected PyperServerException(
+      protected PipeWrenchServerException(
       System.Runtime.Serialization.SerializationInfo info,
       System.Runtime.Serialization.StreamingContext context)
          : base(info, context)
@@ -486,7 +486,7 @@ namespace Firefly.Pyper
       /// </summary>
       protected void ThrowException(string message) 
       {
-         PyperExecException ex = new PyperExecException(message); 
+         PipeWrenchExecException ex = new PipeWrenchExecException(message); 
          ex.Data.Add("CmdLine", CmdLine.Text);
          ex.Data.Add("Source", Source);
          ex.Data.Add("LineNo", PipeLineNo);
@@ -498,7 +498,7 @@ namespace Firefly.Pyper
       /// </summary>
       protected void ThrowException(string message, int charPos) 
       {
-         PyperExecException ex = new PyperExecException(message); 
+         PipeWrenchExecException ex = new PipeWrenchExecException(message); 
          ex.Data.Add("CmdLine", CmdLine.Text);
          ex.Data.Add("Source", Source);
          ex.Data.Add("LineNo", PipeLineNo);

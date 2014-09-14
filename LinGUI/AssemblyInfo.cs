@@ -5,10 +5,10 @@ using System.Runtime.CompilerServices;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle("LinGUI")]
-[assembly: AssemblyDescription("Pyper GTK GUI")]
+[assembly: AssemblyDescription("PipeWrench GTK GUI")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Firefly Software")]
-[assembly: AssemblyProduct("Pyper")]
+[assembly: AssemblyProduct("PipeWrench")]
 [assembly: AssemblyCopyright("Copyright © Firefly Software 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -24,4 +24,4 @@ using System.Runtime.CompilerServices;
 // if desired. See the Mono documentation for more information about signing.
 
 //[assembly: AssemblyDelaySign(false)]
-//[assembly: AssemblyKeyFile("/home/liveuser/Desktop/pyper/Keys.snk")]
+//[assembly: AssemblyKeyFile("/home/liveuser/Desktop/PipeWrench/Keys.snk")]

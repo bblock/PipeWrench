@@ -1,2 +1,2 @@
 #!/bin/sh
-mono "/usr/lib/pyper/PCL.exe" "$@"
+mono "/usr/lib/pipewrench/PCL.exe" "$@"

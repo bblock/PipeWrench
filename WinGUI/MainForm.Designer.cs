@@ -1,4 +1,4 @@
-namespace Firefly.Pyper
+namespace Firefly.PipeWrench
 {
    partial class MainForm
    {
@@ -149,7 +149,7 @@ namespace Firefly.Pyper
          this.PipeCutToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
          this.PipeCutToolStripMenuItem.Text = "Cut";
          this.PipeCutToolStripMenuItem.Click += new System.EventHandler(this.PipeCutToolStripMenuItem_Click);
-         this.PipeCutToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.cut;
+         this.PipeCutToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.cut;
          this.PipeCutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          
          // 
@@ -159,7 +159,7 @@ namespace Firefly.Pyper
          this.PipeCopyToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
          this.PipeCopyToolStripMenuItem.Text = "Copy";
          this.PipeCopyToolStripMenuItem.Click += new System.EventHandler(this.PipeCopyToolStripMenuItem_Click);
-         this.PipeCopyToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.copy;
+         this.PipeCopyToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.copy;
          this.PipeCopyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          
          // 
@@ -169,7 +169,7 @@ namespace Firefly.Pyper
          this.PipePasteToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
          this.PipePasteToolStripMenuItem.Text = "Paste";
          this.PipePasteToolStripMenuItem.Click += new System.EventHandler(this.PipePasteToolStripMenuItem_Click);
-         this.PipePasteToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.paste;
+         this.PipePasteToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.paste;
          this.PipePasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          
          // 
@@ -179,7 +179,7 @@ namespace Firefly.Pyper
          this.PipeDeleteToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
          this.PipeDeleteToolStripMenuItem.Text = "Delete";
          this.PipeDeleteToolStripMenuItem.Click += new System.EventHandler(this.PipeDeleteToolStripMenuItem_Click);
-         this.PipeDeleteToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.cancel;
+         this.PipeDeleteToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.cancel;
          this.PipeDeleteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          
          // 
@@ -231,7 +231,7 @@ namespace Firefly.Pyper
          // 
          // newPipeToolStripMenuItem
          // 
-         this.newPipeToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.new_page;
+         this.newPipeToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.new_page;
          this.newPipeToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.newPipeToolStripMenuItem.Name = "newPipeToolStripMenuItem";
          this.newPipeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
@@ -242,7 +242,7 @@ namespace Firefly.Pyper
          // 
          // openPipeToolStripMenuItem
          // 
-         this.openPipeToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.open;
+         this.openPipeToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.open;
          this.openPipeToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.openPipeToolStripMenuItem.Name = "openPipeToolStripMenuItem";
          this.openPipeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
@@ -253,7 +253,7 @@ namespace Firefly.Pyper
          // 
          // savePipeToolStripMenuItem
          // 
-         this.savePipeToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.save;
+         this.savePipeToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.save;
          this.savePipeToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.savePipeToolStripMenuItem.Name = "savePipeToolStripMenuItem";
          this.savePipeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
@@ -264,7 +264,7 @@ namespace Firefly.Pyper
          // 
          // savePipeAsToolStripMenuItem
          // 
-         this.savePipeAsToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.save_as;
+         this.savePipeAsToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.save_as;
          this.savePipeAsToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.savePipeAsToolStripMenuItem.Name = "savePipeAsToolStripMenuItem";
          this.savePipeAsToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
@@ -280,7 +280,7 @@ namespace Firefly.Pyper
          // 
          // importPipeToolStripMenuItem
          // 
-         this.importPipeToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.import;
+         this.importPipeToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.import;
          this.importPipeToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.importPipeToolStripMenuItem.Name = "importPipeToolStripMenuItem";
          this.importPipeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
@@ -291,7 +291,7 @@ namespace Firefly.Pyper
          // 
          // exportToolStripMenuItem
          // 
-         this.exportToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.export;
+         this.exportToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.export;
          this.exportToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
          this.exportToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
@@ -308,7 +308,7 @@ namespace Firefly.Pyper
          // 
          // exitToolStripMenuItem
          // 
-         this.exitToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.exit;
+         this.exitToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.exit;
          this.exitToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
          this.exitToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
@@ -334,7 +334,7 @@ namespace Firefly.Pyper
          // 
          // cutToolStripMenuItem
          // 
-         this.cutToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.cut;
+         this.cutToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.cut;
          this.cutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
          this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
@@ -345,7 +345,7 @@ namespace Firefly.Pyper
          // 
          // copyToolStripMenuItem
          // 
-         this.copyToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.copy;
+         this.copyToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.copy;
          this.copyToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
          this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
@@ -356,7 +356,7 @@ namespace Firefly.Pyper
          // 
          // pasteToolStripMenuItem
          // 
-         this.pasteToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.paste;
+         this.pasteToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.paste;
          this.pasteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
          this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
@@ -367,7 +367,7 @@ namespace Firefly.Pyper
          // 
          // deleteToolStripMenuItem
          // 
-         this.deleteToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.cancel;
+         this.deleteToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.cancel;
          this.deleteToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
          this.deleteToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
@@ -400,7 +400,7 @@ namespace Firefly.Pyper
          // 
          // preferencesToolStripMenuItem
          // 
-         this.preferencesToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.configuration_edit;
+         this.preferencesToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.configuration_edit;
          this.preferencesToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
          this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
@@ -420,7 +420,7 @@ namespace Firefly.Pyper
          // 
          // runToolStripMenuItem
          // 
-         this.runToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.play;
+         this.runToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.play;
          this.runToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.runToolStripMenuItem.Name = "runToolStripMenuItem";
          this.runToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
@@ -431,7 +431,7 @@ namespace Firefly.Pyper
          // 
          // runToLineToolStripMenuItem
          // 
-         this.runToLineToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.pause;
+         this.runToLineToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.pause;
          this.runToLineToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.runToLineToolStripMenuItem.Name = "runToLineToolStripMenuItem";
          this.runToLineToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
@@ -454,7 +454,7 @@ namespace Firefly.Pyper
          // 
          // UserGuideToolStripMenuItem
          // 
-         this.UserGuideToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.support;
+         this.UserGuideToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.support;
          this.UserGuideToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.UserGuideToolStripMenuItem.Name = "UserGuideToolStripMenuItem";
          this.UserGuideToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
@@ -464,7 +464,7 @@ namespace Firefly.Pyper
          // 
          // CommandReferenceToolStripMenuItem
          // 
-         this.CommandReferenceToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.support;
+         this.CommandReferenceToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.support;
          this.CommandReferenceToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.CommandReferenceToolStripMenuItem.Name = "CommandReferenceToolStripMenuItem";
          this.CommandReferenceToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
@@ -484,7 +484,7 @@ namespace Firefly.Pyper
 //         // 
 //         // supportForumToolStripMenuItem
 //         // 
-//         this.supportForumToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.type;
+//         this.supportForumToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.type;
 //         this.supportForumToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
 //         this.supportForumToolStripMenuItem.Name = "supportForumToolStripMenuItem";
 //         this.supportForumToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
@@ -500,7 +500,7 @@ namespace Firefly.Pyper
 //         // 
 //         // visitHomepageToolStripMenuItem
 //         // 
-//         this.visitHomepageToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.home;
+//         this.visitHomepageToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.home;
 //         this.visitHomepageToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
 //         this.visitHomepageToolStripMenuItem.Name = "visitHomepageToolStripMenuItem";
 //         this.visitHomepageToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
@@ -516,7 +516,7 @@ namespace Firefly.Pyper
          // 
          // aboutToolStripMenuItem
          // 
-         this.aboutToolStripMenuItem.Image = global::Firefly.Pyper.Properties.Resources.about;
+         this.aboutToolStripMenuItem.Image = global::Firefly.PipeWrench.Properties.Resources.about;
          this.aboutToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.White;
          this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
          this.aboutToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
@@ -548,7 +548,7 @@ namespace Firefly.Pyper
          // NewPipeToolStripButton
          // 
          this.NewPipeToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.NewPipeToolStripButton.Image = global::Firefly.Pyper.Properties.Resources.new_page;
+         this.NewPipeToolStripButton.Image = global::Firefly.PipeWrench.Properties.Resources.new_page;
          this.NewPipeToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.NewPipeToolStripButton.ImageTransparentColor = System.Drawing.Color.White;
          this.NewPipeToolStripButton.Name = "NewPipeToolStripButton";
@@ -561,7 +561,7 @@ namespace Firefly.Pyper
          // OpenPipeToolStripButton
          // 
          this.OpenPipeToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.OpenPipeToolStripButton.Image = global::Firefly.Pyper.Properties.Resources.open;
+         this.OpenPipeToolStripButton.Image = global::Firefly.PipeWrench.Properties.Resources.open;
          this.OpenPipeToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.OpenPipeToolStripButton.ImageTransparentColor = System.Drawing.Color.White;
          this.OpenPipeToolStripButton.Name = "OpenPipeToolStripButton";
@@ -574,7 +574,7 @@ namespace Firefly.Pyper
          // savePipeToolStripButton
          // 
          this.savePipeToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.savePipeToolStripButton.Image = global::Firefly.Pyper.Properties.Resources.save;
+         this.savePipeToolStripButton.Image = global::Firefly.PipeWrench.Properties.Resources.save;
          this.savePipeToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.savePipeToolStripButton.ImageTransparentColor = System.Drawing.Color.White;
          this.savePipeToolStripButton.Name = "savePipeToolStripButton";
@@ -587,7 +587,7 @@ namespace Firefly.Pyper
          // SavePipeAsToolStripButton
          // 
          this.SavePipeAsToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.SavePipeAsToolStripButton.Image = global::Firefly.Pyper.Properties.Resources.save_as;
+         this.SavePipeAsToolStripButton.Image = global::Firefly.PipeWrench.Properties.Resources.save_as;
          this.SavePipeAsToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.SavePipeAsToolStripButton.ImageTransparentColor = System.Drawing.Color.White;
          this.SavePipeAsToolStripButton.Name = "SavePipeAsToolStripButton";
@@ -606,7 +606,7 @@ namespace Firefly.Pyper
          // ImportPipeToolStripButton
          // 
          this.ImportPipeToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.ImportPipeToolStripButton.Image = global::Firefly.Pyper.Properties.Resources.import;
+         this.ImportPipeToolStripButton.Image = global::Firefly.PipeWrench.Properties.Resources.import;
          this.ImportPipeToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.ImportPipeToolStripButton.ImageTransparentColor = System.Drawing.Color.White;
          this.ImportPipeToolStripButton.Name = "ImportPipeToolStripButton";
@@ -619,7 +619,7 @@ namespace Firefly.Pyper
          // ExportPipeToolStripButton
          // 
          this.ExportPipeToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.ExportPipeToolStripButton.Image = global::Firefly.Pyper.Properties.Resources.export;
+         this.ExportPipeToolStripButton.Image = global::Firefly.PipeWrench.Properties.Resources.export;
          this.ExportPipeToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.ExportPipeToolStripButton.ImageTransparentColor = System.Drawing.Color.White;
          this.ExportPipeToolStripButton.Name = "ExportPipeToolStripButton";
@@ -638,7 +638,7 @@ namespace Firefly.Pyper
          // runToolStripButton
          // 
          this.runToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.runToolStripButton.Image = global::Firefly.Pyper.Properties.Resources.play;
+         this.runToolStripButton.Image = global::Firefly.PipeWrench.Properties.Resources.play;
          this.runToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.runToolStripButton.ImageTransparentColor = System.Drawing.Color.White;
          this.runToolStripButton.Name = "runToolStripButton";
@@ -651,7 +651,7 @@ namespace Firefly.Pyper
          // runToLineToolStripButton
          // 
          this.runToLineToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.runToLineToolStripButton.Image = global::Firefly.Pyper.Properties.Resources.pause;
+         this.runToLineToolStripButton.Image = global::Firefly.PipeWrench.Properties.Resources.pause;
          this.runToLineToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
          this.runToLineToolStripButton.ImageTransparentColor = System.Drawing.Color.White;
          this.runToLineToolStripButton.Name = "runToLineToolStripButton";
@@ -1078,7 +1078,7 @@ namespace Firefly.Pyper
          this.Controls.Add(this.TheMenuStrip);
          this.MinimumSize = new System.Drawing.Size(400, 400);
          this.Name = "MainForm";
-         this.Text = "Pyper"; 
+         this.Text = "PipeWrench"; 
          this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
          this.TheMenuStrip.ResumeLayout(false);
          this.TheMenuStrip.PerformLayout();

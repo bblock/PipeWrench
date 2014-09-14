@@ -1,17 +1,17 @@
-.TH PCL 1 "Aug 2013"
+.TH PCL 1 "Sep 2014"
 .\" Please adjust this date whenever revising the manpage.
 .SH NAME
-pcl \- easily transform text into other forms using stackable filters
+pcl \- transform text into other forms using stackable filters
 .SH SYNOPSIS
 .B pcl 
 .BI pipe [arguments]
 .SH DESCRIPTION
 .B pcl
-is the command-line compliment of Pyper.  It's first argument is the
-pipe to be executed.  This argument consists of a sequence of pipe
-commands delimited by the pipe character (|).  The second command 
+is the command-line compliment of PipeWrench. It's first argument is 
+the pipe to be executed. This argument consists of a sequence of pipe
+commands delimited by the pipe character (|). The second command 
 line argument, which is optional, is a collection of arguments that 
-are passed to the pipe itself.  Both of these arguments should be 
+are passed to the pipe itself. Both of these arguments should be 
 enclosed in double quotes so that each is presented as a single 
 argument to PCL.  
 .SH EXAMPLES
@@ -21,17 +21,16 @@ argument to PCL.
 .BR echo "$FILELIST" | pcl "call '$RENAMEFILESPIPE'" >"$TEMPSCRIPT"
 
 .PP
-For a quick tutorial on its use see the README packaged with Pyper.
-For details regarding Pyper's commands, see cmdref.htm.
+For more detailed documentation, see the PipeWrench user guide.
 .SH NOTES
-.B Pyper
+.B PipeWrench
 is limited to working with just the amount of text that it can hold 
 in memory at one time and it isn't intended for use in applications 
-that require handling of more text than will fit in memory.  If you 
+that require handling of more text than will fit in memory. If you 
 require such capability you might want to consider other available
 solutions. 
 .SH SEE ALSO
-.BR pyper (1)
+.BR pipewrench (1)
 .BR awk (1)
 .BR sed (1)
 .SH AUTHOR

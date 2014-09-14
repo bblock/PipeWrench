@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FC881570-198B-409B-87F9-0287694CE7C9}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Firefly.Pyper</RootNamespace>
-    <AssemblyName>Pyper</AssemblyName>
+    <RootNamespace>Firefly.PipeWrench</RootNamespace>
+    <AssemblyName>PipeWrench</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,7 +68,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="PrefWin.cs" />
-    <Compile Include="gtk-gui\Firefly.Pyper.PrefWin.cs" />
+    <Compile Include="gtk-gui\Firefly.PipeWrench.PrefWin.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

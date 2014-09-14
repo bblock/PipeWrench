@@ -1,6 +1,6 @@
 // 
-// Pyper - automate the transformation of text using "stackable" text filters
-// Copyright (C) 2013  Barry Block 
+// PipeWrench - automate the transformation of text using "stackable" text filters
+// Copyright (c) 2014  Barry Block 
 // 
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -18,21 +18,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Firefly.Pyper
+namespace Firefly.PipeWrench
 {
    /// <summary>
    /// Implements a list of pipe compile errors.
    /// </summary>
    public class CompileErrors : IEnumerable
    {
-      private List<PyperCompileException> Items { get; set; }
+      private List<PipeWrenchCompileException> Items { get; set; }
 
       public int Count
       {
          get { return Items.Count; }
       }
 
-      public PyperCompileException this[int i]
+      public PipeWrenchCompileException this[int i]
       {
          get { return Items[i]; }
          set { Items[i] = value; }
@@ -45,10 +45,10 @@ namespace Firefly.Pyper
 
       public CompileErrors()
       {
-         Items = new List<PyperCompileException>();
+         Items = new List<PipeWrenchCompileException>();
       }
 
-      public void Add(PyperCompileException ex)
+      public void Add(PipeWrenchCompileException ex)
       {
          Items.Add(ex);
       }
@@ -58,7 +58,7 @@ namespace Firefly.Pyper
          string result = string.Empty;
          string oldSource = string.Empty;
 
-         foreach (PyperCompileException err in Items)
+         foreach (PipeWrenchCompileException err in Items)
          {
             string source = (string) err.Data["Source"];
 

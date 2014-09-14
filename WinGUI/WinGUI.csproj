@@ -8,8 +8,8 @@
     <ProjectGuid>{10AC3B33-8128-48DB-B153-D06ADBAFCEDD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Firefly.Pyper</RootNamespace>
-    <AssemblyName>Pyper</AssemblyName>
+    <RootNamespace>Firefly.PipeWrench</RootNamespace>
+    <AssemblyName>PipeWrench</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkSubset>
     </TargetFrameworkSubset>

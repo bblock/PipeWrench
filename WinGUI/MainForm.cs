@@ -1,6 +1,6 @@
 // 
-// Pyper - automate the transformation of text using "stackable" text filters
-// Copyright (C) 2013  Barry Block 
+// PipeWrench - automate the transformation of text using "stackable" text filters
+// Copyright (c) 2014  Barry Block 
 // 
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -25,13 +25,13 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 
-namespace Firefly.Pyper
+namespace Firefly.PipeWrench
 {
    public partial class MainForm : Form
    {
       Engine PipeEng;
 
-      string AppName = "Pyper";
+      string AppName = "PipeWrench";
          // The app's name, (used to access config files).
       string PipePath = string.Empty; 
          // The path on-disk to an open/saved pipe.
@@ -165,7 +165,7 @@ namespace Firefly.Pyper
          
          catch (Exception)
          {
-            throw new PyperEngineException("Error loading app configuration (" + 
+            throw new PipeWrenchEngineException("Error loading app configuration (" + 
             ConfigFile + ").");
          }
       }
@@ -584,7 +584,7 @@ namespace Firefly.Pyper
             }
          }
 
-         catch (PyperExecException ex2)
+         catch (PipeWrenchExecException ex2)
          {
             // Pipe execution (runtime) exception.
             
@@ -919,8 +919,8 @@ namespace Firefly.Pyper
                         {
                            // First non-whitespace character is not a delimiter. 
 
-                           PyperCompileException ex = 
-                           new PyperCompileException("Expected beginning of string.");
+                           PipeWrenchCompileException ex = 
+                           new PipeWrenchCompileException("Expected beginning of string.");
                            ex.Data.Add("CharPos", CmdLinePtr);
                            ex.Data.Add("CmdLine", CmdLine);
                            throw ex;
@@ -931,8 +931,8 @@ namespace Firefly.Pyper
                   {
                      // Reached End-Of-String.  Beginning delimiter not found. 
    
-                     PyperCompileException ex = 
-                     new PyperCompileException("Expected string not found.");
+                     PipeWrenchCompileException ex = 
+                     new PipeWrenchCompileException("Expected string not found.");
                      ex.Data.Add("CharPos", CmdLinePtr);
                      ex.Data.Add("CmdLine", CmdLine);
                      throw ex;
@@ -961,8 +961,8 @@ namespace Firefly.Pyper
                   {
                      // Reached End-Of-String.  Ending delimiter not found. 
    
-                     PyperCompileException ex = 
-                     new PyperCompileException("String is not terminated with a quote.");
+                     PipeWrenchCompileException ex = 
+                     new PipeWrenchCompileException("String is not terminated with a quote.");
                      ex.Data.Add("CharPos", CmdLinePtr);
                      ex.Data.Add("CmdLine", CmdLine);
                      throw ex; 
@@ -1308,7 +1308,7 @@ namespace Firefly.Pyper
 //      
 //      private void QuickStartAction(object sender, EventArgs e)
 //      {
-//         System.Diagnostics.Process.Start("http://somewebsite.com/pyper/quickstart.htm");
+//         System.Diagnostics.Process.Start("http://somewebsite.com/PipeWrench/quickstart.htm");
 //      }
 //      
 //      private void VisitHomepageAction(object sender, EventArgs e)

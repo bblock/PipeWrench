@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("WinGUI")]
-[assembly: AssemblyDescription("Pyper Windows GUI")]
+[assembly: AssemblyDescription("PipeWrench Windows GUI")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Firefly Software")]
-[assembly: AssemblyProduct("Pyper")]
+[assembly: AssemblyProduct("PipeWrench")]
 [assembly: AssemblyCopyright("Copyright © Firefly Software 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

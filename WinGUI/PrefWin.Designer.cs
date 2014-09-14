@@ -1,4 +1,4 @@
-namespace Firefly.Pyper
+namespace Firefly.PipeWrench
 {
    partial class PrefWin
    {

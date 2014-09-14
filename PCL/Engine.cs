@@ -1,6 +1,6 @@
 // 
-// Pyper - automate the transformation of text using "stackable" text filters
-// Copyright (C) 2013  Barry Block 
+// PipeWrench - automate the transformation of text using "stackable" text filters
+// Copyright (c) 2014  Barry Block 
 // 
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -18,7 +18,7 @@ using System;
 using System.Xml;
 using System.IO;
 
-namespace Firefly.Pyper
+namespace Firefly.PipeWrench
 {
    /// <summary>
    /// Implements the pipe engine.
@@ -118,7 +118,7 @@ namespace Firefly.Pyper
       {
          if (guiPipe.Contains(Engine.PipeDelim.ToString()))
          {
-            throw new PyperConvException("For a pipe to be exported properly to CLI format the \"" +
+            throw new PipeWrenchConvException("For a pipe to be exported properly to CLI format the \"" +
             Engine.PipeDelim + "\" char. must not exist in pipe comments and if referenced " +
             "in pipe commands, it must be \"escaped\" as \"#7c\".");
          }
@@ -165,90 +165,90 @@ namespace Firefly.Pyper
       /// </summary>
       private void LoadCoreFilters()
       {
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.AddValues", "gtk-execute", "[n...] /In /Wn /Dn /S", "[<char pos>...] /I<ins pos> /W<width> /D<decimals> /S", "adds two or more numbers found in each input line", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.AppendStr", "gtk-execute", "s /P", "<string> /P", "concatenates the supplied string to the end of each line of the input text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.BaseToDec", "gtk-execute", "n /In /Sn /Wn /Z", "<radix> /I<ins char pos> /S<scan char pos> /W<width> /Z", "converts numbers of the given base found in the input text to decimal", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.BottomLines", "gtk-execute", "n", "<no of lines>", "outputs the given number of lines from the end of the text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.Call", "gtk-execute", "s", "<pipe file name> [<arg>...]", "calls a pipe from the currently executing pipe", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.CenterText", "gtk-execute", "n", "<field width>", "centers the input text in a field of the given character width", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.ColumnOrder", "gtk-execute", "n n", "<no of rows> <no of columns>", "a pre-filter to the JoinLines filter which allows columns to be ordered down instead of across", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.CountChars", "gtk-execute", "/In /L /Wn /Z", "/I<char pos> /L /W<width> /Z", "outputs the number of characters", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.CountLines", "gtk-execute", "/Wn /Z", "/W<width> /Z", "outputs the number of lines", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.CullLines", "gtk-execute", "s s /A /I /R", "<begin string> <end string> /A /I /R", "removes groups of lines encountered in the input text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.DecToBase", "gtk-execute", "n /In /Sn /Wn /Z", "<radix> /I<ins char pos> /S<scan char pos> /W<width> /Z", "converts decimal numbers found in the input text to another base", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.DelBlankLines", "gtk-execute", "", "", "removes blank lines from output", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.DelChars", "gtk-execute", "n n [n n...]", "<char pos> <no of chars> [<char pos> <no of chars>...]", "deletes characters from each line at specified character positions", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.DelCharsToStr", "gtk-execute", "s /I /Nn /R", "<string> /I /N<count> /R", "deletes characters until string is encountered", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.DelDuplLines", "gtk-execute", "[n n] /A /Ds /F /I", "[<char pos> <char pos>] /A /D<delimiter> /F /I", "acts on sorted lists removing all duplicate lines", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.DelExtraBlankLines", "gtk-execute", "", "", "removes extraneous blank lines", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.DelExtraBlanks", "gtk-execute", "", "", "removes extraneous blanks from each line", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.DivValues", "gtk-execute", "n n /In /Wn /Dn /S", "<char pos> <char pos> /I<ins char pos> /W<width> /D<decimals> /S", "performs division with two numbers in the input text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.EndIsolate", "gtk-execute", "", "", "used along with IsolateLines to constrain pipe commands to isolated block of text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.ExclLines", "gtk-execute", "s [n n] /I /R", "<string> [<begin char pos> <end char pos>] /I /R", "excludes all lines from output that contain the specified string", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.ExtractLines", "gtk-execute", "s s /A /I /R", "<begin string> <end string> /A /I /R", "extracts groups of lines encountered in the input text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.FoldLines", "gtk-execute", "[n n] /Ds /E /I /Jn /Wn /Z", "[<char pos> <char pos>] /D<delimiter> /E /I /J<join opt> /W<width> /Z", "acts on sorted lists folding duplicate lines", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.GroupLines", "gtk-execute", "s [n n] /I /R", "<string> [<begin char pos> <end char pos>] /I /R", "groups lines together that contain a string", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.InclLines", "gtk-execute", "s [n n] /I /R", "<string> [<begin char pos> <end char pos>] /I /R", "includes all lines in the output that contain the specified string", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.InsLineNo", "gtk-execute", "/Ln /In /Pn /Sn /Wn /Z", "/L<init no> /I<incr> /P<ins pos> /S<no of lines> /W<width> /Z", "inserts a line number at the specified character position of each line", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.InsStr", "gtk-execute", "n s [n s...]", "<char pos> <string> [<char pos> <string>...]", "inserts character strings into each line at specified character positions", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.IsolateLines", "gtk-execute", "s [n n] /Es /I /R", "<string> [<begin char pos> <end char pos>] /Es /I /R", "used along with EndIsolate to constrain pipe commands to isolated block of text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.JoinLines", "gtk-execute", "[n] /P", "[<no of lines>] /P", "joins every n lines of text into a single line of text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.JustCharsLeft", "gtk-execute", "[n n]", "[<begin char pos> <end char pos>]", "left justifies characters", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.JustCharsRight", "gtk-execute", "[n n]", "[<begin char pos> <end char pos>]", "right justifies characters", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.LeftChars", "gtk-execute", "n", "<no of chars>", "returns the given number of characters from the beginning of each line of text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.LinesByPos", "gtk-execute", "n n [n n...] /Sn", "<begin line> <end line> [<begin line> <end line>...] /S<no of sets>", "outputs lines according to their position", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.LowerCase", "gtk-execute", "", "", "converts uppercase characters to lowercase", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.MultValues", "gtk-execute", "[n...] /In /Wn /Dn /S", "[<char pos>...] /I<ins char pos> /W<width> /D<decimals> /S", "multiplies two or more numbers in the input text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.OutDuplLines", "gtk-execute", "[n n] /Ds /I", "[<begin char pos> <end char pos>] /D<delimiter> /I", "outputs lines that are duplicated in the text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.OverlayChars", "gtk-execute", "n s [n s...]", "<char pos> <string> [<char pos> <string>...]", "overlays each line with character strings at specified character positions", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.PadLinesLeft", "gtk-execute", "s /Wn /Sn", "<pad string> /W<pad width> /S<no of sets>", "pads each line on the left to the given character width with the given character string", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.PadLinesRight", "gtk-execute", "s /Wn /Sn", "<pad string> /W<pad width> /S<no of sets>", "pads each line on the right to the given character width with the given character string", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.ParseCSV", "gtk-execute", "/Qs /Ds /B", "/Q<quote> /D<delimiter> /B", "parses quoted, comma-delimited fields onto separate lines", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.ParseWords", "gtk-execute", "/Ds", "/D<delimiter>", "parses the text into individual words", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.QuoteLines", "gtk-execute", "n n [n n...] /B /Ds /On /Qs /Sn /U", "<begin line> <end line> [<begin line> <end line>...] /B /D<delimiter> /O<option> /Q<quote> /S<no of sets> /U", "surrounds lines with quotes", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.ReorderColumns", "gtk-execute", "n n [n n...] /C /Pn", "<char pos> <char pos> [<char pos> <char pos>...] /C /P<char pos>", "re-arranges the column order of each line", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.ReplStr", "gtk-execute", "s s [s s...] /Bn /Ds /En /I /Ps /R", "<find string> <replace string> [<find string> <replace string>...] /B<char pos> /D<delimiter> /E<char pos> /I /P<place holder> /R", "replaces character strings found in the text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.ReverseChars", "gtk-execute", "[n n]", "[<begin char pos> <end char pos>]", "reverses each line of the input text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.RightChars", "gtk-execute", "n", "<no of chars>", "returns the given number of characters from the end of each line of text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.RotCharsLeft", "gtk-execute", "n", "<no of chars>", "rotates characters left given no of places", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.RotCharsRight", "gtk-execute", "n", "<no of chars>", "rotates characters right given no of places", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.RotCharsToStr", "gtk-execute", "s /I /Nn /R", "<string> /I /N<count> /R", "rotates each line until given string is at its beginning", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.SetDebugOn", "gtk-execute", "", "", "configures pipe debugging on", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.SetDebugOff", "gtk-execute", "", "", "configures pipe debugging off", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.ShiftChars", "gtk-execute", "n s [n s...] /I /R", "<char pos> <string> [<char pos> <string>...] /I /R", "shifts text into specified character positions", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.SortLines", "gtk-execute", "/Pn /R", "/P<char pos> /R", "sorts the text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.SpliceFile", "gtk-execute", "s /Ds /M", "<file name> /D<delimiter> /M", "combines text from a text file to the input text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.SplitLines", "gtk-execute", "n [n...]", "<char pos> [<char pos>...]", "splits each line at the given character position(s)", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.StripChars", "gtk-execute", "n", "<no of chars>", "removes a given number of characters from the end of each line of text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.SubValues", "gtk-execute", "n n /In /Wn /Dn /S", "<char pos> <char pos> /I<ins char pos> /W<width> /D<decimals> /S", "subtracts two numbers found on each line of text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.TopLines", "gtk-execute", "n", "<no of lines>", "outputs the given number of lines from the beginning of the input text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.TotalColumns", "gtk-execute", "n [n...] /Wn /Dn /A /S", "<char pos> [<char pos>...] /W<width> /D<decimals> /A /S", "totals columns of numeric values", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.TrimLines", "gtk-execute", "", "", "removes leading and trailing white space from each line of text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.TrimLinesLeft", "gtk-execute", "", "", "removes leading white space from each line of text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.TrimLinesRight", "gtk-execute", "", "", "removes trailing white space from each line of text", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.UpperCase", "gtk-execute", "", "", "converts lowercase characters to uppercase", AssyPath);
-         CmdSpecs.AddCoreSpec("Firefly.Pyper.WrapText", "gtk-execute", "n /Bs /Jn", "<char pos> /B<break chars> /J<% jag allowed>", "wraps text at given character position", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.AddValues", "gtk-execute", "[n...] /In /Wn /Dn /S", "[<char pos>...] /I<ins pos> /W<width> /D<decimals> /S", "adds two or more numbers found in each input line", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.AppendStr", "gtk-execute", "s /P", "<string> /P", "concatenates the supplied string to the end of each line of the input text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.BaseToDec", "gtk-execute", "n /In /Sn /Wn /Z", "<radix> /I<ins char pos> /S<scan char pos> /W<width> /Z", "converts numbers of the given base found in the input text to decimal", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.BottomLines", "gtk-execute", "n", "<no of lines>", "outputs the given number of lines from the end of the text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.Call", "gtk-execute", "s", "<pipe file name> [<arg>...]", "calls a pipe from the currently executing pipe", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.CenterText", "gtk-execute", "n", "<field width>", "centers the input text in a field of the given character width", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.ColumnOrder", "gtk-execute", "n n", "<no of rows> <no of columns>", "a pre-filter to the JoinLines filter which allows columns to be ordered down instead of across", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.CountChars", "gtk-execute", "/In /L /Wn /Z", "/I<char pos> /L /W<width> /Z", "outputs the number of characters", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.CountLines", "gtk-execute", "/Wn /Z", "/W<width> /Z", "outputs the number of lines", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.CullLines", "gtk-execute", "s s /A /I /R", "<begin string> <end string> /A /I /R", "removes groups of lines encountered in the input text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.DecToBase", "gtk-execute", "n /In /Sn /Wn /Z", "<radix> /I<ins char pos> /S<scan char pos> /W<width> /Z", "converts decimal numbers found in the input text to another base", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.DelBlankLines", "gtk-execute", "", "", "removes blank lines from output", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.DelChars", "gtk-execute", "n n [n n...]", "<char pos> <no of chars> [<char pos> <no of chars>...]", "deletes characters from each line at specified character positions", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.DelCharsToStr", "gtk-execute", "s /I /Nn /R", "<string> /I /N<count> /R", "deletes characters until string is encountered", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.DelDuplLines", "gtk-execute", "[n n] /A /Ds /F /I", "[<char pos> <char pos>] /A /D<delimiter> /F /I", "acts on sorted lists removing all duplicate lines", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.DelExtraBlankLines", "gtk-execute", "", "", "removes extraneous blank lines", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.DelExtraBlanks", "gtk-execute", "", "", "removes extraneous blanks from each line", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.DivValues", "gtk-execute", "n n /In /Wn /Dn /S", "<char pos> <char pos> /I<ins char pos> /W<width> /D<decimals> /S", "performs division with two numbers in the input text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.EndIsolate", "gtk-execute", "", "", "used along with IsolateLines to constrain pipe commands to isolated block of text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.ExclLines", "gtk-execute", "s [n n] /I /R", "<string> [<begin char pos> <end char pos>] /I /R", "excludes all lines from output that contain the specified string", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.ExtractLines", "gtk-execute", "s s /A /I /R", "<begin string> <end string> /A /I /R", "extracts groups of lines encountered in the input text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.FoldLines", "gtk-execute", "[n n] /Ds /E /I /Jn /Wn /Z", "[<char pos> <char pos>] /D<delimiter> /E /I /J<join opt> /W<width> /Z", "acts on sorted lists folding duplicate lines", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.GroupLines", "gtk-execute", "s [n n] /I /R", "<string> [<begin char pos> <end char pos>] /I /R", "groups lines together that contain a string", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.InclLines", "gtk-execute", "s [n n] /I /R", "<string> [<begin char pos> <end char pos>] /I /R", "includes all lines in the output that contain the specified string", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.InsLineNo", "gtk-execute", "/Ln /In /Pn /Sn /Wn /Z", "/L<init no> /I<incr> /P<ins pos> /S<no of lines> /W<width> /Z", "inserts a line number at the specified character position of each line", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.InsStr", "gtk-execute", "n s [n s...]", "<char pos> <string> [<char pos> <string>...]", "inserts character strings into each line at specified character positions", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.IsolateLines", "gtk-execute", "s [n n] /Es /I /R", "<string> [<begin char pos> <end char pos>] /Es /I /R", "used along with EndIsolate to constrain pipe commands to isolated block of text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.JoinLines", "gtk-execute", "[n] /P", "[<no of lines>] /P", "joins every n lines of text into a single line of text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.JustCharsLeft", "gtk-execute", "[n n]", "[<begin char pos> <end char pos>]", "left justifies characters", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.JustCharsRight", "gtk-execute", "[n n]", "[<begin char pos> <end char pos>]", "right justifies characters", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.LeftChars", "gtk-execute", "n", "<no of chars>", "returns the given number of characters from the beginning of each line of text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.LinesByPos", "gtk-execute", "n n [n n...] /Sn", "<begin line> <end line> [<begin line> <end line>...] /S<no of sets>", "outputs lines according to their position", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.LowerCase", "gtk-execute", "", "", "converts uppercase characters to lowercase", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.MultValues", "gtk-execute", "[n...] /In /Wn /Dn /S", "[<char pos>...] /I<ins char pos> /W<width> /D<decimals> /S", "multiplies two or more numbers in the input text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.OutDuplLines", "gtk-execute", "[n n] /Ds /I", "[<begin char pos> <end char pos>] /D<delimiter> /I", "outputs lines that are duplicated in the text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.OverlayChars", "gtk-execute", "n s [n s...]", "<char pos> <string> [<char pos> <string>...]", "overlays each line with character strings at specified character positions", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.PadLinesLeft", "gtk-execute", "s /Wn /Sn", "<pad string> /W<pad width> /S<no of sets>", "pads each line on the left to the given character width with the given character string", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.PadLinesRight", "gtk-execute", "s /Wn /Sn", "<pad string> /W<pad width> /S<no of sets>", "pads each line on the right to the given character width with the given character string", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.ParseCSV", "gtk-execute", "/Qs /Ds /B", "/Q<quote> /D<delimiter> /B", "parses quoted, comma-delimited fields onto separate lines", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.ParseWords", "gtk-execute", "/Ds", "/D<delimiter>", "parses the text into individual words", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.QuoteLines", "gtk-execute", "n n [n n...] /B /Ds /On /Qs /Sn /U", "<begin line> <end line> [<begin line> <end line>...] /B /D<delimiter> /O<option> /Q<quote> /S<no of sets> /U", "surrounds lines with quotes", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.ReorderColumns", "gtk-execute", "n n [n n...] /C /Pn", "<char pos> <char pos> [<char pos> <char pos>...] /C /P<char pos>", "re-arranges the column order of each line", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.ReplStr", "gtk-execute", "s s [s s...] /Bn /Ds /En /I /Ps /R", "<find string> <replace string> [<find string> <replace string>...] /B<char pos> /D<delimiter> /E<char pos> /I /P<place holder> /R", "replaces character strings found in the text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.ReverseChars", "gtk-execute", "[n n]", "[<begin char pos> <end char pos>]", "reverses each line of the input text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.RightChars", "gtk-execute", "n", "<no of chars>", "returns the given number of characters from the end of each line of text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.RotCharsLeft", "gtk-execute", "n", "<no of chars>", "rotates characters left given no of places", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.RotCharsRight", "gtk-execute", "n", "<no of chars>", "rotates characters right given no of places", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.RotCharsToStr", "gtk-execute", "s /I /Nn /R", "<string> /I /N<count> /R", "rotates each line until given string is at its beginning", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.SetDebugOn", "gtk-execute", "", "", "configures pipe debugging on", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.SetDebugOff", "gtk-execute", "", "", "configures pipe debugging off", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.ShiftChars", "gtk-execute", "n s [n s...] /I /R", "<char pos> <string> [<char pos> <string>...] /I /R", "shifts text into specified character positions", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.SortLines", "gtk-execute", "/Pn /R", "/P<char pos> /R", "sorts the text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.SpliceFile", "gtk-execute", "s /Ds /M", "<file name> /D<delimiter> /M", "combines text from a text file to the input text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.SplitLines", "gtk-execute", "n [n...]", "<char pos> [<char pos>...]", "splits each line at the given character position(s)", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.StripChars", "gtk-execute", "n", "<no of chars>", "removes a given number of characters from the end of each line of text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.SubValues", "gtk-execute", "n n /In /Wn /Dn /S", "<char pos> <char pos> /I<ins char pos> /W<width> /D<decimals> /S", "subtracts two numbers found on each line of text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.TopLines", "gtk-execute", "n", "<no of lines>", "outputs the given number of lines from the beginning of the input text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.TotalColumns", "gtk-execute", "n [n...] /Wn /Dn /A /S", "<char pos> [<char pos>...] /W<width> /D<decimals> /A /S", "totals columns of numeric values", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.TrimLines", "gtk-execute", "", "", "removes leading and trailing white space from each line of text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.TrimLinesLeft", "gtk-execute", "", "", "removes leading white space from each line of text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.TrimLinesRight", "gtk-execute", "", "", "removes trailing white space from each line of text", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.UpperCase", "gtk-execute", "", "", "converts lowercase characters to uppercase", AssyPath);
+         CmdSpecs.AddCoreSpec("Firefly.PipeWrench.WrapText", "gtk-execute", "n /Bs /Jn", "<char pos> /B<break chars> /J<% jag allowed>", "wraps text at given character position", AssyPath);
 
          // Consider adding the following filters:
          
-         //CmdSpecs.AddCoreSpec("Firefly.Pyper.LinesInRange", "gtk-execute", "s s /Pn", "<begin string> <end string> /P<char pos>", "includes all lines in the output that sort within a specified range", AssyPath);
-         //CmdSpecs.AddCoreSpec("Firefly.Pyper.ProxLines", "gtk-execute", "s /Bn /An /C /I /R", "<string> /B<no of lines> /A<no of lines> /C /I /R", "extracts lines of text from the input stream that are near one another", AssyPath);
+         //CmdSpecs.AddCoreSpec("Firefly.PipeWrench.LinesInRange", "gtk-execute", "s s /Pn", "<begin string> <end string> /P<char pos>", "includes all lines in the output that sort within a specified range", AssyPath);
+         //CmdSpecs.AddCoreSpec("Firefly.PipeWrench.ProxLines", "gtk-execute", "s /Bn /An /C /I /R", "<string> /B<no of lines> /A<no of lines> /C /I /R", "extracts lines of text from the input stream that are near one another", AssyPath);
 
          // The following TEXTools filters are obsolete:
 
-         //CmdSpecs.AddCoreSpec("Firefly.Pyper.Const", "", "s s [n n] /I /R", "<begin string> <end string> [<begin char pos> <end char pos>] /I /R", "alias for the Isolate command", AssyPath);
-         //CmdSpecs.AddCoreSpec("Firefly.Pyper.EndConst", "", "", "", "alias for the EndIsolate command", AssyPath);
-         //CmdSpecs.AddCoreSpec("Firefly.Pyper.GroupLinesByPos", "", "s n /I /R", "<string> <char pos> /I /R", "groups lines together that contain a given string at the character position specified", AssyPath);
-         //CmdSpecs.AddCoreSpec("Firefly.Pyper.IsolateLinesByPos", "", "s n /I /R", "<string> <char pos> /I /R", "used with EndIsolate to constrain pipe commands to isolated block of text", AssyPath);
-         //CmdSpecs.AddCoreSpec("Firefly.Pyper.IsolateLines", "", "s s [n n] /I /R", "<begin string> <end string> [<begin char pos> <end char pos>] /I /R", "used with EndIsolate to constrain pipe commands to isolated block of text", AssyPath);
-         //CmdSpecs.AddCoreSpec("Firefly.Pyper.LinesInRange", "gtk-execute", "s s /Pn", "<begin string> <end string> /P<char pos>", "includes all lines in the output that sort within a specified range", AssyPath);
-         //CmdSpecs.AddCoreSpec("Firefly.Pyper.OutUniqueLines", "", "[n n] /I", "[<begin char pos> <end char pos>] /I", "acts on sorted lists returning all unique lines", AssyPath);
-         //CmdSpecs.AddCoreSpec("Firefly.Pyper.PadTextBottom", "gtk-execute", "n s", "<no of lines> <string>", "adds lines to the end of the text until the given number of lines is reached", AssyPath);
-         //CmdSpecs.AddCoreSpec("Firefly.Pyper.RotCharsLeftStr", "", "n s [n n] /Nn /I /R /S /Qs", "<char pos> <string> [<begin char pos> <end char pos>] /N<count> /I /R /S /Q<quote>", "rotates characters left until text at character position matches string", AssyPath);
-         //CmdSpecs.AddCoreSpec("Firefly.Pyper.RotCharsRightStr", "", "n s [n n] /Nn /I /R /S /Qs", "<char pos> <string> [<begin char pos> <end char pos>] /N<count> /I /R /S /Q<quote>", "rotates characters right until text at character position matches string", AssyPath);
-         //CmdSpecs.AddCoreSpec("Firefly.Pyper.Ruler", "", "/Ln /E", "/L<length> /E", "displays a ruler", AssyPath);
-         //CmdSpecs.AddCoreSpec("Firefly.Pyper.TrimTextBottom", "", "", "", "removes all trailing blank lines at the end of the input text", AssyPath);
-         //CmdSpecs.AddCoreSpec("Firefly.Pyper.TrimTextTop", "", "", "", "removes all leading blank lines at the top of the input text", AssyPath);
+         //CmdSpecs.AddCoreSpec("Firefly.PipeWrench.Const", "", "s s [n n] /I /R", "<begin string> <end string> [<begin char pos> <end char pos>] /I /R", "alias for the Isolate command", AssyPath);
+         //CmdSpecs.AddCoreSpec("Firefly.PipeWrench.EndConst", "", "", "", "alias for the EndIsolate command", AssyPath);
+         //CmdSpecs.AddCoreSpec("Firefly.PipeWrench.GroupLinesByPos", "", "s n /I /R", "<string> <char pos> /I /R", "groups lines together that contain a given string at the character position specified", AssyPath);
+         //CmdSpecs.AddCoreSpec("Firefly.PipeWrench.IsolateLinesByPos", "", "s n /I /R", "<string> <char pos> /I /R", "used with EndIsolate to constrain pipe commands to isolated block of text", AssyPath);
+         //CmdSpecs.AddCoreSpec("Firefly.PipeWrench.IsolateLines", "", "s s [n n] /I /R", "<begin string> <end string> [<begin char pos> <end char pos>] /I /R", "used with EndIsolate to constrain pipe commands to isolated block of text", AssyPath);
+         //CmdSpecs.AddCoreSpec("Firefly.PipeWrench.LinesInRange", "gtk-execute", "s s /Pn", "<begin string> <end string> /P<char pos>", "includes all lines in the output that sort within a specified range", AssyPath);
+         //CmdSpecs.AddCoreSpec("Firefly.PipeWrench.OutUniqueLines", "", "[n n] /I", "[<begin char pos> <end char pos>] /I", "acts on sorted lists returning all unique lines", AssyPath);
+         //CmdSpecs.AddCoreSpec("Firefly.PipeWrench.PadTextBottom", "gtk-execute", "n s", "<no of lines> <string>", "adds lines to the end of the text until the given number of lines is reached", AssyPath);
+         //CmdSpecs.AddCoreSpec("Firefly.PipeWrench.RotCharsLeftStr", "", "n s [n n] /Nn /I /R /S /Qs", "<char pos> <string> [<begin char pos> <end char pos>] /N<count> /I /R /S /Q<quote>", "rotates characters left until text at character position matches string", AssyPath);
+         //CmdSpecs.AddCoreSpec("Firefly.PipeWrench.RotCharsRightStr", "", "n s [n n] /Nn /I /R /S /Qs", "<char pos> <string> [<begin char pos> <end char pos>] /N<count> /I /R /S /Q<quote>", "rotates characters right until text at character position matches string", AssyPath);
+         //CmdSpecs.AddCoreSpec("Firefly.PipeWrench.Ruler", "", "/Ln /E", "/L<length> /E", "displays a ruler", AssyPath);
+         //CmdSpecs.AddCoreSpec("Firefly.PipeWrench.TrimTextBottom", "", "", "", "removes all trailing blank lines at the end of the input text", AssyPath);
+         //CmdSpecs.AddCoreSpec("Firefly.PipeWrench.TrimTextTop", "", "", "", "removes all leading blank lines at the top of the input text", AssyPath);
 
          // The following filters are no longer compatible with TEXTools:
 
@@ -416,7 +416,7 @@ namespace Firefly.Pyper
 
          catch (Exception e)
          {
-            throw new PyperEngineException("Could not create/load engine configuration." +
+            throw new PipeWrenchEngineException("Could not create/load engine configuration." +
             System.Environment.NewLine + e.Message);
          }
       }
@@ -450,7 +450,7 @@ namespace Firefly.Pyper
          else
          {
             if ((name == null) || (name == string.Empty)) name = "<unknown>";
-            throw new PyperCompileException(System.Environment.NewLine +
+            throw new PipeWrenchCompileException(System.Environment.NewLine +
             "Internal error. Pipe passed to RunPipe, (" + name + "), " +
             "failed compile: " + System.Environment.NewLine + System.Environment.NewLine +
             thePipe.Errors.ToString());

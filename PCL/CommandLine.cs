@@ -1,6 +1,6 @@
 // 
-// Pyper - automate the transformation of text using "stackable" text filters
-// Copyright (C) 2013  Barry Block 
+// PipeWrench - automate the transformation of text using "stackable" text filters
+// Copyright (c) 2014  Barry Block 
 // 
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -17,7 +17,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Firefly.Pyper
+namespace Firefly.PipeWrench
 {
    /// <summary>
    /// Implements a command line and its associated parser.
@@ -312,7 +312,7 @@ namespace Firefly.Pyper
                         case "E":
 
                            // This escape isn't recognized as a standard. I've added it in order
-                           // to represent an end-of-line sequence regardless of what system pyper
+                           // to represent an end-of-line sequence regardless of what system PipeWrench
                            // is executing on.
 
                            result += System.Environment.NewLine;
@@ -373,7 +373,7 @@ namespace Firefly.Pyper
                   {
                      // Abrupt end-of-data.
 
-                     PyperCompileException ex = new PyperCompileException(
+                     PipeWrenchCompileException ex = new PipeWrenchCompileException(
                      "Abrupt end-of-data.");
                      ex.Data.Add("Offset", charPos-1);
                      throw ex;
@@ -402,7 +402,7 @@ namespace Firefly.Pyper
                      {
                         // Character is not a hex digit.
 
-                        PyperCompileException ex = new PyperCompileException(
+                        PipeWrenchCompileException ex = new PipeWrenchCompileException(
                         "Hex digit expected.");
                         ex.Data.Add("Offset", charPos-1);
                         throw ex;
@@ -412,7 +412,7 @@ namespace Firefly.Pyper
                   {
                      // Abrupt end-of-data.
 
-                     PyperCompileException ex = new PyperCompileException(
+                     PipeWrenchCompileException ex = new PipeWrenchCompileException(
                      "Abrupt end-of-data.");
                      ex.Data.Add("Offset", charPos-1);
                      throw ex;
@@ -443,7 +443,7 @@ namespace Firefly.Pyper
                      {
                         // Character is not a hex digit.
 
-                        PyperCompileException ex = new PyperCompileException(
+                        PipeWrenchCompileException ex = new PipeWrenchCompileException(
                         "Hex digit expected.");
                         ex.Data.Add("Offset", charPos-1);
                         throw ex;
@@ -453,7 +453,7 @@ namespace Firefly.Pyper
                   {
                      // Abrupt end-of-data.
 
-                     PyperCompileException ex = new PyperCompileException(
+                     PipeWrenchCompileException ex = new PipeWrenchCompileException(
                      "Abrupt end-of-data.");
                      ex.Data.Add("Offset", charPos-1);
                      throw ex;
@@ -541,7 +541,7 @@ namespace Firefly.Pyper
                         {
                            // # or hex digit expected.
 
-                           PyperCompileException ex = new PyperCompileException("# or hex digit expected.");
+                           PipeWrenchCompileException ex = new PipeWrenchCompileException("# or hex digit expected.");
                            ex.Data.Add("Offset", charPos-1);
                            throw ex;
                         }
@@ -551,8 +551,8 @@ namespace Firefly.Pyper
                   {
                      // Abrupt end-of-data.
 
-                     PyperCompileException ex =
-                     new PyperCompileException("# or hex digit expected but end-of-string encountered.");
+                     PipeWrenchCompileException ex =
+                     new PipeWrenchCompileException("# or hex digit expected but end-of-string encountered.");
                      ex.Data.Add("Offset", charPos);
                      throw ex;
                   }
@@ -579,7 +579,7 @@ namespace Firefly.Pyper
                      {
                         // Hex digit expected.
 
-                        PyperCompileException ex = new PyperCompileException("Hex digit expected.");
+                        PipeWrenchCompileException ex = new PipeWrenchCompileException("Hex digit expected.");
                         ex.Data.Add("Offset", charPos-1);
                         throw ex;
                      }
@@ -588,8 +588,8 @@ namespace Firefly.Pyper
                   {
                      // Abrupt end-of-data.
 
-                     PyperCompileException ex =
-                     new PyperCompileException("Hex digit expected but end-of-string encountered.");
+                     PipeWrenchCompileException ex =
+                     new PipeWrenchCompileException("Hex digit expected but end-of-string encountered.");
                      ex.Data.Add("Offset", charPos);
                      throw ex;
                   }
@@ -647,8 +647,8 @@ namespace Firefly.Pyper
                         {
                            // First non-whitespace character is not a delimiter.
 
-                           PyperCompileException ex =
-                           new PyperCompileException("Expected beginning of string.");
+                           PipeWrenchCompileException ex =
+                           new PipeWrenchCompileException("Expected beginning of string.");
                            ex.Data.Add("CharPos", CmdLinePtr);
                            ex.Data.Add("CmdLine", CmdLine);
                            throw ex;
@@ -659,8 +659,8 @@ namespace Firefly.Pyper
                   {
                      // Reached End-Of-String.  Beginning delimiter not found.
 
-                     PyperCompileException ex =
-                     new PyperCompileException("Expected string not found.");
+                     PipeWrenchCompileException ex =
+                     new PipeWrenchCompileException("Expected string not found.");
                      ex.Data.Add("CharPos", CmdLinePtr);
                      ex.Data.Add("CmdLine", CmdLine);
                      throw ex;
@@ -689,8 +689,8 @@ namespace Firefly.Pyper
                   {
                      // Reached End-Of-String.  Ending delimiter not found.
 
-                     PyperCompileException ex =
-                     new PyperCompileException("String is not terminated with a quote.");
+                     PipeWrenchCompileException ex =
+                     new PipeWrenchCompileException("String is not terminated with a quote.");
                      ex.Data.Add("CharPos", CmdLinePtr);
                      ex.Data.Add("CmdLine", CmdLine);
                      throw ex;
@@ -803,8 +803,8 @@ namespace Firefly.Pyper
                      }
                      catch (Exception)
                      {
-                        PyperCompileException ex =
-                        new PyperCompileException("Integer value is invalid");
+                        PipeWrenchCompileException ex =
+                        new PipeWrenchCompileException("Integer value is invalid");
                         ex.Data.Add("CharPos", CmdLinePtr);
                         ex.Data.Add("CmdLine", this.Text);
                         throw ex;
@@ -814,8 +814,8 @@ namespace Firefly.Pyper
                   {
                      // The first character is not part of an integer.
 
-                     PyperCompileException ex =
-                     new PyperCompileException("Expected an integer immediately following this switch.");
+                     PipeWrenchCompileException ex =
+                     new PipeWrenchCompileException("Expected an integer immediately following this switch.");
                      ex.Data.Add("CharPos", CmdLinePtr);
                      ex.Data.Add("CmdLine", this.Text);
                      throw ex;
@@ -838,7 +838,7 @@ namespace Firefly.Pyper
                         {
                            Value = XlatEscapes(tempStr);
                         }
-                        catch (PyperCompileException ex)
+                        catch (PipeWrenchCompileException ex)
                         {
                            ex.Data.Add("CmdLine", this.Text);
                            ex.Data["CharPos"] = CmdLinePtr - tempStr.Length + (int) ex.Data["Offset"];
@@ -858,8 +858,8 @@ namespace Firefly.Pyper
                   {
                      // The first character is not a quote.
 
-                     PyperCompileException ex =
-                     new PyperCompileException("Expected a string immediately following this switch.");
+                     PipeWrenchCompileException ex =
+                     new PipeWrenchCompileException("Expected a string immediately following this switch.");
                      ex.Data.Add("CharPos", CmdLinePtr);
                      ex.Data.Add("CmdLine", this.Text);
                      throw ex;
@@ -881,7 +881,7 @@ namespace Firefly.Pyper
                   {
                      // Switch is invalid.
 
-                     PyperCompileException ex = new PyperCompileException("Boolean switch is invalid.");
+                     PipeWrenchCompileException ex = new PipeWrenchCompileException("Boolean switch is invalid.");
                      ex.Data.Add("CharPos", CmdLinePtr);
                      ex.Data.Add("CmdLine", this.Text);
                      throw ex;
@@ -894,7 +894,7 @@ namespace Firefly.Pyper
          {
             // The switch was not expected.
 
-            PyperCompileException ex = new PyperCompileException("Switch is unexpected.");
+            PipeWrenchCompileException ex = new PipeWrenchCompileException("Switch is unexpected.");
             ex.Data.Add("CharPos", CmdLinePtr);
             ex.Data.Add("CmdLine", this.Text);
             throw ex;
@@ -981,7 +981,7 @@ namespace Firefly.Pyper
 
                         // Invalid template character.
 
-                        throw new PyperEngineException("Template is invalid.");
+                        throw new PipeWrenchEngineException("Template is invalid.");
                   }
                   break;
 
@@ -1016,7 +1016,7 @@ namespace Firefly.Pyper
                      }
                      catch (Exception)
                      {
-                        PyperCompileException ex = new PyperCompileException("Integer value is invalid.");
+                        PipeWrenchCompileException ex = new PipeWrenchCompileException("Integer value is invalid.");
                         ex.Data.Add("CharPos", CmdLinePtr);
                         ex.Data.Add("CmdLine", this.Text);
                         throw ex;
@@ -1040,7 +1040,7 @@ namespace Firefly.Pyper
                      {
                         // String encountered instead of an integer.
 
-                        PyperCompileException ex = new PyperCompileException("Integer expected for this parameter.");
+                        PipeWrenchCompileException ex = new PipeWrenchCompileException("Integer expected for this parameter.");
                         ex.Data.Add("CharPos", CmdLinePtr);
                         ex.Data.Add("CmdLine", this.Text);
                         throw ex;
@@ -1059,8 +1059,8 @@ namespace Firefly.Pyper
                            {
                               // Expected integer value was not found.
 
-                              PyperCompileException ex =
-                              new PyperCompileException("Expected an integer parameter but switch was encountered.");
+                              PipeWrenchCompileException ex =
+                              new PipeWrenchCompileException("Expected an integer parameter but switch was encountered.");
                               ex.Data.Add("CharPos", CmdLinePtr);
                               ex.Data.Add("CmdLine", this.Text);
                               throw ex;
@@ -1080,8 +1080,8 @@ namespace Firefly.Pyper
                               {
                                  // Expected integer value was not found.
 
-                                 PyperCompileException ex =
-                                 new PyperCompileException("Expected an integer parameter but end-of-line was encountered.");
+                                 PipeWrenchCompileException ex =
+                                 new PipeWrenchCompileException("Expected an integer parameter but end-of-line was encountered.");
                                  ex.Data.Add("CharPos", CmdLinePtr);
                                  ex.Data.Add("CmdLine", this.Text);
                                  throw ex;
@@ -1097,8 +1097,8 @@ namespace Firefly.Pyper
                               {
                                  // Expected integer value was not found.
 
-                                 PyperCompileException ex =
-                                 new PyperCompileException("Integer expected for this parameter.");
+                                 PipeWrenchCompileException ex =
+                                 new PipeWrenchCompileException("Integer expected for this parameter.");
                                  ex.Data.Add("CharPos", CmdLinePtr);
                                  ex.Data.Add("CmdLine", this.Text);
                                  throw ex;
@@ -1132,7 +1132,7 @@ namespace Firefly.Pyper
                            Token = XlatEscapes(tempStr);
                         }
 
-                        catch (PyperCompileException ex)
+                        catch (PipeWrenchCompileException ex)
                         {
                            ex.Data.Add("CmdLine", this.Text);
                            ex.Data["CharPos"] = CmdLinePtr - tempStr.Length + (int) ex.Data["Offset"];
@@ -1164,8 +1164,8 @@ namespace Firefly.Pyper
                      {
                         // An integer was encountered.
 
-                        PyperCompileException ex =
-                        new PyperCompileException("String expected for this parameter.");
+                        PipeWrenchCompileException ex =
+                        new PipeWrenchCompileException("String expected for this parameter.");
                         ex.Data.Add("CharPos", CmdLinePtr);
                         ex.Data.Add("CmdLine", this.Text);
                         throw ex;
@@ -1182,8 +1182,8 @@ namespace Firefly.Pyper
                            }
                            else
                            {
-                              PyperCompileException ex =
-                              new PyperCompileException("Expected a string parameter but switch was encountered.");
+                              PipeWrenchCompileException ex =
+                              new PipeWrenchCompileException("Expected a string parameter but switch was encountered.");
                               ex.Data.Add("CharPos", CmdLinePtr);
                               ex.Data.Add("CmdLine", this.Text);
                               throw ex;
@@ -1203,8 +1203,8 @@ namespace Firefly.Pyper
                               {
                                  // Expected string value was not found.
 
-                                 PyperCompileException ex =
-                                 new PyperCompileException("Expected a string parameter but end-of-line was encountered.");
+                                 PipeWrenchCompileException ex =
+                                 new PipeWrenchCompileException("Expected a string parameter but end-of-line was encountered.");
                                  ex.Data.Add("CharPos", CmdLinePtr);
                                  ex.Data.Add("CmdLine", this.Text);
                                  throw ex;
@@ -1220,8 +1220,8 @@ namespace Firefly.Pyper
                               {
                                  // Expected string value was not found.
 
-                                 PyperCompileException ex =
-                                 new PyperCompileException("String expected for this parameter.");
+                                 PipeWrenchCompileException ex =
+                                 new PipeWrenchCompileException("String expected for this parameter.");
                                  ex.Data.Add("CharPos", CmdLinePtr);
                                  ex.Data.Add("CmdLine", this.Text);
                                  throw ex;
@@ -1249,8 +1249,8 @@ namespace Firefly.Pyper
 
                   catch (Exception)
                   {
-                     PyperTemplateException ex =
-                     new PyperTemplateException(
+                     PipeWrenchTemplateException ex =
+                     new PipeWrenchTemplateException(
                      "Template error: Repeating group (...) is only allowed inside \"[]\".");
                      ex.Data.Add("CharPos", savedTemplPtr);
                      ex.Data.Add("Template", Template);
@@ -1287,8 +1287,8 @@ namespace Firefly.Pyper
                         }
                         else
                         {
-                           PyperCompileException ex =
-                           new PyperCompileException("Parameter or switch is extraneous.");
+                           PipeWrenchCompileException ex =
+                           new PipeWrenchCompileException("Parameter or switch is extraneous.");
                            ex.Data.Add("CharPos", CmdLinePtr);
                            ex.Data.Add("CmdLine", this.Text);
                            throw ex;
@@ -1321,8 +1321,8 @@ namespace Firefly.Pyper
                      // character, (/) was found without a succeeding
                      // ID character.
 
-                     PyperCompileException ex =
-                     new PyperCompileException("Switch is incomplete.");
+                     PipeWrenchCompileException ex =
+                     new PipeWrenchCompileException("Switch is incomplete.");
                      ex.Data.Add("CharPos", CmdLinePtr);
                      ex.Data.Add("CmdLine", this.Text);
                      throw ex;
@@ -1362,8 +1362,8 @@ namespace Firefly.Pyper
                         break;
 
                      default:
-                        PyperCompileException ex =
-                        new PyperCompileException("A switch was expected.");
+                        PipeWrenchCompileException ex =
+                        new PipeWrenchCompileException("A switch was expected.");
                         ex.Data.Add("CharPos", CmdLinePtr);
                         ex.Data.Add("CmdLine", this.Text);
                         throw ex; 
@@ -1372,7 +1372,7 @@ namespace Firefly.Pyper
                   break;
 
                default:
-                  throw new PyperEngineException(MethodName +
+                  throw new PipeWrenchEngineException(MethodName +
                   ": Invalid state (" + State.ToString() + ")."); 
             }
          }

@@ -71,7 +71,7 @@ Global
 		$6.inheritsSet = Mono
 		$6.inheritsScope = application/xml
 		$6.scope = application/xml
-		description = Pyper
+		description = PipeWrench
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

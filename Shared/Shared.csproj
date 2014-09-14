@@ -8,7 +8,7 @@
     <ProjectGuid>{C91CF0C4-6553-4537-AAC9-E820AE30EEF0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Firefly.Pyper</RootNamespace>
+    <RootNamespace>Firefly.PipeWrench</RootNamespace>
     <AssemblyName>Shared</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkSubset>

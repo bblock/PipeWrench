@@ -1,2 +1,2 @@
 #!/bin/sh
-mono "/usr/lib/pyper/Pyper.exe" "$@"
+mono "/usr/lib/pipewrench/PipeWrench.exe" "$@"

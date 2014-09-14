@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B7BEDE1A-9EF9-452B-9329-D7CC56A2361B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Firefly.Pyper</RootNamespace>
+    <RootNamespace>Firefly.PipeWrench</RootNamespace>
     <AssemblyName>PCL</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

@@ -1,6 +1,6 @@
 // 
-// Pyper - automate the transformation of text using "stackable" text filters
-// Copyright (C) 2013  Barry Block 
+// PipeWrench - automate the transformation of text using "stackable" text filters
+// Copyright (c) 2014  Barry Block 
 // 
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -19,12 +19,12 @@ using System.IO;
 using System.Xml;
 using System.Collections.Generic;
 
-namespace Firefly.Pyper
+namespace Firefly.PipeWrench
 {
    class Program
    {
       static string version = typeof(Program).Assembly.GetName().Version.ToString();
-      static string appName = "Pyper"; 
+      static string appName = "PipeWrench"; 
          // The app's name, (used to access config files).
       static string cmdLineAppName = "pcl";
          // The command-line program's name.
@@ -237,7 +237,7 @@ namespace Firefly.Pyper
                }
             }
             
-            catch (PyperExecException ex)
+            catch (PipeWrenchExecException ex)
             {
                // Pipe execution (runtime) exception.
                
@@ -354,12 +354,12 @@ namespace Firefly.Pyper
                PaginateText(tempStr, headerStr, footerStr);
             }
             
-            catch (PyperCompileException ex)
+            catch (PipeWrenchCompileException ex)
             {
                Console.Error.WriteLine(ex.Message);
             }
       
-            catch (PyperExecException ex)
+            catch (PipeWrenchExecException ex)
             {
                // Pipe execution (runtime) exception.
                

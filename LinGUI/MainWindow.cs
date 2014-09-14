@@ -1,6 +1,6 @@
 // 
-// Pyper - automate the transformation of text using "stackable" text filters
-// Copyright (C) 2013  Barry Block 
+// PipeWrench - automate the transformation of text using "stackable" text filters
+// Copyright (c) 2014  Barry Block 
 // 
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
@@ -21,13 +21,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Gtk;
 using System.Xml;
-using Firefly.Pyper;
+using Firefly.PipeWrench;
 
 public partial class MainWindow: Gtk.Window
 {
    Engine PipeEng;
       // The pipe engine.
-   string AppName = "Pyper"; 
+   string AppName = "PipeWrench"; 
       // The app's name, (used to access config files).
    string PipePath = string.Empty; 
       // The path on-disk to an open/saved pipe.
@@ -171,7 +171,7 @@ public partial class MainWindow: Gtk.Window
       
       catch (Exception)
       {
-         throw new PyperEngineException("Could not create/load app. configuration (" + 
+         throw new PipeWrenchEngineException("Could not create/load app. configuration (" + 
          ConfigFile + ").");
       }
    }
@@ -631,7 +631,7 @@ public partial class MainWindow: Gtk.Window
          TheClipboard.Text = Engine.GuiPipeToCli(text);
       }
       
-      catch (PyperConvException ex)
+      catch (PipeWrenchConvException ex)
       {
          MessageDialog WarningMesgDlg = new MessageDialog (this, 
          DialogFlags.DestroyWithParent, MessageType.Warning, 
@@ -749,7 +749,7 @@ public partial class MainWindow: Gtk.Window
          }
       }
       
-      catch (PyperTemplateException ex)
+      catch (PipeWrenchTemplateException ex)
       {
          string tempStr = (string) ex.Data["Template"] + System.Environment.NewLine;
          
@@ -765,7 +765,7 @@ public partial class MainWindow: Gtk.Window
          TextNotebook.CurrentPage = 2;
       }
       
-      catch (PyperExecException ex)
+      catch (PipeWrenchExecException ex)
       {
          // Pipe execution (runtime) exception.
          
@@ -1260,26 +1260,7 @@ public partial class MainWindow: Gtk.Window
 
    protected virtual void UserGuide_OnActivated (object sender, System.EventArgs e)
    {
-      MessageDialog MesgDlg = null;
-      
-      try
-      {
-         MesgDlg = new MessageDialog (this, DialogFlags.DestroyWithParent, 
-         MessageType.Info, ButtonsType.Ok, "Sorry, but the user guide is not yet available.  Please " +
-         "see the README file for an introduction to using " + AppName + " and the command reference " +
-         "for specific information regarding " + AppName + " commands.");
-         MesgDlg.Run();
-      }
-        
-      finally
-      {
-         MesgDlg.Destroy();
-      }
-   }
-
-   protected virtual void CommandReference_OnActivated (object sender, System.EventArgs e)
-   {
-      ProcessStartInfo startInfo = new ProcessStartInfo("cmdref.htm");
+      ProcessStartInfo startInfo = new ProcessStartInfo("userguide.pdf");
       startInfo.WorkingDirectory = AssyFolder;
       Process.Start(startInfo);
    }
@@ -1299,7 +1280,7 @@ public partial class MainWindow: Gtk.Window
 //
 //   protected virtual void QuickStartTutorial_OnActivated (object sender, System.EventArgs e)
 //   {
-//      System.Diagnostics.Process.Start("http://somewebsite.com/pyper/quickstart.htm");
+//      System.Diagnostics.Process.Start("http://somewebsite.com/PipeWrench/quickstart.htm");
 //   }
 //
 //   protected virtual void VisitOurHomepage_OnActivated (object sender, System.EventArgs e)
