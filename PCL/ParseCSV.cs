@@ -50,14 +50,12 @@ namespace Firefly.PipeWrench
          string Token;
          char QuoteChar;
          char DelimiterChar;
-         bool UsingBackslashQuote;
          int State;
          char Ch;
          bool Done;
 
          string QuoteStr = CmdLine.GetStrSwitch("/Q", "\"");
          string DelimiterStr = CmdLine.GetStrSwitch("/D", ",");
-         UsingBackslashQuote = CmdLine.GetBooleanSwitch("/B");
 
          if (QuoteStr == string.Empty) ThrowException("String cannot be empty.", CmdLine.GetSwitchPos("/Q"));
          if (DelimiterStr == string.Empty) ThrowException("String cannot be empty.", CmdLine.GetSwitchPos("/D"));
@@ -116,17 +114,7 @@ namespace Firefly.PipeWrench
 
                            if (Ch == QuoteChar)
                            {
-                              if (UsingBackslashQuote)
-                                 State = 7;
-                              else
-                                 State = 3;
-                           }
-                           else
-                           {
-                              if ((Ch == '\b') && UsingBackslashQuote)
-                              {
-                                 State = 6;
-                              }
+                              State = 3;
                            }
 
                            break;
@@ -187,15 +175,6 @@ namespace Firefly.PipeWrench
 
                            break;
 
-                        case 6:
-                           Token += Ch;
-                           State = 2;
-                           break;
-
-                        case 7:
-                           if (Ch == DelimiterChar) State = 4;
-                           break;
-
                         case 8:
                            if (Ch == DelimiterChar)
                            {
@@ -246,7 +225,7 @@ namespace Firefly.PipeWrench
 
       public ParseCSV(IFilter host) : base(host)
       {
-         Template = "/Qs /Ds /B";
+         Template = "/Qs /Ds";
       }
    }
 }
