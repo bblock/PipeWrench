@@ -1,0 +1,185 @@
+#!/bin/bash
+#
+# files2sync - report mismatched files between a workstation and "backup server"
+#
+# This script is a companion to the syncfiles script. It lists all files in the given path beneath your 
+# home folder whose sizes or modified times differ from the corresponding files located on a remote 
+# "backup server". It's intended for use on a Linux workstation to help identify those files that have 
+# been modified and thus need to be copied to or updated on the backup server (using syncfiles).
+#
+# Each line output by this script--either prefixed with "C" or "S" depending on which computer (client or
+# server) it originated from--represents a file that either doesn't exist on both computers, or a file
+# whose size or modified time doesn't match (indicating that one of the two corresponding files has been
+# modified). 
+#
+# Like its companion syncfiles, this script is only run on a "client"; however, a computer can act both 
+# as a client and a server at the same time. Such a "mutual" configuration could be established between 
+# two computers on a home network to keep each computer backed up to the other one.
+#
+# This script is best run by dragging a folder onto a .desktop file or "launcher" that has been created
+# to run the script. Aside from being convenient, this mode of execution ensures that the <source>
+# argument is always provided as an absolute, fully qualified path.
+#
+# Note that any file located in a subfolder whose name begins with "trash" (regardless of case) will 
+# be ignored and will not be reported. Likewise, temporary files whose names end with a tilde character 
+# (~) will also be ignored.
+#
+# DEPENDENCIES / ASSUMPTIONS
+#
+# You have access to another computer on your home network that you can use as a "backup server". This 
+# could be a "headless" server running in your office closet, your spouse's laptop or even your Linux 
+# based HTPC (assuming in each case that enough disk space is available).
+#
+# You have customized the script for your own use (see BUSIP, USERNAME and TEXTEDITOR below).
+#
+# PipeWrench (pcl) must be installed on the workstation (client) where this script is run. PipeWrench 
+# source is available on GitHub (https://github.com/bblock/PipeWrench). A Ubuntu PPA is also available 
+# (see https://launchpad.net/~bwb-s/+archive/ubuntu/pipewrench).
+#
+# You must have the same user name (thus home folder name) on both the client and server computers.
+#
+# The server must be accessible to the client via SSH (meaning that SSH must be installed on both systems). 
+#
+###########################################################################################################
+
+if [ $# -eq 1 ] ; then
+
+   # All arguments are provided.
+
+   SOURCE="$1"
+      # The absolute path name of a folder beneath /home/<username> to check for unmatched files. 
+   DEBUGGING=false
+      # Set "true" to gain access to temporary files for viewing intermediate text results.
+   BUSIP="192.168.1.???"
+      # The backup server's IP address. BE SURE TO SET THIS TO YOUR SERVER'S IP!
+   USERNAME="???"
+      # The user on both the client and server computers. BE SURE TO SET THIS TO YOUR USERNAME!
+   TEXTEDITOR="???"
+      # The editor to invoke to display results. BE SURE TO SET THIS TO YOUR PREFERRED EDITOR!
+   EXITCODE=0
+      # Assume successful execution.
+
+   # Create temporary files:
+
+   TEMPFILE1=$(mktemp)
+   TEMPFILE2=$(mktemp)
+   TEMPFILE3=$(mktemp)
+   TEMPFILE4=$(mktemp)
+   TEMPFILE5=$(mktemp)
+
+   # Display "header" info:
+
+   echo -e "files2sync rel 1.0\n" | tee "$TEMPFILE4"
+   echo -e "Source: \"$SOURCE\"" >> "$TEMPFILE4"
+
+   if $DEBUGGING ; then
+
+      # Output temporary file names to allow viewing of intermediate text results:
+
+      echo -e "Temp File 1: \"$TEMPFILE1\"" >> "$TEMPFILE4"
+      echo -e "Temp File 2: \"$TEMPFILE2\"" >> "$TEMPFILE4"
+      echo -e "Temp File 3: \"$TEMPFILE3\"" >> "$TEMPFILE4"
+      echo -e "Temp File 4: \"$TEMPFILE4\"" >> "$TEMPFILE4"
+      echo -e "Temp File 5: \"$TEMPFILE5\"" >> "$TEMPFILE4"
+   fi
+
+   # Start of processing.
+
+   if [[ -d "$SOURCE" ]] ; then
+
+      # The path (folder) exists.
+
+      CHECK=$(echo $SOURCE | pcl "InclLines '^/home/$USERNAME/' /r")
+      if [ "$CHECK" != "" ] ; then
+
+         # The specified argument is from inside the user's home folder. Get list of files from client computer:
+
+         if find "$SOURCE" -type f -printf "C %p | %s %TY-%Tm-%Td %TH:%TM:%TS\n" 2> /dev/null > "$TEMPFILE1" && \
+         find "$SOURCE" -type l -printf "C %p | %s %TY-%Tm-%Td %TH:%TM:%TS\n" 2> /dev/null >> "$TEMPFILE1" ; then
+
+            # Got the client files. Get list of files from the server:
+
+            echo "find \"$SOURCE\" -type f -printf \"S %p | %s %TY-%Tm-%Td %TH:%TM:%TS\n\" 2> /dev/null" > "$TEMPFILE3"
+            echo "find \"$SOURCE\" -type l -printf \"S %p | %s %TY-%Tm-%Td %TH:%TM:%TS\n\" 2> /dev/null" >> "$TEMPFILE3"
+
+            if ssh "$USERNAME@$BUSIP" 'bash -s' < "$TEMPFILE3" > "$TEMPFILE2" ; then
+
+               # Got the server files. Combine and process the two lists:
+
+               cat "$TEMPFILE1" "$TEMPFILE2" | pcl "ExclLines '~$' /r | ExclLines '/Trash' /i | \
+               ReverseChars | DelCharsToStr '.' | DelChars 1 1 | ReverseChars | SortLines /p3 | \
+               DelDuplLines 3 1000 /a" > "$TEMPFILE5"
+
+               if [ -s "$TEMPFILE5" ] ; then
+
+                  # There are mismatches.
+
+                  echo -e "\nMismatches:\n" >> "$TEMPFILE4"
+                  cat "$TEMPFILE5" >> "$TEMPFILE4"
+               else
+
+                  # No mismatches detected.
+
+                  echo -e "\nNo mismatches" >> "$TEMPFILE4"
+               fi
+
+               # Output the results in the text editor:
+
+               $TEXTEDITOR "$TEMPFILE4"
+            else
+
+               # Oops!
+
+               EXITCODE=5
+               echo -e "files2sync: Server \"find\" failed.\n"
+            fi
+         else
+
+            # Oops!
+
+            EXITCODE=4
+            echo -e "files2sync: Client \"find\" failed.\n"
+         fi
+      else
+
+         # Oops!
+
+         EXITCODE=3
+         echo -en "files2sync: The source either isn't specified as an absolute path or it "
+         echo -e "is located outside of your home folder.\n"
+      fi
+   else
+
+      # Oops!
+
+      EXITCODE=2
+      echo "files2sync: The specified source is not an existing folder."
+   fi
+else
+
+   # No arguments were provided to the script. Display help:
+
+   echo -e "\nfiles2sync - report mismatched files between a workstation and \"backup server\"\n"
+   echo -e "This script lists each file in the given path beneath your home folder"
+   echo -e "whose size or modified time differs from its counterpart located on a"
+   echo -e "remote \"backup server\".\n"
+   echo -e "Usage: files2sync <Source>\n"
+   echo -e "where:\n"
+   echo -e "   <Source> is the absolute path name of a folder beneath your"
+   echo -e "   home folder that you wish to check for mismatched files.\n"
+   echo -e "For example, the following will check the entire \"MyStuff\" folder for"
+   echo -e "mismatches:\n"
+   echo -e "   files2sync \"/home/myuser/MyStuff\"\n"
+   EXITCODE=1
+fi
+
+if [ "$EXITCODE" != "0" ] ; then
+
+   # Pause the script so that errors can be noted:
+
+   read -n1 -r -p "Press a key ..."
+   echo -e ""
+fi
+
+exit $EXITCODE
+

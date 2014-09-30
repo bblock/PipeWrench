@@ -1,0 +1,1 @@
+This folder contains a single bash script, (renamefile) that auto-renames a file (one that has presumably been downloaded from the internet--say, a .pdf file for example) so that any underscores are replaced with spaces and all words are capitalized. For more details, see the documentation inside of the script.

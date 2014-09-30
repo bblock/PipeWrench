@@ -1,0 +1,125 @@
+#!/bin/bash
+#
+# listduplfiles - use md5 checksums to locate duplicate files
+#
+# Given a folder that might contain duplicate files, this script returns a list of all duplicates. Note that 
+# comparison is based entirely on each file's contents (via the use of md5sum) and therefore, two files having 
+# different names but the same contents are considered to be duplicates. 
+#
+# This script is best run by dragging a folder onto a .desktop file or "launcher" that has been created to run 
+# the script. 
+#
+# The resulting list of duplicates output by this script can be easily transformed into a list of shell commands 
+# to delete the duplicate files. Of course, you would normally have to decide which of the duplicate files to keep 
+# and which to discard. That said, if you don't care which duplicate files should be kept, (you only care that one 
+# file is kept for each set of duplicate files) the following PipeWrench pipe should do the trick: 
+#
+#    "SortLines | OutDuplLines 1 32 | DelDuplLines 1 32 /f | DelChars 1 34 | InsStr 1 'rm #22' | AppendStr '#22'"
+#
+# To use the above pipe, copy it (including the outer quotes) to the clipboard and then, inside of PipeWrench, 
+# click "File" / "Import" to load the pipe. Next, copy the list of duplicates output by this script to PipeWrench's 
+# text input control (if not already there) and finally, click the "Run Pipe" button. Afterwards, the text output 
+# control will contain a list of shell commands that you can run in a terminal to delete the duplicate files. BE 
+# SURE TO EXAMINE THE LIST PRIOR TO EXECUTING IT IN CASE SOME OF THE FILE NAMES ARE IMPROPERLY FORMED (WHICH MIGHT  
+# HAPPEN FOR EXAMPLE IF A FILE NAME CONTAINS A NEWLINE IN IT). 
+#
+# DEPENDENCIES / ASSUMPTIONS
+# 
+# Be sure that you have customized the script for your own use (see TEXTEDITOR below). 
+# 
+# PipeWrench (pcl) must be installed on the workstation (client) where this script is run. PipeWrench 
+# source is available on GitHub (https://github.com/bblock/PipeWrench). A Ubuntu PPA is also available 
+# (see https://launchpad.net/~bwb-s/+archive/ubuntu/pipewrench).
+# 
+####################################################################################################################
+
+if [ $# -eq 1 ] ; then
+
+   # All arguments are provided.
+
+   SOURCE="$1"
+      # The folder containing duplicate files.
+   DEBUGGING=false
+      # Set "true" to gain access to temporary files for viewing intermediate text results.
+   TEXTEDITOR=pluma
+      # The editor to invoke to display results. BE SURE TO SET THIS TO YOUR PREFERRED EDITOR!
+   EXITCODE=0
+      # Assume successful execution.
+
+   # Create temporary files:
+
+   TEMPFILE1=$(mktemp)
+   TEMPFILE2=$(mktemp)
+   TEMPFILE3=$(mktemp)
+
+   # Display "header" info:
+
+   echo -e "listduplfiles rel 1.0\n" | tee "$TEMPFILE3"
+   echo -e "Folder: \"$SOURCE\"" >> "$TEMPFILE3"
+
+   if $DEBUGGING ; then
+
+      # Output temporary file names to allow viewing of intermediate text results:
+
+      echo -e "Temp File 1: \"$TEMPFILE1\"" >> "$TEMPFILE3"
+      echo -e "Temp File 2: \"$TEMPFILE2\"" >> "$TEMPFILE3"
+   fi
+
+   # Start of processing.
+
+   if [ -d "$SOURCE" ]; then
+
+      # The folder exists. Get list of checksummed files:
+
+      find "$SOURCE" -type f | xargs -d '\n' md5sum > "$TEMPFILE1"
+
+      # Morph this list of checksummed files into a list of just those files that are duplicates:
+
+      cat "$TEMPFILE1" | pcl "SortLines | OutDuplLines 1 32" > "$TEMPFILE2" 
+
+      if [ -s "$TEMPFILE2" ] ; then
+
+         # There are duplicates.
+
+         echo -e "\nDuplicates:\n" >> "$TEMPFILE3"
+         cat "$TEMPFILE2" >> "$TEMPFILE3"
+      else
+
+         # There are no duplicates.
+
+         echo -e "\nNo duplicates.\n" >> "$TEMPFILE3"
+      fi
+
+      # Output the results in the text editor:
+
+      $TEXTEDITOR "$TEMPFILE3" 
+   else
+
+      # Oops!
+
+      EXITCODE=2
+      echo -e "\"$SOURCE\" isn't an existing folder.\n"
+   fi
+
+else
+
+   # No arguments were provided.  Give help:
+
+   echo -e "\nlistduplfiles - use md5 checksums to locate duplicate files\n"
+   echo -e "Usage: listduplfiles <Source>\n"
+   echo -e "where:\n"
+   echo -e "   <Source> is the folder possibly containing duplicate files.\n"
+   echo -e "The results will be displayed in $TEXTEDITOR.\n"
+   EXITCODE=1
+fi
+
+if [ "$EXITCODE" != "0" ] ; then 
+
+   # Pause the script so that errors can be noted:
+
+   read -n1 -r -p "Press a key ..." 
+   echo -e ""
+fi
+
+exit $EXITCODE
+

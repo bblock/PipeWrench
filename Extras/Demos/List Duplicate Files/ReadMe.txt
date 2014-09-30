@@ -1,0 +1,1 @@
+This folder contains a single bash script, (listduplfiles) that can be used to get a list of all files in a folder (including subfolders) that are duplicates of one another. For more details, see the documentation inside of the script.

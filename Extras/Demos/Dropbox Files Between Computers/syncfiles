@@ -1,0 +1,128 @@
+#!/bin/bash
+#
+# syncfiles - copy workstation file or folder to a "backup server"
+#
+# This script is a companion to the files2sync script. It copies the given file, folder or symlink
+# located in or below your home folder on a workstation (client) computer to the corresponding location 
+# on a remote "backup server". The last modified time of each component copied is preserved in the 
+# process. To list all files in a folder that require syncing, see the companion script, files2sync.
+#
+# This script is best run by dragging a file or folder onto a .desktop file or "launcher" that has been
+# created to run the script. Aside from being convenient, this mode of execution ensures that the <source>
+# argument is always provided as an absolute, fully qualified path.
+#
+# Note that data is only copied from the client computer to the server. NO DATA IS EVER COPIED IN
+# REVERSE--FROM THE SERVER TO THE CLIENT. This script also doesn't delete files on the server to
+# reflect deleted (or moved) files on the client (although this would likely be a trivial change to
+# make). If you delete, rename or move files on your workstation computer, the same changes will 
+# need to be done on the server. Here, use of the files2sync script can be really helpful.
+#
+# Like its companion files2sync, this script is only run on a "client"; however, a computer can act both 
+# as a client and a server at the same time. Such a "mutual" configuration could be established between 
+# two computers on a home network to keep each computer backed up to the other one.
+#
+# DEPENDENCIES / ASSUMPTIONS
+#
+# You have access to another computer on your home network that you can use as a "backup server". This 
+# could be a "headless" server running in your office closet, your spouse's laptop or even your Linux 
+# based HTPC (assuming in each case that enough disk space is available).
+#
+# You have customized the script for your own use (see BUSIP and USERNAME below).
+#
+# PipeWrench (pcl) must be installed on the workstation (client) where this script is run. PipeWrench 
+# source is available on GitHub (https://github.com/bblock/PipeWrench). A Ubuntu PPA is also available 
+# (see https://launchpad.net/~bwb-s/+archive/ubuntu/pipewrench).
+#
+# You must have the same user name (thus home folder name) on both the client and server computers.
+#
+# The server must be accessible to the client via SSH (meaning that SSH must be installed on both systems). 
+#
+# "rsync" must be installed on both computers. Again, on Linux systems, rsync is typically already 
+# installed by default.
+#
+###########################################################################################################
+
+if [ $# -eq 1 ] ; then
+
+   # All arguments are provided.
+
+   SOURCE="$1"
+      # The file or folder to copy to the backup server.
+   BUSIP="192.168.1.???"
+      # The backup server's IP address. BE SURE TO SET THIS TO YOUR SERVER'S IP!
+   USERNAME="???"
+      # The user on both the client and server computers. BE SURE TO SET THIS TO YOUR USERNAME!
+   DESTPREFIX="$USERNAME@$BUSIP:"
+      # This is the prefix of the destination file name.
+   PARENTDIR="'"$(echo $SOURCE | pcl "ReverseChars | ShiftChars 1 '/' | DelChars 1 1 | \
+   ReverseChars | ReplStr '''' '''\"''\"'''")"'"
+      # This is the parent folder under which <source> will be copied on the
+      # backup server. It is constructed from the original <source> by first
+      # removing its lowest level component and then by escaping those characters
+      # that would otherwise be interpreted by the remote shell, such as spaces,
+      # etc. This second step is achieved by replacing embedded single quotes
+      # found inside of the resulting folder name with the sequence, ('"'"')
+      # and then by enclosing that result in single quotes.
+   EXITCODE=0
+      # Assuming successful execution.
+
+   if [[ -f "$SOURCE" || -d "$SOURCE" || -h "$SOURCE" ]] ; then
+
+      # The provided source is an existing file, folder or symlink.
+
+      CHECK=$(echo $SOURCE | pcl "InclLines '^/home/$USERNAME/' /r")
+      if [ "$CHECK" != "" ] ; then
+
+         # The source is from inside of the user's home folder.
+         # Copy it to the backup server as requested:
+
+         echo -e "syncfiles rel 1.0\n"
+         echo -e "Executing: rsync -a \"$SOURCE\" \"$DESTPREFIX$PARENTDIR\"\n"
+         if ! rsync -a "$SOURCE" "$DESTPREFIX$PARENTDIR" ; then
+
+            # Oops!
+
+            EXITCODE=4
+            echo -e "syncfiles: Failed to copy source to backup server.\n"
+         fi
+      else
+
+         # Oops!
+
+         EXITCODE=3
+         echo -en "syncfiles: The source either isn't specified as an absolute "
+         echo -e "path or it is located outside of your home folder.\n"
+      fi
+   else
+
+      # Oops!
+
+      EXITCODE=2
+      echo -e "syncfiles: The specified source is not an existing regular file, folder or symlink.\n"
+   fi
+
+else
+
+   # No arguments were provided. Display help:
+
+   echo -e "\nsyncfiles - copy workstation file or folder to a \"backup server\"\n"
+   echo -e "This script copies the given file, folder or symlink (located in or below"
+   echo -e "your home folder) to the corresponding location on a remote \"backup\""
+   echo -e "server.\n"
+   echo -e "Usage: syncfiles <Source>\n"
+   echo -e "where:\n"
+   echo -e "   <Source> is the absolute path name of a file or folder beneath your home"
+   echo -e "   folder that you wish to copy to the backup server.\n"
+   EXITCODE=1
+fi
+
+if [ "$EXITCODE" != "0" ] ; then
+
+   # Pause the script so that any text output can be noted:
+
+   read -n1 -r -p "Press a key ..." 
+   echo -e ""
+fi
+
+exit $EXITCODE
+

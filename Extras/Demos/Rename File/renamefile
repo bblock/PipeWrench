@@ -1,0 +1,73 @@
+#!/bin/bash
+#
+# renamefile – rename file downloaded from internet
+#
+# This bash script renames the given file so that underscores (_) are replaced by blanks and all words 
+# are capitalized.
+#
+# This script is best run by dragging a file onto a .desktop file or "launcher" that has been created 
+# to run the script.
+#
+# DEPENDENCIES / ASSUMPTIONS
+#
+# PipeWrench (pcl) must be installed on the workstation (client) where this script is run. PipeWrench 
+# source is available on GitHub (https://github.com/bblock/PipeWrench). A Ubuntu PPA is also available 
+# (see https://launchpad.net/~bwb-s/+archive/ubuntu/pipewrench).
+#
+#######################################################################################################
+
+if [ $# -eq 1 ] ; then
+
+   # All arguments are provided.
+
+   SOURCE="$1"
+      # The file to be renamed.
+   EXITCODE=0
+      # Assuming successful execution.
+
+   if [[ -f "$SOURCE" ]] ; then
+
+      # The provided source is an existing file. Extract its folder and current file name:
+
+      FILEDIR=$(echo "$SOURCE" | pcl "ReplStr '/' '/\e' | InclLines '/' | JoinLines")
+      CURNAME=$(echo "$SOURCE" | pcl "ReplStr '/' '/\e' | ExclLines '/' | JoinLines")
+
+      # Get the file's new name:
+
+      NEWNAME=$(echo "$CURNAME" | pcl "LowerCase | ReplStr '_' '\e' ' ' '\e' | InsStr 2 '<m>\e' | InsStr 1 ' ' | \
+      InsLineNo /z /w2 | GroupLines '<m>' | IsolateLines '<m>' | UpperCase | ReplStr '<m>' '' /i | \
+      EndIsolate | SortLines | DelChars 1 3 | JoinLines 2 | AppendStr ' ' | JoinLines | StripChars 1")
+
+      # Perform the renaming:
+
+      mv -i "$SOURCE" "$FILEDIR$NEWNAME"
+   else
+
+      # Oops!
+
+      EXITCODE=2
+      echo -e "renamefile: The specified source is not an existing, regular file.\n"
+   fi
+else
+
+   # No arguments were provided. Display help:
+
+   echo -e "\nrenamefile - rename file downloaded from internet\n"
+   echo -e "This script renames the given internet document so that underscores (_) are replaced"
+   echo -e "by blanks and all words are capitalized.\n"
+   echo -e "Usage: renamefile <Source>\n"
+   echo -e "where:\n"
+   echo -e "   <Source> is the file to rename.\n"
+   EXITCODE=1
+fi
+
+if [ "$EXITCODE" != "0" ] ; then 
+
+   # Pause the script so that any text output can be noted:
+
+   read -n1 -r -p "Press a key ..." 
+   echo -e ""
+fi
+
+exit $EXITCODE
+
